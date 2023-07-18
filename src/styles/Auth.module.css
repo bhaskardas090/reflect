@@ -1,0 +1,21 @@
+.loginScreenOne{
+    padding: 32px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.numberField{
+    width: 75vw;
+}
+.loginButton{
+    width: 75vw;
+    padding: 10px 0px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #FDA52B 21.30%, #FE7401 100%);
+}

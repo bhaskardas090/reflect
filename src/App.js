@@ -8,6 +8,7 @@ const Meditate = React.lazy(() => import('./pages/Meditate'));
 const ChatBot = React.lazy(() => import('./pages/ChatBot'));
 const Account = React.lazy(() => import('./pages/Account'));
 const Resource = React.lazy(() => import('./pages/Resource'));
+const AuthOTP = React.lazy(() => import('./pages/AuthOTP'));
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/auth' element={<Auth />} />
+        <Route path='/auth-otp' element={<AuthOTP />} />
         <Route path='/breathe' element={<Breathe />} />
         <Route path='/meditate' element={<Meditate />} />
         <Route path='/chatbot' element={<ChatBot />} />

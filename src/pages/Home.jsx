@@ -1,8 +1,11 @@
 import React from 'react'
+import Auth from './AuthOTP'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      
+    </div>
   )
 }
 
