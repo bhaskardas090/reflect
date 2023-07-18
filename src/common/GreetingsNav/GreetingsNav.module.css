@@ -1,0 +1,22 @@
+.greetingsNavContainer{
+    display: flex;
+    padding: 1rem;
+}
+.helloEmoji{
+    width: 10vw;
+    font-size: 1.5rem;
+}
+.greetingsMessage{
+    width: 40vw;
+    font-weight: bolder;
+}
+.navigationButtons{
+    width: 50vw;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 0.5rem;
+}
+.navigationButtons img{
+    width: 2rem;
+    height: 2rem;
+}

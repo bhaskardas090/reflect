@@ -1,0 +1,18 @@
+.navbarContainer{
+    bottom: 0;
+    background-color: white;
+    padding: 0.6rem 0rem;
+    border-radius: 1rem 1rem 0rem 0rem;
+    position: fixed;
+}
+.links{
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+.link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+}
