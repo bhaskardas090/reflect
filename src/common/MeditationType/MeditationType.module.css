@@ -1,0 +1,17 @@
+.meditationType{
+    width: 44vw;
+    height: 13rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+.meditationTypeContent{
+    padding: 0px 0.4rem;
+}
+.title{
+    font-size: 13px;
+    font-weight: bold;
+}
+.description{
+    font-size: 11px;
+    /* padding-top: 8px; */
+}

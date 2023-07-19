@@ -1,6 +1,6 @@
 .greetingsNavContainer{
     display: flex;
-    padding: 1rem;
+    padding: 2rem 1rem;
 }
 .helloEmoji{
     width: 10vw;

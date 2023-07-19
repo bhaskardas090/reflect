@@ -1,0 +1,20 @@
+.breatheContainer{
+    /* background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%); */
+    background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%);
+    height: 100vh;
+}
+.breatheImg{
+    padding: 2rem 0rem;
+    width: 100vw;
+    height: 45vh;
+}
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+}
+.startButton{
+    width: 75vw;
+    padding: 10px 0px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #FDA52B 21.30%, #FE7401 100%);
+}

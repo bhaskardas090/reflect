@@ -17,7 +17,7 @@ function Auth() {
       <div className={styles.login}>
         <TextField label="Enter your mobile number" variant="outlined" type='number' className={styles.numberField}/>
         <Link to="/auth-otp">
-          <Button variant="contained" className={styles.loginButton}>Generate OTP</Button>
+          <Button variant="contained" className={styles.generateOTPButton}>Generate OTP</Button>
         </Link>
       </div>
       <SocialLogin />

@@ -8,7 +8,9 @@ function Home() {
   return (
     <div className={styles.homeContainer}>
       <GreetingsNav />
-      <Quote />
+      <Quote>
+        <p>“You have to create little pockets of joy in your life to take care of yourself.”</p>
+      </Quote>
       <Navigation />
     </div>
   )
