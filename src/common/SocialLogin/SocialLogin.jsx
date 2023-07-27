@@ -5,17 +5,15 @@ import facebook from '../../assets/Facebook.png'
 
 function SocialLogin() {
   return (
-    <div>
-        <div className={styles.signup}>
-            <p>or</p>
-            <p className={styles.signupText}>SIGN UP</p>
-            <div className={styles.signupOptions}>
-                <img src={google}/>
-                <img src={facebook}/>
-            </div>
-        </div>
+    <div className={styles.signup}>
+      <p>or</p>
+      <p className={styles.signupText}>CONTINUE WITH</p>
+      <div className={styles.signupOptions}>
+        <img src={google} />
+        <img src={facebook} />
+      </div>
     </div>
-  )
+  );
 }
 
 export default SocialLogin
