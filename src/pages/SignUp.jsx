@@ -22,7 +22,7 @@ function SignUp() {
 
   const onSubmit = (data) => {
     console.log(data);
-    reset();
+    // reset();
   };
   return (
     <div>
