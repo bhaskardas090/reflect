@@ -10,6 +10,8 @@ const ChatBot = React.lazy(() => import('./pages/ChatBot'));
 const Account = React.lazy(() => import('./pages/Account'));
 const Resource = React.lazy(() => import('./pages/Resource'));
 const AuthOTP = React.lazy(() => import('./pages/AuthOTP'));
+const MusicPlayer = React.lazy(() => import('./pages/MusicPlayer'));
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path="/chatbot" element={<ChatBot />} />
           <Route path="/resource" element={<Resource />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/music" element={<MusicPlayer/>}/>
         </Routes>
       </Suspense>
     </div>

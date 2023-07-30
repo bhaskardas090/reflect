@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../common/Logo/Logo';
-import styles from '../styles/auth.module.css';
+import styles from '../styles/Auth.module.css';
 import SocialLogin from '../common/SocialLogin/SocialLogin';
 import loginScreenOne from '../assets/Login_Page_1.png';
 import { FormControl } from '@mui/material';

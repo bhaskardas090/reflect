@@ -1,0 +1,81 @@
+.component {
+    display: flex;
+    background-color: white;
+    width: 25%;
+    max-width: 600px;
+    margin: 1em auto;
+    padding-bottom: 2em;
+    border: 0.1px solid black;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px 5px rgba(234, 126, 38, 0.2);
+  }
+
+  .playing {
+    padding-top: 10px;
+    font-weight: 500;
+  }
+
+  .min-sec-start {
+    position: relative;
+    right: 50%;
+  }
+
+  .min-sec-end {
+    position: relative;
+    left: 50%;
+  }
+  
+  .musicCover {
+    border-radius: 10%;
+    padding: 15px;
+    
+  }
+  
+  .playButton {
+    background: none;
+    border: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title{
+    text-align: center;
+  }
+  
+  .subTitle {
+    /* margin-top: -1em; */
+    color: #4f4f4f;
+    padding-top: 2px;
+    text-align: center;
+    font-size: smaller;
+  }
+  
+  .time {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #828282;
+    font-size: smaller;
+  }
+  
+  .timeline {
+    width: 200%; /* Set the width to 100% to fill the entire card */
+    background-color: #27ae60;
+    position: relative;
+    left: 50%; /* Move the timeline 50% to the right (center it horizontally) */
+    transform: translateX(-50%); /* Center the timeline by moving it back 50% of its own width */
+  }
+  
+  input[type="range"] {
+    background-color: #27ae60;
+  }
+  
+  @media (max-width: 900px) {
+    .component {
+      width: 50%;
+    }
+  }
