@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Logo from '../common/Logo/Logo';
 import styles from '../styles/auth.module.css';
 import SocialLogin from '../common/SocialLogin/SocialLogin';
-import loginScreenOne from '../assets/Login_Page_1.png';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { signUpschema } from '../Helper/Validation';
+import { signUpschema } from '../helper/Validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useRegister from '../hooks/useRegister';
+
 function SignUp() {
+  const { signup, error, loading } = useRegister();
+
   const {
     register,
     handleSubmit,
@@ -20,8 +23,8 @@ function SignUp() {
     resolver: yupResolver(signUpschema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    signup(data.email, data.password);
     // reset();
   };
   return (
@@ -83,8 +86,13 @@ function SignUp() {
             className={styles.register}
             onClick={handleSubmit(onSubmit)}
           >
-            Register
+            {loading ? 'Loading...' : 'Register'}
           </Button>
+          {error && (
+            <Alert severity="error" sx={{ width: '75vw' }}>
+              {error}
+            </Alert>
+          )}
         </form>
         <div className={styles.login}>
           <p>

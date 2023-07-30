@@ -2,27 +2,27 @@ import React, { useState } from 'react';
 import Logo from '../common/Logo/Logo';
 import styles from '../styles/auth.module.css';
 import SocialLogin from '../common/SocialLogin/SocialLogin';
-import loginScreenOne from '../assets/Login_Page_1.png';
-import { FormControl } from '@mui/material';
+import { Alert } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import useLogin from '../hooks/useLogin';
 
 function SignIn() {
+  const { login, error, loading } = useLogin();
+
   const [signInDeatils, setSignInDeatils] = useState({
     email: '',
     password: '',
   });
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(signInDeatils);
+    login(signInDeatils.email, signInDeatils.password);
   };
   return (
     <div>
       <Logo />
-      {/* <div>
-        <img src={loginScreenOne} className={styles.loginScreenOne} />
-      </div> */}
       <div className={styles.login}>
         <form className={styles.form}>
           <TextField
@@ -51,10 +51,18 @@ function SignIn() {
             className={styles.register}
             onClick={handleSubmit}
           >
-            Register
+            {loading ? 'Loading...' : 'Log In'}
           </Button>
+          {error && (
+            <Alert severity="error" sx={{ width: '75vw' }}>
+              {error}
+            </Alert>
+          )}
         </form>
         <div className={styles.signup}>
+          <Link to="/resetpassword" className={styles.redirect}>
+            Forgot Password?
+          </Link>
           <p>
             Don't have an account?{' '}
             <Link to="/register" className={styles.redirect}>
