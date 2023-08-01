@@ -10,22 +10,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 5px 5px 5px rgba(234, 126, 38, 0.2);
+    /* background: linear-gradient(to bottom, #FDA52B, #FE7401); */
+    background: linear-gradient(to bottom, #f68222, #e99f5b, #d1d7ed);
   }
 
   .playing {
     padding-top: 10px;
     font-weight: 500;
+    color: #2B2B2B;
   }
 
   .min-sec-start {
     position: relative;
     right: 50%;
+    color: #2B2B2B;
   }
 
   .min-sec-end {
     position: relative;
     left: 50%;
+    color: #2B2B2B;
   }
   
   .musicCover {
@@ -39,10 +43,12 @@
     border: none;
     align-items: center;
     justify-content: center;
+
   }
 
   .title{
     text-align: center;
+    color: #2B2B2B;
   }
   
   .subTitle {
@@ -68,6 +74,7 @@
     position: relative;
     left: 50%; /* Move the timeline 50% to the right (center it horizontally) */
     transform: translateX(-50%); /* Center the timeline by moving it back 50% of its own width */
+    background-color: #2B2B2B;
   }
   
   input[type="range"] {
@@ -79,3 +86,107 @@
       width: 50%;
     }
   }
+
+  /* Assuming you have a class named "timeline" for the input range */
+.timeline {
+  /* Remove default styling (optional) */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Set the width and height of the slider */
+  width: 200%;
+  height: 5px;
+
+  /* Add black background color to the slider */
+  background-color: black;
+
+  /* Override the default track styles */
+  outline: none;
+  border: none;
+  border-radius: 5px; /* Adjust as needed */
+
+  /* Add custom track style with a gradient (optional) */
+  background-image: linear-gradient(to right, black, white);
+}
+
+/* Optional: Customize the appearance of the slider thumb */
+.timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.timeline::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.timeline::-ms-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Optional: Customize the appearance of the slider thumb when pressed */
+.timeline::-webkit-slider-thumb:active {
+  background-color: #333; /* Adjust as needed */
+}
+
+.timeline::-moz-range-thumb:active {
+  background-color: #333; /* Adjust as needed */
+}
+
+.timeline::-ms-thumb:active {
+  background-color: #333; /* Adjust as needed */
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    width: 100%; /* Adjust to fit the width of the phone */
+    height: 3px; /* Reduce the height for smaller screens */
+  }
+
+  .timeline::-webkit-slider-thumb, 
+  .timeline::-moz-range-thumb, 
+  .timeline::-ms-thumb {
+    width: 8px; /* Reduce the size of the thumb for smaller screens */
+    height: 8px; /* Reduce the size of the thumb for smaller screens */
+  }
+
+  .min-sec-start {
+    position: relative;
+    right: 5%;
+    color: #2B2B2B;
+  }
+
+  .min-sec-end {
+    position: relative;
+    left: 5%;
+    color: #2B2B2B;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .subTitle{
+    font-size: 10px;
+  }
+
+  .musicCover {
+    border-radius: 10%;
+    padding: 10px;
+    width: 150px;
+    height: 150px;
+  }
+}
