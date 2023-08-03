@@ -19,8 +19,8 @@
     height: 79px;
     font-size: 15px;
     text-align: left;
-    padding: 0px 2rem;
-    border-radius: 62px 0px 0px 62px;
+    padding: 0px 1rem;
+    /* border-radius: 62px 0px 0px 62px; */
     background: #FFF;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32);
     border: none;

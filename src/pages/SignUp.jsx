@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { signUpschema } from '../helper/Validation';
+import { signUpSchema } from '../helper/Validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useRegister from '../hooks/useRegister';
@@ -20,7 +20,7 @@ function SignUp() {
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(signUpschema),
+    resolver: yupResolver(signUpSchema),
   });
 
   const onSubmit = async (data) => {
