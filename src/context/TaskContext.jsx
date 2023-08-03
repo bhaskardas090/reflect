@@ -9,6 +9,10 @@ export const TaskReducer = (state, action) => {
       return state.filter((task) => task.id !== action.payload);
     case 'TASK_COMPLETE':
       return state.filter((task) => task.id === action.payload);
+    case 'TASK_COMPLETE_STATUS_CHANGE':
+      const filteredTask = state.find((task) => task.id === action.payload);
+      filteredTask.complete = !filteredTask.complete;
+      return state;
     default:
       return state;
   }
