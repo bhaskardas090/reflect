@@ -6,16 +6,15 @@
 .checkbox{
     width: 25px;
     height: 25px;
-    background-color: none;
+    /* background-color: none;
     border-radius: 50%;
-    border: 1px solid gray;
-    appearance: none;
+    border: 1px solid gray; */
+    /* appearance: none; */
     outline: none;
-    margin: 24px 10px ;
+    margin: 24px 10px;
     padding: 1rem;
 }
 .todoText{
-    
     width: 219px;
     height: 79px;
     font-size: 15px;

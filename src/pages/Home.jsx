@@ -8,10 +8,13 @@ import { HomepageData } from '../data'
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useAuthContext from '../hooks/useAuthContext';
+import useTaskContext from '../hooks/useTaskContext';
 import useLogOut from '../hooks/useLogOut';
+import TodoTitle from '../common/TodoTitle/TodoTitle';
 
 function Home() {
   const { user } = useAuthContext();
+  const { state: tasks } = useTaskContext();
   const { logout } = useLogOut();
 
   const handleLogOut = async () => {
@@ -28,23 +31,29 @@ function Home() {
         </p>
       </Quote>
 
-      {/* <div className={styles.timePeriod}>
-        <img src="/HomeAssets/morning.png" className={styles.timePeriodImg} />
-        <h3 className={styles.timePeriodText}>Morning</h3>
-      </div>
-
-      {HomepageData?.map((data) => (
-        <Todo img={data.img} title={data.task} />
-      ))}
-      <div className={styles.timePeriod}>
-        <img src="/HomeAssets/afternoon.png" className={styles.timePeriodImg} />
-        <h3 className={styles.timePeriodText}>Afternoon</h3>
-      </div>
-      <div className={styles.timePeriod}>
-        <img src="/HomeAssets/night.png" className={styles.timePeriodImg} />
-        <h3 className={styles.timePeriodText}>Night</h3>
-      </div> */}
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+      {true && (
+        <>
+          <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
+          {tasks
+            ?.filter((data) => data.time === 'morning')
+            .map((data) => (
+              <Todo img={data.img} title={data.task} id={data.id} />
+            ))}
+          <TodoTitle imgSrc="/HomeAssets/afternoon.png" time="Afternoon" />
+          {tasks
+            ?.filter((data) => data.time === 'afternoon')
+            .map((data) => (
+              <Todo img={data.img} title={data.task} id={data.id} />
+            ))}
+          <TodoTitle imgSrc="/HomeAssets/night.png" time="Night" />
+          {tasks
+            ?.filter((data) => data.time === 'night')
+            .map((data) => (
+              <Todo img={data.img} title={data.task} id={data.id} />
+            ))}
+        </>
+      )}
+      {/* <div style={{ textAlign: 'center', marginTop: '2rem' }}>
         {user ? <h1>{user.email}</h1> : <h1>null</h1>}
         {user && (
           <Button
@@ -56,7 +65,7 @@ function Home() {
             Log Out
           </Button>
         )}
-      </div>
+      </div> */}
       <Navigation />
     </div>
   );

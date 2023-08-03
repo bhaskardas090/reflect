@@ -20,8 +20,9 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/" element={<Home />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
             <Route path="/breathe" element={<Breathe />} />
             <Route path="/meditate" element={<Meditate />} />
             <Route path="/chatbot" element={<ChatBot />} />
