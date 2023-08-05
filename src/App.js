@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router';
 import ProtectedRoute from './helper/ProtectedRoute';
 import ResetPassword from './pages/ResetPassword';
+import { Select } from '@mui/material';
 const Home = React.lazy(() => import('./pages/Home'));
 const SignUp = React.lazy(() => import('./pages/SignUp'));
 const SignIn = React.lazy(() => import('./pages/SignIn'));
@@ -11,6 +12,7 @@ const Meditate = React.lazy(() => import('./pages/Meditate'));
 const ChatBot = React.lazy(() => import('./pages/ChatBot'));
 const Account = React.lazy(() => import('./pages/Account'));
 const Resource = React.lazy(() => import('./pages/Resource'));
+const SelectTask = React.lazy(() => import('./pages/SelectTask'));
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
             <Route path="/account" element={<Account />} />
           </Route>
           <Route path="/resource" element={<Resource />} />
+          <Route path="/select-task" element={<SelectTask />} />
         </Routes>
       </Suspense>
     </div>

@@ -11,6 +11,7 @@ import useAuthContext from '../hooks/useAuthContext';
 import useTaskContext from '../hooks/useTaskContext';
 import useLogOut from '../hooks/useLogOut';
 import TodoTitle from '../common/TodoTitle/TodoTitle';
+import HapinessMeter from '../common/HapinessMeter/HapinessMeter';
 
 function Home() {
   const { user } = useAuthContext();
@@ -24,13 +25,14 @@ function Home() {
   return (
     <div className={styles.homeContainer}>
       <GreetingsNav />
-      <Quote>
+      {/* <Quote>
         <p>
           “You have to create little pockets of joy in your life to take care of
           yourself.”
         </p>
-      </Quote>
+      </Quote> */}
 
+      <HapinessMeter />
       {true && (
         <>
           <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
