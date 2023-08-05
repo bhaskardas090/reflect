@@ -28,6 +28,7 @@ function App() {
           <Route path="/resource" element={<Resource />} />
           <Route path="/account" element={<Account />} />
           <Route path="/music" element={<MusicPlayer/>}/>
+          <Route path="/resource" element={<Resource />} />
         </Routes>
       </Suspense>
     </div>

@@ -1,0 +1,62 @@
+@media only screen and (max-width:500px) {
+    .container {
+        background: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%);
+    }
+
+    .heading {
+        padding: 22px;
+        padding-top: 20px;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+        /* Vertically center the icon and text */
+        gap: 8px;
+        /* Optional: add some space between the icon and the text */
+    }
+
+    .para {
+        color: #000;
+        font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        /* 175% */
+        padding-left: 25px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .content-container {
+        display: flex;
+        align-items: flex-start;  /* Align items to the top */
+    }
+    
+    .content-container img {
+        margin-left: 15px;  /* Add some space between the text and the image */
+        margin-top: 8px; 
+        padding-right: 25px;
+        padding-bottom: 10px; /* Lower the image relative to the text */
+    }
+
+    .navbar ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        padding-left: 50px;
+        padding-right: 50px;
+        font-family: Poppins;
+
+    }
+
+    hr {
+        border: none;  /* Remove the default border */
+        height: 2px;  /* Set the thickness of the line */
+        background-color: #333;  /* Set the color of the line */
+        width: 90%;  /* Set the width of the line */
+        margin: 0 auto 20px;
+    }
+    
+    
+}
