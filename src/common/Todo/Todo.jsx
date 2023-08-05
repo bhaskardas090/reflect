@@ -11,6 +11,7 @@ function Todo({ img, title, id }) {
   };
   const handleChecked = (taskId) => {
     console.log(tasks, 'Updated Tasks ***');
+    dispatch({ type: 'SET_TOTAL_REWARD' });
     dispatch({ type: 'TASK_COMPLETE_STATUS_CHANGE', payload: taskId });
   };
 
@@ -24,7 +25,7 @@ function Todo({ img, title, id }) {
         />
         <button
           className={styles.todoText}
-          // onDoubleClick={() => handleDelete(id)}
+          onDoubleClick={() => handleDelete(id)}
         >
           {title}
         </button>

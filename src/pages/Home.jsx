@@ -15,12 +15,15 @@ import HapinessMeter from '../common/HapinessMeter/HapinessMeter';
 
 function Home() {
   const { user } = useAuthContext();
-  const { state: tasks } = useTaskContext();
+  const { state } = useTaskContext();
   const { logout } = useLogOut();
 
   const handleLogOut = async () => {
     logout();
   };
+  {
+    console.log(state.tasks, 'HOME PAGE');
+  }
 
   return (
     <div className={styles.homeContainer}>
@@ -36,19 +39,19 @@ function Home() {
       {true && (
         <>
           <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
-          {tasks
+          {state?.tasks
             ?.filter((data) => data.time === 'morning')
             .map((data) => (
               <Todo img={data.img} title={data.task} id={data.id} />
             ))}
           <TodoTitle imgSrc="/HomeAssets/afternoon.png" time="Afternoon" />
-          {tasks
-            ?.filter((data) => data.time === 'afternoon')
+          {state?.tasks
+            .filter((data) => data.time === 'afternoon')
             .map((data) => (
               <Todo img={data.img} title={data.task} id={data.id} />
             ))}
           <TodoTitle imgSrc="/HomeAssets/night.png" time="Night" />
-          {tasks
+          {state?.tasks
             ?.filter((data) => data.time === 'night')
             .map((data) => (
               <Todo img={data.img} title={data.task} id={data.id} />

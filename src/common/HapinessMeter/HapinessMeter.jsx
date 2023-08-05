@@ -3,8 +3,10 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import Emojis from './Emojis';
 import Meter from './Meter';
+import useTaskContext from '../../hooks/useTaskContext';
 
 function HapinessMeter() {
+  const { state } = useTaskContext();
   return (
     <div
       style={{
@@ -16,7 +18,7 @@ function HapinessMeter() {
       <Meter />
       <LinearProgress
         variant="determinate"
-        value={10}
+        value={state.totalReward}
         sx={{
           width: '95vw',
           margin: 'auto',

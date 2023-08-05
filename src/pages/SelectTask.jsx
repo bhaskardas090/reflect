@@ -11,7 +11,6 @@ import {
 import { Link } from 'react-router-dom';
 
 function SelectTask() {
-  console.log(studentRoutine, '***');
   return (
     <div
       style={{
