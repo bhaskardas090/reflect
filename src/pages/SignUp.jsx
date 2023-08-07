@@ -1,15 +1,15 @@
-import React from 'react';
-import Logo from '../common/Logo/Logo';
-import styles from '../styles/auth.module.css';
-import SocialLogin from '../common/SocialLogin/SocialLogin';
-import TextField from '@mui/material/TextField';
-import Alert from '@mui/material/Alert';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
-import { signUpSchema } from '../helper/Validation';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import useRegister from '../hooks/useRegister';
+import React from "react";
+import Logo from "../common/Logo/Logo";
+import styles from "../styles/Auth.module.css";
+import SocialLogin from "../common/SocialLogin/SocialLogin";
+import TextField from "@mui/material/TextField";
+import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import { signUpSchema } from "../helper/Validation";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import useRegister from "../hooks/useRegister";
 
 function SignUp() {
   const { signup, error, loading } = useRegister();
@@ -18,7 +18,7 @@ function SignUp() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    // reset,
   } = useForm({
     resolver: yupResolver(signUpSchema),
   });
@@ -37,10 +37,10 @@ function SignUp() {
             variant="outlined"
             type="email"
             className={styles.inputField}
-            {...register('email')}
+            {...register("email")}
           />
           {errors.email && (
-            <Alert severity="error" sx={{ width: '75vw' }}>
+            <Alert severity="error" sx={{ width: "75vw" }}>
               {errors.email?.message}
             </Alert>
           )}
@@ -50,10 +50,10 @@ function SignUp() {
             variant="outlined"
             type="text"
             className={styles.inputField}
-            {...register('username')}
+            {...register("username")}
           />
           {errors.username && (
-            <Alert severity="error" sx={{ width: '75vw' }}>
+            <Alert severity="error" sx={{ width: "75vw" }}>
               {errors.username?.message}
             </Alert>
           )}
@@ -62,10 +62,10 @@ function SignUp() {
             variant="outlined"
             type="password"
             className={styles.inputField}
-            {...register('password')}
+            {...register("password")}
           />
           {errors.password && (
-            <Alert severity="error" sx={{ width: '75vw' }}>
+            <Alert severity="error" sx={{ width: "75vw" }}>
               {errors.password?.message}
             </Alert>
           )}
@@ -74,10 +74,10 @@ function SignUp() {
             variant="outlined"
             type="password"
             className={styles.inputField}
-            {...register('confirmPassword')}
+            {...register("confirmPassword")}
           />
           {errors.confirmPassword && (
-            <Alert severity="error" sx={{ width: '75vw' }}>
+            <Alert severity="error" sx={{ width: "75vw" }}>
               Password do not match
             </Alert>
           )}
@@ -86,17 +86,17 @@ function SignUp() {
             className={styles.register}
             onClick={handleSubmit(onSubmit)}
           >
-            {loading ? 'Loading...' : 'Register'}
+            {loading ? "Loading..." : "Register"}
           </Button>
           {error && (
-            <Alert severity="error" sx={{ width: '75vw' }}>
+            <Alert severity="error" sx={{ width: "75vw" }}>
               {error}
             </Alert>
           )}
         </form>
         <div className={styles.login}>
           <p>
-            Already Have an account?{' '}
+            Already Have an account?{" "}
             <Link to="/login" className={styles.redirect}>
               SIGN IN
             </Link>

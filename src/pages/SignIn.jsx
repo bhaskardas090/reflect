@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../common/Logo/Logo';
-import styles from '../styles/auth.module.css';
+import styles from '../styles/Auth.module.css';
 import SocialLogin from '../common/SocialLogin/SocialLogin';
 import { Alert } from '@mui/material';
 import TextField from '@mui/material/TextField';

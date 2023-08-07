@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router';
-import styles from '../styles/auth.module.css';
+import styles from '../styles/Auth.module.css';
 import Logo from '../common/Logo/Logo';
 import useResetPassword from '../hooks/useResetPassword';
 
