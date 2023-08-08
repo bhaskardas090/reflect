@@ -40,10 +40,19 @@ const VideoCard = () => {
           href={`https://www.youtube.com/watch?v=${video.id}`}
           target="_blank"
           rel="noopener noreferrer"
+          className="video-link"
         >
-          <img src={video.thumbnail} alt={video.title} />
-          <h3>{video.title}</h3>
-          <p>{video.description}</p>
+          <div className="video-wrapper">
+            <iframe 
+              className="video-player"
+              src={`https://www.youtube.com/embed/${video.id}`} 
+              frameBorder="0" 
+              allow="autoplay; encrypted-media" 
+              allowFullScreen
+            />
+          </div>
+          {/* <h3 className="video-title">{video.title}</h3>
+          <p className="video-description">{video.description}</p> */}
         </a>
       ))}
     </div>
