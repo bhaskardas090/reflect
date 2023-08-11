@@ -1,52 +1,54 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import useTaskContext from '../hooks/useTaskContext';
+import React from "react";
+import Box from "@mui/material/Box";
+import useTaskContext from "../hooks/useTaskContext";
 import {
   studentRoutine,
   workingProfessionalRoutine,
   houseWifeRoutine,
   oldAgeRoutine,
   yourWay,
-} from '../helper/TaskType';
-import { Link } from 'react-router-dom';
+} from "../helper/TaskType";
+import { Link } from "react-router-dom";
+import { db } from "../firebase/config";
+import useAuthContext from "./../hooks/useAuthContext";
 
 function SelectTask() {
   return (
     <div
       style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: 'center',
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around",
+        alignItems: "center",
         // gap: '1rem',
       }}
     >
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <BoxSx name="STUDENT" color="#2196f3" activeTask={studentRoutine} />
       </Link>
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <BoxSx
           name="WORKING PRESSIONAL"
           color="#4caf50"
           activeTask={workingProfessionalRoutine}
         />
       </Link>
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <BoxSx
           name="HOUSE WIFE"
           color="#673ab7"
           activeTask={houseWifeRoutine}
         />
       </Link>
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <BoxSx
           name="RETIRED OLD AGE"
           color="#ff9800"
           activeTask={oldAgeRoutine}
         />
       </Link>
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <BoxSx
           name="YOUR WAY"
           color="linear-gradient(to top, #2980b9, #6dd5fa, #ffffff)"
@@ -59,22 +61,31 @@ function SelectTask() {
 
 function BoxSx({ name, color, activeTask }) {
   const { dispatch } = useTaskContext();
+  const { user } = useAuthContext();
+  const handleTask = async () => {
+    const routines = await db.collection("routines");
+    await routines.doc(user.uid).set({
+      uid: user.uid,
+      activeRoutine: activeTask,
+    });
+    dispatch({ type: "SELECT_TASK", payload: activeTask });
+  };
   return (
     <Box
       sx={{
-        width: '75vw',
-        height: '16vh',
-        color: 'white',
-        display: 'flex',
-        padding: '2rem',
-        justifyContent: 'center',
-        borderRadius: '10px',
-        alignItems: 'center',
-        textAlign: 'center',
+        width: "75vw",
+        height: "16vh",
+        color: "white",
+        display: "flex",
+        padding: "2rem",
+        justifyContent: "center",
+        borderRadius: "10px",
+        alignItems: "center",
+        textAlign: "center",
         background: color,
-        cursor: 'pointer',
+        cursor: "pointer",
       }}
-      onClick={() => dispatch({ type: 'SELECT_TASK', payload: activeTask })}
+      onClick={handleTask}
     >
       <h2>{name}</h2>
     </Box>

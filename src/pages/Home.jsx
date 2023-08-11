@@ -1,17 +1,17 @@
-import React from 'react'
-import styles from '../styles/Home.module.css'
-import GreetingsNav from '../common/GreetingsNav/GreetingsNav'
-import Quote from '../common/Quote/Quote'
-import Navigation from '../common/Navigation/Navigation'
-import Todo from '../common/Todo/Todo'
-import { HomepageData } from '../data'
-import { Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import useAuthContext from '../hooks/useAuthContext';
-import useTaskContext from '../hooks/useTaskContext';
-import useLogOut from '../hooks/useLogOut';
-import TodoTitle from '../common/TodoTitle/TodoTitle';
-import HapinessMeter from '../common/HapinessMeter/HapinessMeter';
+import React from "react";
+import styles from "../styles/Home.module.css";
+import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
+import Quote from "../common/Quote/Quote";
+import Navigation from "../common/Navigation/Navigation";
+import Todo from "../common/Todo/Todo";
+import { HomepageData } from "../data";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import useAuthContext from "../hooks/useAuthContext";
+import useTaskContext from "../hooks/useTaskContext";
+import useLogOut from "../hooks/useLogOut";
+import TodoTitle from "../common/TodoTitle/TodoTitle";
+import HapinessMeter from "../common/HapinessMeter/HapinessMeter";
 
 function Home() {
   const { user } = useAuthContext();
@@ -21,9 +21,6 @@ function Home() {
   const handleLogOut = async () => {
     logout();
   };
-  {
-    console.log(state.tasks, 'HOME PAGE');
-  }
 
   return (
     <div className={styles.homeContainer}>
@@ -40,21 +37,36 @@ function Home() {
         <>
           <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
           {state?.tasks
-            ?.filter((data) => data.time === 'morning')
+            ?.filter((data) => data.time === "morning")
             .map((data) => (
-              <Todo img={data.img} title={data.task} id={data.id} />
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+              />
             ))}
           <TodoTitle imgSrc="/HomeAssets/afternoon.png" time="Afternoon" />
           {state?.tasks
-            .filter((data) => data.time === 'afternoon')
+            ?.filter((data) => data.time === "afternoon")
             .map((data) => (
-              <Todo img={data.img} title={data.task} id={data.id} />
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+              />
             ))}
           <TodoTitle imgSrc="/HomeAssets/night.png" time="Night" />
           {state?.tasks
-            ?.filter((data) => data.time === 'night')
+            ?.filter((data) => data.time === "night")
             .map((data) => (
-              <Todo img={data.img} title={data.task} id={data.id} />
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+              />
             ))}
         </>
       )}
@@ -76,4 +88,4 @@ function Home() {
   );
 }
 
-export default Home
+export default Home;
