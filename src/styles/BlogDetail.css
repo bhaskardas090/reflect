@@ -1,0 +1,39 @@
+@media only screen and (max-width:500px) {
+    .container {
+        background: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%);
+    }
+
+   .blog-detail {
+    color: #000;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 00px; /* Reduced top margin */
+}
+
+.blog-detail img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.blog-detail h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+    padding: 10px;
+}
+
+.blog-detail p {
+    font-size: 19px;
+    line-height: 1.5;
+    margin: 19px;
+    padding: 1% 1%;
+    text-align: justify;
+}
+
+}

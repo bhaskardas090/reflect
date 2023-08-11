@@ -36,3 +36,10 @@
     font-size: 10px;
     padding-left: 15px;
 }
+
+.read-more {
+    color: #0000EE;
+    text-decoration: none;
+    font-size: 10px;
+    align-self: flex-end;
+}

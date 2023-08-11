@@ -1,0 +1,54 @@
+.journal {
+  font-family: Arial, sans-serif;
+}
+
+.journal h1 {
+  text-align: center;
+}
+
+.journal input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.text-editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.formatting-buttons {
+  display: flex; /* Ensures the buttons are in one line */
+  margin-bottom: 10px; /* Space between buttons and the text area */
+}
+
+.formatting-buttons button {
+  padding: 5px;
+  margin-right: 5px; /* Space between buttons */
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 18px;
+  outline: none;
+}
+
+.journal-entry {
+  display: block;
+  width: 100%;
+  min-height: 200px; /* Adjust the height as needed */
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  overflow: auto;
+}
+
+.navigation-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
