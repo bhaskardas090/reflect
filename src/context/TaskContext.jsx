@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer, useState } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import { db } from "../firebase/config";
 import useAuthContext from "../hooks/useAuthContext";
 
@@ -36,7 +36,6 @@ export const TaskReducer = (state, action) => {
 };
 const initialState = {
   tasks: [],
-
   reward: 0,
   totalReward: 0,
 };
@@ -56,7 +55,6 @@ function TaskContextProvider({ children }) {
         .collection("routines")
         .doc(user?.uid)
         .onSnapshot((doc) => {
-          // console.log("Current data: Firestore", doc.data().activeRoutine);
           dispatch({ type: "SELECT_TASK", payload: doc.data()?.activeRoutine });
         });
     };

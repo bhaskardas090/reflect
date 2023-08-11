@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { auth } from '../firebase/config';
-import { useNavigate } from 'react-router';
-import useAuthContext from '../hooks/useAuthContext';
+import React, { useState } from "react";
+import { auth } from "../firebase/config";
+import { useNavigate } from "react-router";
+import useAuthContext from "../hooks/useAuthContext";
+import { db } from "../firebase/config";
 
 function useRegister() {
   const { dispatch } = useAuthContext();
@@ -16,9 +17,18 @@ function useRegister() {
         email,
         password
       );
-      dispatch({ type: 'LOGIN', payload: user });
+      dispatch({ type: "LOGIN", payload: user });
+      //Checking if user already has an active routine to follow
+      let routinePresent = await db.collection("routines").doc(user?.uid);
+      const { exists } = await routinePresent.get();
+
+      if (exists) {
+        navigate("/");
+      } else {
+        navigate("/select-task");
+      }
+      //
       setError(null);
-      navigate('/');
     } catch (error) {
       setError(error.message);
     }

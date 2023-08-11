@@ -83,6 +83,16 @@ function Home() {
           </Button>
         )}
       </div> */}
+      {user && (
+        <Button
+          variant="outlined"
+          color="error"
+          onClick={handleLogOut}
+          style={{ margin: "1rem auto" }}
+        >
+          Log Out
+        </Button>
+      )}
       <Navigation />
     </div>
   );
