@@ -2,17 +2,18 @@ import React from "react";
 import styles from "./Todo.module.css";
 import useTaskContext from "../../hooks/useTaskContext";
 import getRandomColor from "../../helper/RandomColor";
+import useAuthContext from "../../hooks/useAuthContext";
+import { db } from "../../firebase/config";
+import useDB from "../../hooks/useDB";
 
-function Todo({ img, title, id }) {
-  const { dispatch, state: tasks } = useTaskContext();
+function Todo({ img, title, id, checked }) {
+  const { deleteTask, updateTaskComplete } = useDB("routines");
+
   const handleDelete = (taskId) => {
-    console.log(id, "Delete Clicked");
-    dispatch({ type: "DELETE_TASK", payload: taskId });
+    deleteTask(taskId);
   };
-  const handleChecked = (taskId) => {
-    console.log(tasks, "Updated Tasks ***");
-    dispatch({ type: "SET_TOTAL_REWARD" });
-    dispatch({ type: "TASK_COMPLETE_STATUS_CHANGE", payload: taskId });
+  const handleChecked = async (taskId) => {
+    updateTaskComplete(taskId);
   };
 
   return (
@@ -21,7 +22,8 @@ function Todo({ img, title, id }) {
         <input
           type="checkbox"
           className={styles.checkbox}
-          onClick={() => handleChecked(id)}
+          onChange={() => handleChecked(id)}
+          checked={checked}
         />
         <button
           className={styles.todoText}

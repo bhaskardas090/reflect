@@ -44,6 +44,7 @@ function Home() {
                 title={data.task}
                 id={data.id}
                 key={data.id}
+                checked={data.complete}
               />
             ))}
           <TodoTitle imgSrc="/HomeAssets/afternoon.png" time="Afternoon" />
@@ -55,6 +56,7 @@ function Home() {
                 title={data.task}
                 id={data.id}
                 key={data.id}
+                checked={data.complete}
               />
             ))}
           <TodoTitle imgSrc="/HomeAssets/night.png" time="Night" />
@@ -66,6 +68,7 @@ function Home() {
                 title={data.task}
                 id={data.id}
                 key={data.id}
+                checked={data.complete}
               />
             ))}
         </>

@@ -7,22 +7,13 @@ export const TaskReducer = (state, action) => {
   const newState = { ...state };
   switch (action.type) {
     case "ADD_TASK":
-      newState.tasks = [...newState.tasks, action.payload];
-      return (state = newState);
+      return (state = action.payload);
     case "DELETE_TASK":
-      newState.tasks = newState.tasks.filter(
-        (task) => task.id !== action.payload
-      );
-      return (state = newState);
+      return (state = action.payload);
     case "TASK_COMPLETE_STATUS_CHANGE":
-      const filteredTask = newState.tasks.find(
-        (task) => task.id === action.payload
-      );
-      filteredTask.complete = !filteredTask.complete;
-      return (state = newState);
-    case "SELECT_TASK":
-      newState.tasks = action.payload;
-      return (state = newState);
+      return (state = action.payload);
+    case "SELECT_ROUTINE":
+      return (state = action.payload);
     case "SET_REWARD":
       newState.tasks?.length > 0 &&
         (newState.reward = 100 / newState.tasks.length);
@@ -44,7 +35,7 @@ function TaskContextProvider({ children }) {
   const [state, dispatch] = useReducer(TaskReducer, initialState);
 
   const { user } = useAuthContext();
-  console.log(state, "Current State Value");
+  // console.log(state, "Current State Value");
   useEffect(() => {
     dispatch({ type: "SET_REWARD" });
   }, [state.tasks]);
@@ -55,7 +46,10 @@ function TaskContextProvider({ children }) {
         .collection("routines")
         .doc(user?.uid)
         .onSnapshot((doc) => {
-          dispatch({ type: "SELECT_TASK", payload: doc.data()?.activeRoutine });
+          dispatch({
+            type: "SELECT_ROUTINE",
+            payload: { ...state, tasks: doc.data()?.activeRoutine },
+          });
         });
     };
     fetchRoutine();

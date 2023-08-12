@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import useTaskContext from "../hooks/useTaskContext";
 import {
   studentRoutine,
   workingProfessionalRoutine,
@@ -9,8 +8,7 @@ import {
   yourWay,
 } from "../helper/TaskType";
 import { Link } from "react-router-dom";
-import { db } from "../firebase/config";
-import useAuthContext from "./../hooks/useAuthContext";
+import useDB from "../hooks/useDB";
 
 function SelectTask() {
   return (
@@ -60,15 +58,9 @@ function SelectTask() {
 }
 
 function BoxSx({ name, color, activeTask }) {
-  const { dispatch } = useTaskContext();
-  const { user } = useAuthContext();
+  const { selectRoutine } = useDB("routines");
   const handleTask = async () => {
-    const routines = await db.collection("routines");
-    await routines.doc(user.uid).set({
-      uid: user.uid,
-      activeRoutine: activeTask,
-    });
-    dispatch({ type: "SELECT_TASK", payload: activeTask });
+    selectRoutine(activeTask);
   };
   return (
     <Box

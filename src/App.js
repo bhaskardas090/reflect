@@ -11,7 +11,7 @@ const Meditate = React.lazy(() => import("./pages/Meditate"));
 const ChatBot = React.lazy(() => import("./pages/ChatBot"));
 const Account = React.lazy(() => import("./pages/Account"));
 const Resource = React.lazy(() => import("./pages/Resource"));
-const SelectTask = React.lazy(() => import("./pages/SelectTask"));
+const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
             <Route path="/account" element={<Account />} />
           </Route>
           <Route path="/resource" element={<Resource />} />
-          <Route path="/select-task" element={<SelectTask />} />
+          <Route path="/select-routine" element={<SelectRoutine />} />
         </Routes>
       </Suspense>
     </div>
