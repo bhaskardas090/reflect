@@ -9,13 +9,14 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 import "../styles/ChatBot.css";
+import { Link } from "react-router-dom";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",
   content:
-    "Before responding, assess if the question pertains to wellness, health, and happiness. If it falls within these topics, provide answers akin to those offered by a psychology doctor, offering insights and guidance. Limit responses exclusively to queries related to health, wellness, and happiness. For any unrelated questions, kindly remind the user to focus on wellness-related topics. Keep your responses in simple English and short 50 words.",
+    "Before responding, assess if the question pertains to wellness, health, and happiness. If it falls within these topics, provide answers akin to those offered by a psychology doctor, offering insights and guidance. Limit responses exclusively to queries related to health, wellness, and happiness. For any unrelated questions, kindly remind the user to focus on wellness-related topics. Keep your responses in simple English and short maximum 70 words.",
 };
 
 const ChatBot = () => {
@@ -100,6 +101,20 @@ const ChatBot = () => {
           />
         </ChatContainer>
       </MainContainer>
+      <Link to="/">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/10346/10346993.png"
+          alt="back"
+          style={{
+            position: "absolute",
+            top: "3vh",
+            right: "5vw",
+            width: "30px",
+            height: "30px",
+            zIndex: "100",
+          }}
+        />
+      </Link>
     </div>
   );
 };
