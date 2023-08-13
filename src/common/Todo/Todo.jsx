@@ -1,9 +1,6 @@
 import React from "react";
 import styles from "./Todo.module.css";
-import useTaskContext from "../../hooks/useTaskContext";
 import getRandomColor from "../../helper/RandomColor";
-import useAuthContext from "../../hooks/useAuthContext";
-import { db } from "../../firebase/config";
 import useDB from "../../hooks/useDB";
 
 function Todo({ img, title, id, checked }) {

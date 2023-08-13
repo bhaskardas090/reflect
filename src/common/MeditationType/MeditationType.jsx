@@ -9,7 +9,7 @@ function MeditationType({ data, id }) {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   return (
-    <div>
+    <div className={styles.meditationTypeContainer}>
       <div
         className={styles.meditationType}
         onClick={() => navigate(`/music-player/${id}`)}
@@ -23,13 +23,13 @@ function MeditationType({ data, id }) {
           <h4 className={styles.title}>{data.title}</h4>
           <h5 className={styles.description}>{data.description}</h5>
         </div>
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/7641/7641698.png"
-          alt="info"
-          className={styles.info}
-          onClick={() => setShowModal(!showModal)}
-        />
       </div>
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/7641/7641698.png"
+        alt="info"
+        className={styles.info}
+        onClick={() => setShowModal(!showModal)}
+      />
       <ModalComponent showModal={showModal} setShowModal={setShowModal}>
         <Details
           pranayamTitle={data.pranayamTitle}

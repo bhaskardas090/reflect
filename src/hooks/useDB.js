@@ -47,7 +47,6 @@ function useDB(collection) {
   const updateTaskComplete = async (taskId) => {
     const filteredTask = newState.tasks.find((task) => task.id === taskId);
     filteredTask.complete = !filteredTask.complete;
-    dispatch({ type: "SET_TOTAL_REWARD" });
     dispatch({ type: "TASK_COMPLETE_STATUS_CHANGE", payload: newState });
     await ref.doc(user.uid).set({
       uid: user.uid,

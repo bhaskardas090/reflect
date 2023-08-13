@@ -1,6 +1,23 @@
-.css-5xe99f-MuiLinearProgress-bar1{
- background-color: red;
+.css-5xe99f-MuiLinearProgress-bar1 {
+  background-color: red;
 }
-.MuiLinearProgress-bar{
- color: red;
+.MuiLinearProgress-bar {
+  color: red;
+}
+
+/* METER STYLES */
+
+.happinessMeter {
+  width: 95vw;
+  height: 20px;
+  background: #ccc;
+  /* border-radius: 10px; */
+  overflow: hidden;
+  margin: auto;
+}
+
+.meterBar {
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+  /* border-radius: 10px; */
 }

@@ -30,9 +30,10 @@ const initialState = {
   reward: 0,
   totalReward: 0,
 };
-
 function TaskContextProvider({ children }) {
   const [state, dispatch] = useReducer(TaskReducer, initialState);
+  console.log("REWARD PER TASK: ", state.reward);
+  console.log("TOTAL REWARD: ", state.totalReward);
 
   const { user } = useAuthContext();
   // console.log(state, "Current State Value");

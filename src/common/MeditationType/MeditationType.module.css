@@ -1,10 +1,12 @@
+.meditationTypeContainer {
+  position: relative;
+}
 .meditationType {
   width: 44vw;
   min-height: 29vh;
   max-height: max-content;
   background-color: #ffffff;
   border-radius: 8px;
-  position: relative;
 }
 .meditationTypeContent {
   padding: 5px 0.4rem;

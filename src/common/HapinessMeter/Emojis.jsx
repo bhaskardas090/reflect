@@ -4,7 +4,7 @@ function Emojis() {
   return (
     <div
       style={{
-        width: "95vw",
+        width: "100vw",
         margin: "auto",
         display: "flex",
         justifyContent: "space-around",

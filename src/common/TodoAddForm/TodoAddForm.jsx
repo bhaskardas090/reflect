@@ -7,7 +7,7 @@ import styles from "./TodoAddForm.module.css";
 import useDB from "../../hooks/useDB";
 
 function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
-  const [task, setTask] = useState();
+  const [task, setTask] = useState("");
   const { addTask } = useDB("routines");
 
   // Adding the new task in the global todo list

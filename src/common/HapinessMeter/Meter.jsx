@@ -1,25 +1,34 @@
-import React from 'react';
+// HappinessMeter.js
+import React from "react";
+import styles from "./HapinessMeter.module.css"; // Create this CSS file for styling
 
-function Meter() {
+const Meter = ({ progress }) => {
+  const getColor = (progress) => {
+    if (progress <= 10) {
+      return "red";
+    } else if (progress <= 30) {
+      return "orange";
+    } else if (progress <= 50) {
+      return "yellow";
+    } else if (progress <= 70) {
+      return "lightgreen";
+    } else {
+      return "green";
+    }
+  };
+
+  const meterStyle = {
+    width: `${progress}%`,
+    background: `linear-gradient(to right, ${getColor(progress)}, ${getColor(
+      progress + 1
+    )})`,
+  };
+
   return (
-    <div style={{ display: 'flex', width: '95vw', margin: 'auto' }}>
-      <div
-        style={{ background: '#CC191E', width: '19vw', height: '2rem' }}
-      ></div>
-      <div
-        style={{ background: '#DC8218', width: '19vw', height: '2rem' }}
-      ></div>
-      <div
-        style={{ background: '#FFD000', width: '19vw', height: '2rem' }}
-      ></div>
-      <div
-        style={{ background: '#8BC43E', width: '19vw', height: '2rem' }}
-      ></div>
-      <div
-        style={{ background: '#007839', width: '19vw', height: '2rem' }}
-      ></div>
+    <div className={styles.happinessMeter}>
+      <div className={styles.meterBar} style={meterStyle}></div>
     </div>
   );
-}
+};
 
 export default Meter;
