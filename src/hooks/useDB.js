@@ -1,16 +1,17 @@
-import React from "react";
 import { db } from "../firebase/config";
 import useAuthContext from "./useAuthContext";
 import useTaskContext from "./useTaskContext";
 import { v4 as uuid } from "uuid";
+import { useState, useMemo } from "react";
 
 function useDB(collection) {
   const { user } = useAuthContext();
   const { state, dispatch } = useTaskContext();
-
+  const [breatheData, setBreatheData] = useState(null);
   const ref = db.collection(collection);
-  const newState = { ...state };
 
+  // ! ROUTINE METHODS
+  const newState = { ...state };
   const selectRoutine = async (activeTask) => {
     newState.tasks = activeTask;
     dispatch({ type: "SELECT_ROUTINE", payload: newState });
@@ -19,7 +20,6 @@ function useDB(collection) {
       activeRoutine: activeTask,
     });
   };
-
   const addTask = async (task, time) => {
     const newTask = {
       id: uuid(),
@@ -43,7 +43,6 @@ function useDB(collection) {
       activeRoutine: newTasks,
     });
   };
-
   const updateTaskComplete = async (taskId) => {
     const filteredTask = newState.tasks.find((task) => task.id === taskId);
     filteredTask.complete = !filteredTask.complete;
@@ -55,7 +54,27 @@ function useDB(collection) {
     });
   };
 
-  return { deleteTask, updateTaskComplete, selectRoutine, addTask };
+  // ! Breathe METHODS
+  const getPranayamas = async () => {
+    const data = [];
+    await ref.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        data.push(doc.data());
+        // console.log(doc.id, " => ", doc.data());
+      });
+    });
+    setBreatheData(data);
+  };
+
+  return {
+    deleteTask,
+    updateTaskComplete,
+    selectRoutine,
+    addTask,
+    getPranayamas,
+    breatheData,
+  };
 }
 
 export default useDB;

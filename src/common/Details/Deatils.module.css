@@ -1,0 +1,10 @@
+.benefits,
+.precautions,
+.direction {
+  margin: 1rem auto;
+}
+
+.list {
+  font-size: 0.8rem;
+  padding: 1rem;
+}

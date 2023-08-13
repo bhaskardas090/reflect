@@ -22,10 +22,10 @@ function App() {
           <Route path="/login" element={<SignIn />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/" element={<Home />} />
+          <Route path="/meditate" element={<Meditate />} />
           <Route element={<ProtectedRoute />}>
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/breathe" element={<Breathe />} />
-            <Route path="/meditate" element={<Meditate />} />
             <Route path="/chatbot" element={<ChatBot />} />
             <Route path="/account" element={<Account />} />
           </Route>
