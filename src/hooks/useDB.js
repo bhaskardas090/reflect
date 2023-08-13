@@ -8,6 +8,7 @@ function useDB(collection) {
   const { user } = useAuthContext();
   const { state, dispatch } = useTaskContext();
   const [breatheData, setBreatheData] = useState(null);
+  const [pranayam, setPranayam] = useState(null);
   const ref = db.collection(collection);
 
   // ! ROUTINE METHODS
@@ -60,11 +61,26 @@ function useDB(collection) {
     await ref.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        data.push(doc.data());
+        console.log(doc.id);
+        data.push({ id: doc.id, data: doc.data() });
         // console.log(doc.id, " => ", doc.data());
       });
     });
     setBreatheData(data);
+  };
+
+  const getPranayam = async (id) => {
+    const docRef = await ref.doc(id);
+    const doc = await docRef.get();
+
+    if (doc.exists) {
+      setPranayam({
+        imageUrl: doc.data().songImgSrc,
+        songUrl: doc.data().songSrc,
+        songName: doc.data().songTitle,
+      });
+    }
+    return doc.data();
   };
 
   return {
@@ -74,6 +90,8 @@ function useDB(collection) {
     addTask,
     getPranayamas,
     breatheData,
+    getPranayam,
+    pranayam,
   };
 }
 

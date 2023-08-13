@@ -12,6 +12,7 @@ const ChatBot = React.lazy(() => import("./pages/ChatBot"));
 const Account = React.lazy(() => import("./pages/Account"));
 const Resource = React.lazy(() => import("./pages/Resource"));
 const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
+const MusicPlayer = React.lazy(() => import("./pages/MusicPlayer"));
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/" element={<Home />} />
           <Route path="/meditate" element={<Meditate />} />
+          <Route path="/music-player/:id" element={<MusicPlayer />} />
           <Route element={<ProtectedRoute />}>
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/breathe" element={<Breathe />} />

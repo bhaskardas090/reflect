@@ -3,12 +3,17 @@ import styles from "./MeditationType.module.css";
 import { useState } from "react";
 import Details from "../Details/Details";
 import ModalComponent from "../Modal/Modal";
+import { useNavigate } from "react-router";
 
-function MeditationType({ data }) {
+function MeditationType({ data, id }) {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   return (
     <div>
-      <div className={styles.meditationType}>
+      <div
+        className={styles.meditationType}
+        onClick={() => navigate(`/music-player/${id}`)}
+      >
         <img
           src={data.coverImgSrc}
           alt="cover_image"
