@@ -4,7 +4,7 @@ import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 import useSound from "use-sound";
 
-const PlayerControl = ({ audioFile }) => {
+const PlayerControl = ({ audioFile, setPlay }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [time, setTime] = useState({
     min: "",
@@ -56,9 +56,11 @@ const PlayerControl = ({ audioFile }) => {
     if (isPlaying) {
       pause();
       setIsPlaying(false);
+      setPlay(false);
     } else {
       play();
       setIsPlaying(true);
+      setPlay(true);
     }
   };
   return (

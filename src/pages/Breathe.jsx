@@ -1,25 +1,37 @@
-import React from 'react'
-import styles from '../styles/Breathe.module.css'
-import GreetingsNav from '../common/GreetingsNav/GreetingsNav'
-import Navigation from '../common/Navigation/Navigation'
-import Quote from '../common/Quote/Quote'
-import BreatheImg from '../assets/Breathe_Page.png'
-import Button from '@mui/material/Button';
+import React, { useEffect } from "react";
+import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
+import Navigation from "../common/Navigation/Navigation";
+import styles from "../styles/Meditate.module.css";
+import Quote from "../common/Quote/Quote";
+import MeditationType from "../common/MeditationType/MeditationType";
+import useDB from "../hooks/useDB";
 
 function Breathe() {
+  const { getPranayamas, breatheData } = useDB("breathe");
+  useEffect(() => {
+    getPranayamas();
+  }, []);
   return (
-    <div className={styles.breatheContainer}>
+    <div className={styles.meditateContainer}>
       <GreetingsNav />
       <Quote>
-        <p>“Without full awareness of breathing, there can be no development of meditative stability and understanding.”</p>
+        <p>
+          “Without full awareness of breathing, there can be no development of
+          meditative stability and understanding.”
+        </p>
       </Quote>
-      <img src={BreatheImg} className={styles.breatheImg}/>
-      <div className={styles.buttonContainer}>
-        <Button variant="contained" className={styles.startButton}>Start Breathing</Button>
+      <div className={styles.meditationCategory}>
+        {breatheData?.map((pranayam) => (
+          <MeditationType
+            data={pranayam.data}
+            id={pranayam.id}
+            key={pranayam.title}
+          />
+        ))}
       </div>
-      <Navigation />   
+      <Navigation />
     </div>
-  )
+  );
 }
 
-export default Breathe
+export default Breathe;

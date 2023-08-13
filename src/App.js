@@ -25,12 +25,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/meditate" element={<Meditate />} />
           <Route path="/music-player/:id" element={<MusicPlayer />} />
-          <Route element={<ProtectedRoute />}>
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/breathe" element={<Breathe />} />
-            <Route path="/chatbot" element={<ChatBot />} />
-            <Route path="/account" element={<Account />} />
-          </Route>
+          {/* <Route element={<ProtectedRoute />}> */}
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/breathe" element={<Breathe />} />
+          <Route path="/chatbot" element={<ChatBot />} />
+          <Route path="/account" element={<Account />} />
+          {/* </Route> */}
           <Route path="/resource" element={<Resource />} />
           <Route path="/select-routine" element={<SelectRoutine />} />
         </Routes>

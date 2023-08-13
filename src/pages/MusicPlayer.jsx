@@ -3,12 +3,13 @@ import "../styles/MusicPlayer.css";
 import { useNavigate, useParams } from "react-router";
 import useDB from "../hooks/useDB";
 import PlayerControl from "../common/PlayerController/PlayerControl";
-import mandala from "../assets/mandala.png";
+
 const MusicPlayer = () => {
   const { id } = useParams();
   const { getPranayam, pranayam } = useDB("breathe");
   const [audioFile, setAudioFile] = useState(null);
   const navigate = useNavigate();
+  const [play, setPlay] = useState(false);
   useEffect(() => {
     getPranayam(id);
   }, [id]);
@@ -23,10 +24,9 @@ const MusicPlayer = () => {
         <h2 className="playing">Playing Now</h2>
         <div className=""></div>
         <img
-          className="musicCover"
+          className={play ? "musicCoverPlus" : "musicCover"}
           alt="song cover"
-          // src={audioFile?.imageUrl}
-          src={mandala}
+          src={audioFile?.imageUrl}
           style={{ width: "60vw", height: "30vh", objectFit: "cover" }}
         />
         <div>
@@ -36,7 +36,7 @@ const MusicPlayer = () => {
         {!audioFile?.songUrl ? (
           "Loading.."
         ) : (
-          <PlayerControl audioFile={audioFile} />
+          <PlayerControl audioFile={audioFile} setPlay={setPlay} />
         )}
         <img
           src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
