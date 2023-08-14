@@ -4,27 +4,19 @@ import PageHeader from '../../common/PageHeader/PageHeader'
 import styles from '../../styles/User/Journal.module.css'
 import Button from '@mui/material/Button';
 import ModalComponent from '../../common/ModalComponent/ModalComponent';
-
+// import journalImg from '/HomeAssets/Journal.jpg'
 function Journal() {
     const [showAddModal, setShowAddModal] = useState(false);
     const [showPastModal, setShowPastModal]= useState(false);
 
   return (
+    <div className={styles.journal}>
     <div className={styles.journalContainer}>
-        <div style={{paddingLeft: '1rem',}}>
-            <PageHeader title={"JOURNAL"} />
-        </div>
-        <div className={styles.journalImg}>
-            <img src="https://cdn-icons-png.flaticon.com/128/2708/2708780.png"/>
-        </div>
-        <div className={styles.jounalPageText}>
-            <h1>MINDFULNESS</h1>
-            <h3 className={styles.jounalPageSubText}>Practice some meditation, yoga and keep journaling.</h3>
-        </div>
         <div className={styles.buttonContainer}>
-            <Button onClick={() => setShowAddModal(true)} className={styles.button}> Add New Journal </Button>
-            <Button onClick={() => setShowPastModal(true)} className={styles.button}> View Past Journal</Button>
+            <Button onClick={() => setShowAddModal(true)} className={styles.button} > Add New Journal </Button>
+            <Button onClick={() => setShowPastModal(true)} className={styles.button} > View Past Journal</Button>
         </div>
+        <img src='/HomeAssets/Journal.jpg' alt="journal" className={styles.journalImg}/>
 
             <ModalComponent showModal={showAddModal} setShowModal={setShowAddModal}>
             <form className={styles.form}>
@@ -45,6 +37,7 @@ function Journal() {
                 </div>
             </form> 
             </ModalComponent>
+    </div>
     </div>
   )
 }
