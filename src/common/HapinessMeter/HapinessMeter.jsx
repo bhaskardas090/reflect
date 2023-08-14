@@ -13,7 +13,7 @@ function HapinessMeter() {
       }}
     >
       <Emojis />
-      <Meter progress={50} />
+      <Meter progress={state.totalReward} />
     </div>
   );
 }

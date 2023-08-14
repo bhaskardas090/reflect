@@ -19,6 +19,7 @@ export const TaskReducer = (state, action) => {
         (newState.reward = 100 / newState.tasks.length);
       return (state = newState);
     case "SET_TOTAL_REWARD":
+      // newState.tasks.filter((task)=>task.complete === true)
       newState.totalReward += newState.reward;
       return (state = newState);
     default:
@@ -36,11 +37,11 @@ function TaskContextProvider({ children }) {
   console.log("TOTAL REWARD: ", state.totalReward);
 
   const { user } = useAuthContext();
-  // console.log(state, "Current State Value");
+  // ! SETTING THE REWARD PER TASK
   useEffect(() => {
     dispatch({ type: "SET_REWARD" });
   }, [state.tasks]);
-
+  // ! FETCHING ROUTINE FROM FIRESTORE
   useEffect(() => {
     const fetchRoutine = async () => {
       await db
@@ -49,7 +50,12 @@ function TaskContextProvider({ children }) {
         .onSnapshot((doc) => {
           dispatch({
             type: "SELECT_ROUTINE",
-            payload: { ...state, tasks: doc.data()?.activeRoutine },
+            payload: {
+              ...state,
+              tasks: doc.data()?.activeRoutine,
+              reward: doc.data()?.reward,
+              totalReward: doc.data()?.totalReward,
+            },
           });
         });
     };
