@@ -14,6 +14,7 @@ const Resource = React.lazy(() => import("./pages/Resource"));
 const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
 const MusicPlayer = React.lazy(() => import("./pages/MusicPlayer"));
 const FAQs = React.lazy(() => import("./pages/User/FAQs"));
+const Journal = React.lazy(() => import("./pages/User/Journal"));
 
 function App() {
   return (
@@ -26,13 +27,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/meditate" element={<Meditate />} />
           <Route path="/music-player/:id" element={<MusicPlayer />} />
-          {/* {/* <Route element={<ProtectedRoute />}> */} */}
+          {/* <Route element={<ProtectedRoute />}> */}
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/breathe" element={<Breathe />} />
           <Route path="/chatbot" element={<ChatBot />} />
           <Route path="/account" element={<Account />} />
-          {/*   <Route path="/faqs" element={<FAQs />} />
-          {/* </Route> */} */}
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/journal" element={<Journal />} />
+          {/* </Route> */}
           <Route path="/resource" element={<Resource />} />
           <Route path="/select-routine" element={<SelectRoutine />} />
         </Routes>

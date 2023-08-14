@@ -4,10 +4,12 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PageHeader from '../../common/PageHeader/PageHeader';
 
 function FAQs() {
   return (
     <div style={{backgroundImage:'linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 65.17%, #6E83B7 100%)', padding:'1rem'}}>
+      <PageHeader title={"Frequently Asked Questions"}/>
       <Accordion style={{marginBottom:'0.5rem'}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

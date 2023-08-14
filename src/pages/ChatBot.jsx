@@ -10,6 +10,9 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import "../styles/ChatBot.css";
 import { Link } from "react-router-dom";
+import PageHeader from "../common/PageHeader/PageHeader";
+import { bottom } from "@popperjs/core";
+import { padding } from "@mui/system";
 
 const API_KEY = "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";
 
@@ -80,7 +83,10 @@ const ChatBot = () => {
   console.log("Messges List ***", messages);
   return (
     <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
-      <MainContainer>
+      <div>
+        <PageHeader title={"Reflect"}/>
+      </div>
+      <MainContainer style={{border: 'none'}}>
         <ChatContainer>
           <MessageList
             scrollBehavior="smooth"
@@ -101,7 +107,7 @@ const ChatBot = () => {
           />
         </ChatContainer>
       </MainContainer>
-      <Link to="/">
+      {/* <Link to="/">
         <img
           src="https://cdn-icons-png.flaticon.com/128/10346/10346993.png"
           alt="back"
@@ -114,7 +120,7 @@ const ChatBot = () => {
             zIndex: "100",
           }}
         />
-      </Link>
+      </Link> */}
     </div>
   );
 };

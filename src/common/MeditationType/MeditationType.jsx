@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./MeditationType.module.css";
 import { useState } from "react";
 import Details from "../Details/Details";
-import ModalComponent from "../Modal/Modal";
+import ModalComponent from "../ModalComponent/ModalComponent";
 import { useNavigate } from "react-router";
 
 function MeditationType({ data, id }) {

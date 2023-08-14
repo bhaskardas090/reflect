@@ -1,0 +1,57 @@
+
+.journalContainer{
+    background-image: url(https://images.unsplash.com/photo-1551376347-075b0121a65b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+.journalImg{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.jounalPageText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+    text-align: center;
+    margin-bottom: 35vh;
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: space-around;
+}
+.button{
+    background-color: black!important;
+    color: white;
+    font-size: 16px;
+    margin: 8px 12px;
+}
+.form *{
+    margin: 8px;
+    padding: 8px;
+}
+.dateInput{
+    width: 78vw;
+}
+.textareaInput{
+    width: 78vw;
+    height: 45vh;
+}
+.addButton{
+    background-color: green!important;
+    color: white;
+    font-size: 16px;
+    width: 70vw;
+}
+.closeButton{
+    background-color: red!important;
+    color: white;
+    font-size: 16px;
+    width: 70vw;
+}

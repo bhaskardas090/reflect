@@ -17,7 +17,7 @@ const style = {
   overflow: "scroll",
 };
 
-export default function BasicModal({ children, showModal, setShowModal }) {
+export default function ModalComponent({ children, showModal, setShowModal }) {
   return (
     <div>
       <Modal

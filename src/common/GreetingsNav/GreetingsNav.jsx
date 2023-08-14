@@ -43,9 +43,9 @@ function GreetingsNav() {
                     sx={{marginTop:'18%', marginRight:'10%'}}
                     onClose={handleClose}
                 >
-                    <Link to='./account' style={{textDecoration:'none', color:'inherit'}}><MenuItem>My Account</MenuItem></Link>
-                    <Link to='./faqs' style={{textDecoration:'none', color:'inherit'}}><MenuItem>FAQs</MenuItem></Link>
-                    <MenuItem>Jounal History</MenuItem>
+                    <Link to='/account' style={{textDecoration:'none', color:'inherit'}}><MenuItem>My Account</MenuItem></Link>
+                    <Link to='/faqs' style={{textDecoration:'none', color:'inherit'}}><MenuItem>FAQs</MenuItem></Link>
+                    <Link to='/journal' style={{textDecoration:'none', color:'inherit'}}><MenuItem>Journal</MenuItem></Link>
                     <MenuItem>Past Tasks</MenuItem>
                     <MenuItem>Logout</MenuItem>
                 </Menu>
