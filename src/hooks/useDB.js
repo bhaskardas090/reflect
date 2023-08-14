@@ -15,10 +15,13 @@ function useDB(collection) {
   const newState = { ...state };
   const selectRoutine = async (activeTask) => {
     newState.tasks = activeTask;
+    newState.totalReward = 0;
     dispatch({ type: "SELECT_ROUTINE", payload: newState });
     await ref.doc(user.uid).set({
       uid: user.uid,
       activeRoutine: activeTask,
+      reward: newState.reward,
+      totalReward: newState.totalReward,
     });
   };
   const addTask = async (task, time) => {
