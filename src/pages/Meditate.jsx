@@ -8,8 +8,15 @@ import Sleep from '../assets/Sleep_Cycle.png'
 import Focus from '../assets/Focus_Concentration.png'
 import Stress from '../assets/Stress_Reduction.png'
 import Devotion from '../assets/Devotion.png'
+import { useNavigate } from 'react-router';
+
+
 
 function Meditate() {
+  const history = useNavigate();
+  const musicPlayer = () =>{
+    history("/music");
+    }
   return (
     <div className={styles.meditateContainer}>
       <GreetingsNav />
@@ -17,7 +24,7 @@ function Meditate() {
         <p>“Meditation is not about stopping thoughts, but recognizing that we are more than our thoughts and our feelings.”</p>
       </Quote>
       <div className={styles.meditationCategory}>
-        <MeditationType img={Sleep} title="Sleep Cycle" desc="The Best Bed one can Sleep on is Peace." />
+        <MeditationType img={Sleep} title="Sleep Cycle" desc="The Best Bed one can Sleep on is Peace." onClick={musicPlayer}/>
         <MeditationType img={Focus} title="Focus & Concentration " desc="Always Remember your focus determines your reality." />
       </div>
       <div className={styles.meditationCategory}>
