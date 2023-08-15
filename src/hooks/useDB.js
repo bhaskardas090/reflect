@@ -2,7 +2,7 @@ import { db } from "../firebase/config";
 import useAuthContext from "./useAuthContext";
 import useTaskContext from "./useTaskContext";
 import { v4 as uuid } from "uuid";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 
 function useDB(collection) {
   const { user } = useAuthContext();

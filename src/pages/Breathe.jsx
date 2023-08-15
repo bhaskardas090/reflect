@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
 import Navigation from "../common/Navigation/Navigation";
-import styles from "../styles/Meditate.module.css";
+import styles from "../styles/Breathe.module.css";
 import Quote from "../common/Quote/Quote";
 import MeditationType from "../common/MeditationType/MeditationType";
 import useDB from "../hooks/useDB";
@@ -21,13 +21,15 @@ function Breathe() {
         </p>
       </Quote>
       <div className={styles.meditationCategory}>
-        {breatheData?.map((pranayam) => (
-          <MeditationType
-            data={pranayam.data}
-            id={pranayam.id}
-            key={pranayam.title}
-          />
-        ))}
+        <div className={styles.pranayams}>
+          {breatheData?.map((pranayam) => (
+            <MeditationType
+              data={pranayam.data}
+              id={pranayam.id}
+              key={pranayam.id}
+            />
+          ))}
+        </div>
       </div>
       <Navigation />
     </div>

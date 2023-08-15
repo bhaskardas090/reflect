@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import styles from "../styles/RoutineHistory.module.css";
+import styles from "../../styles/RoutineHistory.module.css";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import Todo from "../common/Todo/Todo";
-import HapinessMeter from "../common/HapinessMeter/HapinessMeter";
-import useDB from "../hooks/useDB";
+import Todo from "../../common/Todo/Todo";
+import HapinessMeter from "../../common/HapinessMeter/HapinessMeter";
+import useDB from "../../hooks/useDB";
 
 function RoutineHistory() {
   const { getRoutineHistory } = useDB("routineHistory");

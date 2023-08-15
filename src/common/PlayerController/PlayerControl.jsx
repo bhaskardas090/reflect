@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
-import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 import useSound from "use-sound";
 
 const PlayerControl = ({ audioFile, setPlay }) => {
@@ -20,7 +19,6 @@ const PlayerControl = ({ audioFile, setPlay }) => {
   const [play, { pause, duration, sound }] = useSound(audioFile?.songUrl, {
     onend: () => {
       setIsPlaying(false);
-      console.log("Music Ended ************");
     },
   });
 
@@ -63,6 +61,15 @@ const PlayerControl = ({ audioFile, setPlay }) => {
       setPlay(true);
     }
   };
+
+  // useEffect(() => {
+  //   return () => {
+  //     pause();
+  //     setIsPlaying(false);
+  //     console.log("Unmounted ****");
+  //   };
+  // }, []);
+
   return (
     <div>
       <div>
@@ -89,13 +96,13 @@ const PlayerControl = ({ audioFile, setPlay }) => {
       <div style={{ display: "flex", justifyContent: "center" }}>
         {!isPlaying ? (
           <button className="playButton" onClick={playingButton}>
-            <IconContext.Provider value={{ size: "4em", color: "#27AE60" }}>
+            <IconContext.Provider value={{ size: "4rem", color: "#27AE60" }}>
               <AiFillPlayCircle style={{ color: "black" }} />
             </IconContext.Provider>
           </button>
         ) : (
           <button className="playButton" onClick={playingButton}>
-            <IconContext.Provider value={{ size: "4em", color: "#27AE60" }}>
+            <IconContext.Provider value={{ size: "4rem", color: "#27AE60" }}>
               <AiFillPauseCircle style={{ color: "black" }} />
             </IconContext.Provider>
           </button>

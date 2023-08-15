@@ -25,7 +25,7 @@ function MeditationType({ data, id }) {
         </div>
       </div>
       <img
-        src="https://cdn-icons-png.flaticon.com/128/7641/7641698.png"
+        src="https://cdn-icons-png.flaticon.com/128/9627/9627593.png"
         alt="info"
         className={styles.info}
         onClick={() => setShowModal(!showModal)}
@@ -36,6 +36,7 @@ function MeditationType({ data, id }) {
           direction={data.direction}
           benefits={data.benefits}
           precautions={data.precautions}
+          video={data.video}
         />
       </ModalComponent>
     </div>

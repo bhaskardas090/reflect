@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/Breathe.module.css";
+import styles from "../styles/Meditate.module.css";
 import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
 import Navigation from "../common/Navigation/Navigation";
 import Quote from "../common/Quote/Quote";

@@ -100,29 +100,6 @@ function Home() {
           done for the day
         </Button>
       </div>
-      {/* <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-        {user ? <h1>{user.email}</h1> : <h1>null</h1>}
-        {user && (
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={handleLogOut}
-            style={{ margin: '1rem auto' }}
-          >
-            Log Out
-          </Button>
-        )}
-      </div> */}
-      {user && (
-        <Button
-          variant="outlined"
-          color="error"
-          onClick={handleLogOut}
-          style={{ margin: "1rem auto" }}
-        >
-          Log Out
-        </Button>
-      )}
       <Navigation />
     </div>
   );

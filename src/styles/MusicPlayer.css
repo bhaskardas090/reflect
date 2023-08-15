@@ -40,19 +40,11 @@
 }
 
 .musicCover {
-  width: fit-content;
-  border-radius: 10%;
-  padding: 15px;
-  width: 60vw;
   height: 30vh;
   object-fit: cover;
   margin: 3rem auto;
 }
 .musicCoverPlus {
-  width: fit-content;
-  border-radius: 10%;
-  padding: 15px;
-  width: 60vw;
   height: 30vh;
   object-fit: cover;
   margin: 3rem auto;

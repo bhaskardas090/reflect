@@ -15,7 +15,7 @@ const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
 const MusicPlayer = React.lazy(() => import("./pages/MusicPlayer"));
 const FAQs = React.lazy(() => import("./pages/User/FAQs"));
 const Journal = React.lazy(() => import("./pages/User/Journal"));
-const RoutineHistory = React.lazy(() => import("./pages/RoutineHistory"));
+const RoutineHistory = React.lazy(() => import("./pages/User/RoutineHistory"));
 function App() {
   return (
     <div className="App">

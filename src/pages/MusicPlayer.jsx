@@ -3,6 +3,7 @@ import "../styles/MusicPlayer.css";
 import { useNavigate, useParams } from "react-router";
 import useDB from "../hooks/useDB";
 import PlayerControl from "../common/PlayerController/PlayerControl";
+import { Link } from "react-router-dom";
 
 const MusicPlayer = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const MusicPlayer = () => {
           className={play ? "musicCoverPlus" : "musicCover"}
           alt="song cover"
           src={audioFile?.imageUrl}
-          style={{ width: "60vw", height: "30vh", objectFit: "cover" }}
+          style={{}}
         />
         <div>
           <h3 className="title">{audioFile?.songName}</h3>
@@ -36,20 +37,25 @@ const MusicPlayer = () => {
         {!audioFile?.songUrl ? (
           "Loading.."
         ) : (
-          <PlayerControl audioFile={audioFile} setPlay={setPlay} />
+          <PlayerControl
+            audioFile={audioFile}
+            setPlay={setPlay}
+            playState={play}
+          />
         )}
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
-          alt="back"
-          onClick={() => navigate(-1)}
-          style={{
-            position: "absolute",
-            left: "3%",
-            top: "3%",
-            width: "30px",
-            height: "30px",
-          }}
-        />
+        <a href="/">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
+            alt="back"
+            style={{
+              position: "absolute",
+              left: "3%",
+              top: "3%",
+              width: "30px",
+              height: "30px",
+            }}
+          />
+        </a>
       </div>
     </>
   );
