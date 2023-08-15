@@ -1,7 +1,19 @@
-.homeContainer{
-    min-height: 100vh;
-    background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 65.17%, #6E83B7 100%);
-    /* background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%); */
-    height: 100%;
-    padding-bottom: 6rem;
+.homeContainer {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    180deg,
+    #fda026 0%,
+    #f5f1e5 22.92%,
+    #f3efe4 65.17%,
+    #6e83b7 100%
+  );
+  /* background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%); */
+  height: 100%;
+  padding-bottom: 6rem;
+}
+
+.actionButton {
+  display: flex;
+  /* gap: 1rem; */
+  justify-content: center;
 }

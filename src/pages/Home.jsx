@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
 import Quote from "../common/Quote/Quote";
 import Navigation from "../common/Navigation/Navigation";
 import Todo from "../common/Todo/Todo";
-import { HomepageData } from "../data";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import useAuthContext from "../hooks/useAuthContext";
 import useTaskContext from "../hooks/useTaskContext";
 import useLogOut from "../hooks/useLogOut";
 import TodoTitle from "../common/TodoTitle/TodoTitle";
 import HapinessMeter from "../common/HapinessMeter/HapinessMeter";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
+import useDB from "../hooks/useDB";
 
 function Home() {
   const { user } = useAuthContext();
   const { state } = useTaskContext();
   const { logout } = useLogOut();
-
+  const { todayRoutineDone, isRoutineAlreadyDone } = useDB("routineHistory");
   const handleLogOut = async () => {
     logout();
+  };
+
+  const handleRoutineDone = async () => {
+    const routineAlreadyDone = await isRoutineAlreadyDone(user.uid);
+    console.log(routineAlreadyDone);
+    if (routineAlreadyDone) {
+      alert(
+        "You can not perform this action. You have already submitted the routine Today. Try again tomorrow."
+      );
+    } else {
+      todayRoutineDone(user.uid, state);
+    }
   };
 
   return (
@@ -32,7 +44,7 @@ function Home() {
         </p>
       </Quote> */}
 
-      <HapinessMeter />
+      <HapinessMeter progress={state.totalReward} />
       {true && (
         <>
           <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
@@ -73,6 +85,21 @@ function Home() {
             ))}
         </>
       )}
+      <div className={styles.actionButton}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          endIcon={<SendIcon />}
+          sx={{
+            width: "90vw",
+            background: "linear-gradient(180deg, #FDA52B 21.30%, #FE7401 100%)",
+          }}
+          onClick={handleRoutineDone}
+        >
+          done for the day
+        </Button>
+      </div>
       {/* <div style={{ textAlign: 'center', marginTop: '2rem' }}>
         {user ? <h1>{user.email}</h1> : <h1>null</h1>}
         {user && (

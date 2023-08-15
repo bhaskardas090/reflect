@@ -15,7 +15,7 @@ const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
 const MusicPlayer = React.lazy(() => import("./pages/MusicPlayer"));
 const FAQs = React.lazy(() => import("./pages/User/FAQs"));
 const Journal = React.lazy(() => import("./pages/User/Journal"));
-
+const RoutineHistory = React.lazy(() => import("./pages/RoutineHistory"));
 function App() {
   return (
     <div className="App">
@@ -34,6 +34,7 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/journal" element={<Journal />} />
+          <Route path="/routine-history" element={<RoutineHistory />} />
           {/* </Route> */}
           <Route path="/resource" element={<Resource />} />
           <Route path="/select-routine" element={<SelectRoutine />} />

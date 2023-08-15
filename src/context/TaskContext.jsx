@@ -22,6 +22,8 @@ export const TaskReducer = (state, action) => {
       // newState.tasks.filter((task)=>task.complete === true)
       newState.totalReward += newState.reward;
       return (state = newState);
+    case "RESET_STATE":
+      return (state = action.payload);
     default:
       return state;
   }
@@ -33,8 +35,8 @@ const initialState = {
 };
 function TaskContextProvider({ children }) {
   const [state, dispatch] = useReducer(TaskReducer, initialState);
-  console.log("REWARD PER TASK: ", state.reward);
-  console.log("TOTAL REWARD: ", state.totalReward);
+  // console.log("REWARD PER TASK: ", state.reward);
+  // console.log("TOTAL REWARD: ", state.totalReward);
 
   const { user } = useAuthContext();
   // ! SETTING THE REWARD PER TASK

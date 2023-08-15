@@ -90,12 +90,67 @@ function useDB(collection) {
       totalReward: newState.totalReward,
     });
   };
+  const todayRoutineDone = async (userId, state) => {
+    // Sending the tasks to routineHistory
+    try {
+      await ref.add({
+        id: userId,
+        title: formatDateForHome(new Date()),
+        tasks: state.tasks,
+        totalReward: state.totalReward,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    // Resting the activeRoutine in Local and Server
+    newState.totalReward = 0;
+    newState.tasks.forEach((task) => (task.complete = false));
+    await db.collection("routines").doc(user.uid).set({
+      uid: user.uid,
+      activeRoutine: newState.tasks,
+      reward: newState.reward,
+      totalReward: newState.totalReward,
+    });
+    dispatch({ type: "SELECT_ROUTINE", payload: newState });
+  };
+  const isRoutineAlreadyDone = async (userId) => {
+    const formattedDate = formatDateForHome(new Date());
+    const res = await ref
+      .where("id", "==", userId)
+      .where("title", "==", formattedDate)
+      .get()
+      .then((querySnapshot) => {
+        if (querySnapshot.empty) {
+          return false;
+        }
+        if (!querySnapshot.empty) {
+          return true;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return res;
+  };
+  // Helper Method
   const calculateTotalReward = (list, reward) => {
     let totalRewardL = 0;
     const filteredTasks = list.filter((task) => task.complete === true);
     filteredTasks.forEach((task) => (totalRewardL += reward));
     return totalRewardL;
   };
+  function formatDateForHome(dateString) {
+    const dateObject = new Date(dateString);
+    const day = dateObject.getDate();
+    const month = dateObject.getMonth() + 1;
+    const year = dateObject.getFullYear();
+
+    const formattedDate = `${day < 10 ? "0" : ""}${day}/${
+      month < 10 ? "0" : ""
+    }${month}/${year}`;
+
+    return formattedDate;
+  }
 
   // ! Breathe METHODS
   const getPranayamas = async () => {
@@ -125,6 +180,61 @@ function useDB(collection) {
     return doc.data();
   };
 
+  // ! Routine History Method
+  const getRoutineHistory = async (date, setHistory, setNoData) => {
+    const formattedDate = formatDateForHistory(date);
+    await ref
+      .where("id", "==", user.uid)
+      .where("title", "==", formattedDate)
+      .get()
+      .then((querySnapshot) => {
+        if (querySnapshot.empty) {
+          setNoData(true);
+          setHistory(null);
+        }
+        if (!querySnapshot.empty) {
+          setNoData(false);
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            //   result.push(doc.data());
+            setHistory(doc.data());
+
+            //   console.log(doc.id, " => ", doc.data());
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  // Helper Method
+  function formatDateForHistory(dateString) {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const dateComponents = dateString.split(" ");
+    const day = parseInt(dateComponents[2], 10);
+    const monthIndex = months.indexOf(dateComponents[1]);
+    const year = parseInt(dateComponents[3], 10);
+
+    const formattedDate = `${day < 10 ? "0" : ""}${day}/${
+      monthIndex < 9 ? "0" : ""
+    }${monthIndex + 1}/${year}`;
+
+    return formattedDate;
+  }
   return {
     deleteTask,
     updateTaskComplete,
@@ -134,6 +244,9 @@ function useDB(collection) {
     breatheData,
     getPranayam,
     pranayam,
+    getRoutineHistory,
+    todayRoutineDone,
+    isRoutineAlreadyDone,
   };
 }
 

@@ -1,10 +1,8 @@
 import React from "react";
 import Emojis from "./Emojis";
 import Meter from "./Meter";
-import useTaskContext from "../../hooks/useTaskContext";
 
-function HapinessMeter() {
-  const { state } = useTaskContext();
+function HapinessMeter({ progress }) {
   return (
     <div
       style={{
@@ -13,7 +11,7 @@ function HapinessMeter() {
       }}
     >
       <Emojis />
-      <Meter progress={state.totalReward} />
+      <Meter progress={progress} />
     </div>
   );
 }

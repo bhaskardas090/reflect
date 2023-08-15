@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styles from './TodoTitle.module.css';
-import TodoAddForm from '../TodoAddForm/TodoAddForm';
+import React, { useState } from "react";
+import styles from "./TodoTitle.module.css";
+import TodoAddForm from "../TodoAddForm/TodoAddForm";
 
 function TodoTitle({ imgSrc, time }) {
   const [showTodoForm, setShowTodoForm] = useState(false);
@@ -14,6 +14,7 @@ function TodoTitle({ imgSrc, time }) {
         src="https://cdn-icons-png.flaticon.com/128/7968/7968625.png"
         onClick={() => setShowTodoForm(true)}
         className={styles.add}
+        alt="add"
       />
       {/* ADD TODO FORM Drawer*/}
       <TodoAddForm

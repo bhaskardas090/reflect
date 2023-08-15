@@ -25,7 +25,7 @@ function useRegister() {
       if (exists) {
         navigate("/");
       } else {
-        navigate("/select-task");
+        navigate("/select-routine");
       }
       //
       setError(null);
