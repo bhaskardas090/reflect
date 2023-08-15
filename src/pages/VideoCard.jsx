@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/VideoCard.css';
+import ReactPlayer from 'react-player/youtube';
 
 const VideoCard = () => {
   const [videoData, setVideoData] = useState([]);
@@ -43,12 +44,12 @@ const VideoCard = () => {
           className="video-link"
         >
           <div className="video-wrapper">
-            <iframe 
+            <ReactPlayer
               className="video-player"
-              src={`https://www.youtube.com/embed/${video.id}`} 
-              frameBorder="0" 
-              allow="autoplay; encrypted-media" 
-              allowFullScreen
+              url={`https://www.youtube.com/watch?v=${video.id}`}
+              controls
+              width="100%"
+              height="100%"
             />
           </div>
           {/* <h3 className="video-title">{video.title}</h3>
@@ -60,3 +61,4 @@ const VideoCard = () => {
 };
 
 export default VideoCard;
+

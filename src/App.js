@@ -52,6 +52,7 @@ const AuthOTP = React.lazy(() => import('./pages/AuthOTP'));
 const MusicPlayer = React.lazy(() => import('./pages/MusicPlayer'));
 const BlogDetail = React.lazy(() => import('./pages/BlogDetail'));
 const Journal = React.lazy(() => import('./pages/Journal')); // New Import
+const UserPage = React.lazy(() => import('./pages/UserPage')); // New Import
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
           <Route path="/music" element={<MusicPlayer/>}/>
           <Route path="/blog-detail" element={<BlogDetail />} />
           <Route path="/journal" element={<Journal />} /> {/* New Route */}
+          <Route path="/user" element={<UserPage />}/>
         </Routes>
       </Suspense>
     </div>
