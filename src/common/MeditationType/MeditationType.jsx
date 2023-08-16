@@ -12,7 +12,11 @@ function MeditationType({ data, id }) {
     <div className={styles.meditationTypeContainer}>
       <div
         className={styles.meditationType}
-        onClick={() => navigate(`/music-player/${id}`)}
+        onClick={() =>
+          navigate(`/music-player/breathe`, {
+            state: { id: id, collection: "breathe" },
+          })
+        }
       >
         <img
           src={data.coverImgSrc}

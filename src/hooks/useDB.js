@@ -3,12 +3,14 @@ import useAuthContext from "./useAuthContext";
 import useTaskContext from "./useTaskContext";
 import { v4 as uuid } from "uuid";
 import { useState } from "react";
+import { getHomeTaskIcon } from "./../helper/HomeTaskIcon";
 
 function useDB(collection) {
   const { user } = useAuthContext();
   const { state, dispatch } = useTaskContext();
   const [breatheData, setBreatheData] = useState(null);
   const [pranayam, setPranayam] = useState(null);
+  const [meditationMusic, setMeditationMusic] = useState(null);
   const ref = db.collection(collection);
 
   // ! ROUTINE METHODS
@@ -30,7 +32,7 @@ function useDB(collection) {
       task: task,
       complete: false,
       time: time.toLowerCase(),
-      img: "/HomeAssets/GratitudeImg.png",
+      img: getHomeTaskIcon(30),
     };
     const newTasks = [...newState.tasks, newTask];
     const reward = 100 / newTasks.length;
@@ -158,7 +160,7 @@ function useDB(collection) {
     await ref.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id);
+        // console.log(doc.id);
         data.push({ id: doc.id, data: doc.data() });
         // console.log(doc.id, " => ", doc.data());
       });
@@ -175,6 +177,22 @@ function useDB(collection) {
         imageUrl: doc.data().songImgSrc,
         songUrl: doc.data().songSrc,
         songName: doc.data().songTitle,
+      });
+    }
+    return doc.data();
+  };
+
+  // ! Meditation METHODS
+  const getMeditationMusic = async (id) => {
+    const docRef = await ref.doc(`med-${id}`);
+    const doc = await docRef.get();
+
+    if (doc.exists) {
+      setMeditationMusic({
+        imageUrl: doc.data().songImgSrc,
+        songUrl: doc.data().songSrc,
+        songName: doc.data().songTitle,
+        bgSrc: doc.data().bgImgSrc,
       });
     }
     return doc.data();
@@ -247,6 +265,8 @@ function useDB(collection) {
     getRoutineHistory,
     todayRoutineDone,
     isRoutineAlreadyDone,
+    getMeditationMusic,
+    meditationMusic,
   };
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Todo.module.css";
-import getRandomColor from "../../helper/RandomColor";
+
 import useDB from "../../hooks/useDB";
 
 function Todo({ img, title, id, checked, history }) {
@@ -37,12 +37,12 @@ function Todo({ img, title, id, checked, history }) {
         >
           {title}
         </button>
-        <div
+        {/* <div
           className={styles.todoImg}
           style={{ background: getRandomColor() }}
-        ></div>
+        ></div> */}
 
-        {/* <img src={img} className={styles.todoImg} /> */}
+        <img src={img} className={styles.todoImg} />
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const PlayerControl = ({ audioFile, setPlay }) => {
     sec: "",
   });
 
-  const [seconds, setSeconds] = useState();
+  const [seconds, setSeconds] = useState("0");
 
   const [play, { pause, duration, sound }] = useSound(audioFile?.songUrl, {
     onend: () => {

@@ -1,31 +1,31 @@
-.todo{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 12px;
+.todo {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 12px;
 }
-.checkbox{
-    width: 25px;
-    height: 25px;
-    /* background-color: none;
+.checkbox {
+  width: 25px;
+  height: 25px;
+  /* background-color: none;
     border-radius: 50%;
     border: 1px solid gray; */
-    /* appearance: none; */
-    outline: none;
-    margin: 24px 10px;
-    padding: 1rem;
+  /* appearance: none; */
+  outline: none;
+  margin: 24px 10px;
+  padding: 1rem;
 }
-.todoText{
-    width: 219px;
-    height: 79px;
-    font-size: 15px;
-    text-align: left;
-    padding: 0px 1rem;
-    /* border-radius: 62px 0px 0px 62px; */
-    background: #FFF;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32);
-    border: none;
+.todoText {
+  width: 219px;
+  height: 79px;
+  font-size: 15px;
+  text-align: left;
+  padding: 0px 1rem;
+  /* border-radius: 62px 0px 0px 62px; */
+  background: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32);
+  border: none;
 }
-.todoImg{
-    width: 101px;
-    height: 82px;
+.todoImg {
+  width: 101px;
+  height: 79px;
 }

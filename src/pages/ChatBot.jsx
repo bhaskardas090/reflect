@@ -83,10 +83,7 @@ const ChatBot = () => {
   console.log("Messges List ***", messages);
   return (
     <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
-      <div>
-        <PageHeader title={"Reflect"}/>
-      </div>
-      <MainContainer style={{border: 'none'}}>
+      <MainContainer style={{ border: "none" }}>
         <ChatContainer>
           <MessageList
             scrollBehavior="smooth"
@@ -107,9 +104,9 @@ const ChatBot = () => {
           />
         </ChatContainer>
       </MainContainer>
-      {/* <Link to="/">
+      <Link to="/">
         <img
-          src="https://cdn-icons-png.flaticon.com/128/10346/10346993.png"
+          src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
           alt="back"
           style={{
             position: "absolute",
@@ -120,7 +117,7 @@ const ChatBot = () => {
             zIndex: "100",
           }}
         />
-      </Link> */}
+      </Link>
     </div>
   );
 };

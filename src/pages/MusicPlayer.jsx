@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
 import "../styles/MusicPlayer.css";
-import { useNavigate, useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
 import useDB from "../hooks/useDB";
 import PlayerControl from "../common/PlayerController/PlayerControl";
-import { Link } from "react-router-dom";
 
 const MusicPlayer = () => {
-  const { id } = useParams();
-  const { getPranayam, pranayam } = useDB("breathe");
+  const { state } = useLocation();
+  // const { id, collection } = useParams();
+  // console.log(state.id, state.collection, "MEDITATION DETAILS");
+  const { getMeditationMusic, meditationMusic, getPranayam, pranayam } = useDB(
+    state.collection
+  );
   const [audioFile, setAudioFile] = useState(null);
-  const navigate = useNavigate();
   const [play, setPlay] = useState(false);
   useEffect(() => {
-    getPranayam(id);
-  }, [id]);
+    state.collection === "breathe" && getPranayam(state.id);
+    state.collection === "meditation" && getMeditationMusic(state.id);
+  }, [state.id]);
 
   useEffect(() => {
-    setAudioFile(pranayam);
-  }, [pranayam]);
+    if (state.collection === "breathe") {
+      setAudioFile(pranayam);
+    }
+
+    if (state.collection === "meditation") {
+      setAudioFile(meditationMusic);
+    }
+  }, [pranayam, meditationMusic]);
 
   return (
     <>

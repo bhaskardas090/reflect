@@ -26,10 +26,13 @@ function App() {
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/" element={<Home />} />
           <Route path="/meditate" element={<Meditate />} />
-          <Route path="/music-player/:id" element={<MusicPlayer />} />
+          <Route path="/music-player/meditate" element={<MusicPlayer />} />
+
           {/* <Route element={<ProtectedRoute />}> */}
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/breathe" element={<Breathe />} />
+          <Route path="/music-player/breathe" element={<MusicPlayer />} />
+
           <Route path="/chatbot" element={<ChatBot />} />
           <Route path="/account" element={<Account />} />
           <Route path="/faqs" element={<FAQs />} />
