@@ -13,7 +13,10 @@ function Breathe() {
   }, []);
   return (
     <div className={styles.meditateContainer}>
-      <GreetingsNav />
+    <div className="greetings">
+    <GreetingsNav/>
+    </div>
+      
       <Quote>
         <p>
           “Without full awareness of breathing, there can be no development of

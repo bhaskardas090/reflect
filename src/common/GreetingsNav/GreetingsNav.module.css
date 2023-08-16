@@ -20,3 +20,12 @@
     width: 2rem;
     height: 2rem;
 }
+
+@media (min-width: 768px) {
+    .navigationButtons{
+        width: 35vw;
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 0.3rem;
+    }
+}

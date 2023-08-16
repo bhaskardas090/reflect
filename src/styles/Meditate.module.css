@@ -8,3 +8,61 @@
     justify-content: space-evenly;
     padding: 1rem 0rem;
 }
+
+@media (min-width:768px) {
+    /* .meditateContainer{
+        width: 60%;
+        height: 50%;
+    } */
+    .meditateContainer{
+        /* background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%); */
+        background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%);
+        height: 250vh;
+    }
+
+    .meditationCategory{
+        background: linear-gradient(
+      180deg,
+      #fda026 0%,
+      #f5f1e5 22.92%,
+      #f3efe4 79.17%,
+      #6e83b7 100%
+    );
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 1rem 0rem;
+        padding-right: 5px;
+        padding-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        /* border-radius: 10%; */
+    }
+
+    .meditationCategory img{
+        padding: 2px;
+    }
+
+    .meditationCategory div{
+        padding-bottom: 5px;
+    }
+
+    .meditationCategory h5{
+        padding-bottom: 10px;
+    }
+
+p{
+    text-align: center;
+}
+
+.greetings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    
+}
