@@ -6,7 +6,6 @@ import Navigation from "../common/Navigation/Navigation";
 import Todo from "../common/Todo/Todo";
 import useAuthContext from "../hooks/useAuthContext";
 import useTaskContext from "../hooks/useTaskContext";
-import useLogOut from "../hooks/useLogOut";
 import TodoTitle from "../common/TodoTitle/TodoTitle";
 import HapinessMeter from "../common/HapinessMeter/HapinessMeter";
 import Button from "@mui/material/Button";

@@ -13,6 +13,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { getHomeTaskIcon } from "../../helper/HomeTaskIcon";
+import { getJournalCover } from "../../helper/JournalCover";
 
 function PastJournal({ setShowPastModal }) {
   const { getJournalHistory } = useDB("journals");
@@ -56,8 +57,8 @@ function PastJournal({ setShowPastModal }) {
           <Card sx={{ width: "90vw" }}>
             <CardActionArea>
               <img
-                src={coverImg}
-                style={{ objectFit: "cover", height: "140px", width: "90vw" }}
+                src={getJournalCover()}
+                style={{ objectFit: "cover", height: "180px", width: "90vw" }}
                 alt="cover_image"
               />
               <CardContent>
