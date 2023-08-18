@@ -31,18 +31,16 @@ function Todo({ img, title, id, checked, history }) {
             checked={checked}
           />
         )}
-        <button
-          className={styles.todoText}
-          onDoubleClick={() => handleDelete(id)}
-        >
-          {title}
-        </button>
-        {/* <div
-          className={styles.todoImg}
-          style={{ background: getRandomColor() }}
-        ></div> */}
+        <div className={styles.todoContent}>
+          <button
+            className={styles.todoText}
+            onDoubleClick={() => handleDelete(id)}
+          >
+            {title}
+          </button>
 
-        <img src={img} className={styles.todoImg} />
+          <img alt="add_todo" src={img} className={styles.todoImg} />
+        </div>
       </div>
     </div>
   );

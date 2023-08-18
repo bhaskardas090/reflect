@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/RoutineHistory.module.css";
+import styles from "../../styles/User/RoutineHistory.module.css";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -7,11 +7,15 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import Todo from "../../common/Todo/Todo";
 import HapinessMeter from "../../common/HapinessMeter/HapinessMeter";
 import useDB from "../../hooks/useDB";
+import PageHeader from "../../common/PageHeader/PageHeader";
+import { useNavigate } from "react-router";
 
 function RoutineHistory() {
   const { getRoutineHistory } = useDB("routineHistory");
   const [history, setHistory] = useState(null);
   const [noData, setNoData] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChange = async (e) => {
     getRoutineHistory(e.$d.toString(), setHistory, setNoData);
@@ -19,19 +23,33 @@ function RoutineHistory() {
 
   return (
     <div className={styles.routineHistory}>
+      <PageHeader
+        title="Past Routine"
+        type="primary"
+        onclick={() => navigate("/")}
+      />
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
           <DesktopDatePicker
             label="Select The Date "
             onChange={(e) => handleChange(e)}
-            sx={{ width: "90%", maxWidth: "800px", margin: "2rem auto" }}
+            sx={{
+              width: "95%",
+              maxWidth: "800px",
+              margin: "4rem auto 1rem auto",
+            }}
             disableFuture
           />
         </DemoContainer>
       </LocalizationProvider>
-      {/* Result Part */}
+      {/* 
+       // ***********************
+      //* Result Part 
+      // ************************
+      */}
       <>
         {history && <HapinessMeter progress={history?.totalReward} />}
+
         {history && (
           <h3
             style={{
@@ -79,7 +97,11 @@ function RoutineHistory() {
             history="true"
           />
         ))}
-      {/*  No data part */}
+      {/* 
+       // ***********************
+      //* No Data Part
+      // ************************
+      */}
       {noData && (
         <div
           style={{ height: "70vh", textAlign: "center", paddingTop: "3rem" }}

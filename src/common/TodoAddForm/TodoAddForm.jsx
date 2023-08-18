@@ -2,17 +2,30 @@ import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./TodoAddForm.module.css";
+import Alert from "@mui/material/Alert";
 import useDB from "../../hooks/useDB";
+import { addTaskSchema } from "../../helper/Validation";
 
 function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
   const [task, setTask] = useState("");
   const { addTask } = useDB("routines");
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    // reset,
+  } = useForm({
+    resolver: yupResolver(addTaskSchema),
+  });
+
   // Adding the new task in the global todo list
-  const handleSubmit = () => {
-    addTask(task, time);
+  const onSubmit = (data) => {
+    console.log(data);
+    addTask(data.task, time);
     setTask("");
     setShowTodoForm(false);
   };
@@ -32,16 +45,22 @@ function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
               label="Enter you task"
               variant="outlined"
               sx={{ width: "75vw" }}
-              value={task}
-              onChange={(e) => setTask(e.target.value)}
+              {...register("task")}
+              // value={task}
+              // onChange={(e) => setTask(e.target.value)}
             />
             <Button
               variant="outlined"
               sx={{ width: "75vw" }}
-              onClick={handleSubmit}
+              onClick={handleSubmit(onSubmit)}
             >
               Add Task
             </Button>
+            {errors.task && (
+              <Alert severity="error" sx={{ width: "75vw" }}>
+                {errors.task?.message}
+              </Alert>
+            )}
           </div>
         </div>
       </Drawer>

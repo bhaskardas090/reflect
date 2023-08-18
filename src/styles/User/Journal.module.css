@@ -1,65 +1,65 @@
+.journal {
+  height: 100vh;
+  width: 100vw;
+  /* background-color: #fef6ad; */
+  background: linear-gradient(
+      180deg,
+      #fda026 0%,
+      #f5f1e5 22.92%,
+      #f3efe4 79.17%,
+      #6e83b7 100%
+    ),
+    linear-gradient(0deg, #ffffff, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+.journalContainer {
+}
+.journalImg {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
 
-.journal{
-    height: 100vh;
-    width: 100vw;
-    /* background-color: #fef6ad; */
-    background-color: red;
-    position: relative;
-    overflow: hidden;
-}
-.journalContainer{
-}
-.journalImg{
-    width:100vw;
-    height: 100vh;
-    object-fit: cover;
-}
-.jounalPageText{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5vh;
-    text-align: center;
-    margin-bottom: 35vh;
-}
-.buttonContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: space-around;
-    position: absolute;
-    top: 70%;
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-around;
+  position: absolute;
+  top: 70%;
   left: 50%;
-  transform: translate(-50%,-50%);
-    bottom: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 50%;
 }
-.button{
-    background-color: black!important;
-    color: white !important;
-    font-size: 1rem !important;
-    width: 80vw;
-    padding: .5rem;
+.button {
+  background-color: black !important;
+  color: white !important;
+  font-size: 1rem !important;
+  width: 80vw;
+  padding: 0.5rem;
 }
-.form *{
-    margin: 8px;
-    padding: 8px;
+.form * {
+  margin: 8px;
+  padding: 8px;
 }
-.dateInput{
-    width: 78vw;
+
+/* .dateInput {
+  width: 78vw;
 }
-.textareaInput{
-    width: 78vw;
-    height: 45vh;
+.textareaInput {
+  width: 78vw;
+  height: 45vh;
 }
-.addButton{
-    background-color: green!important;
-    color: white;
-    font-size: 16px;
-    width: 70vw;
+.addButton {
+  background-color: green !important;
+  color: white;
+  font-size: 16px;
+  width: 70vw;
 }
-.closeButton{
-    background-color: red!important;
-    color: white;
-    font-size: 16px;
-    width: 70vw;
-}
+.closeButton {
+  background-color: red !important;
+  color: white;
+  font-size: 16px;
+  width: 70vw;
+} */

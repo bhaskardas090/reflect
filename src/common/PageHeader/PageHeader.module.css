@@ -1,17 +1,34 @@
-.pageHeader{
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
-    width: 100vw
+.pageHeaderComponent {
+  position: absolute;
 }
-.backButton{
-    width: 2rem;
-    height: 2rem;
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding-top: 1rem; */
+  /* padding-bottom: 1.5rem; */
+  width: 100vw;
+  height: 50px;
+  /* background-color: #101418; */
+  position: relative;
 }
-.title{
-    margin:auto;
-    padding-right: 15vw;
-    font-size: 1.2rem;
-    font-weight: bold;
+.backButton {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  left: 10px;
+  /* background-color: white; */
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  /* margin-left: 10px; */
+}
+.title {
+  margin: auto;
+  /* padding-right: 15vw; */
+  font-size: 1.2rem;
+  font-weight: bold;
 }

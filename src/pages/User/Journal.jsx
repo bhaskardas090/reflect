@@ -1,45 +1,73 @@
+import React, { useState } from "react";
+import PageHeader from "../../common/PageHeader/PageHeader";
+import styles from "../../styles/User/Journal.module.css";
+import Button from "@mui/material/Button";
+import ModalComponent from "../../common/ModalComponent/ModalComponent";
+import AddJournal from "../../common/AddJournal/AddJournal";
+import PastJournal from "../../common/PastJournal/PastJournal";
+import Dialog from "@mui/material/Dialog";
+import Slide from "@mui/material/Slide";
+import { useNavigate } from "react-router";
 
-import React ,{useState} from 'react'
-import PageHeader from '../../common/PageHeader/PageHeader'
-import styles from '../../styles/User/Journal.module.css'
-import Button from '@mui/material/Button';
-import ModalComponent from '../../common/ModalComponent/ModalComponent';
 // import journalImg from '/HomeAssets/Journal.jpg'
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 function Journal() {
-    const [showAddModal, setShowAddModal] = useState(false);
-    const [showPastModal, setShowPastModal]= useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showPastModal, setShowPastModal] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <div className={styles.journal}>
-    <div className={styles.journalContainer}>
+      <PageHeader type="transparent" onclick={() => navigate("/")} />
+      <div className={styles.journalContainer}>
+        {/* 
+        //* ACTON BUTTONS 
+        */}
         <div className={styles.buttonContainer}>
-            <Button onClick={() => setShowAddModal(true)} className={styles.button} > Add New Journal </Button>
-            <Button onClick={() => setShowPastModal(true)} className={styles.button} > View Past Journal</Button>
+          <Button
+            onClick={() => setShowAddModal(true)}
+            className={styles.button}
+          >
+            Add New Journal
+          </Button>
+          <Button
+            onClick={() => setShowPastModal(true)}
+            className={styles.button}
+          >
+            View Past Journal
+          </Button>
         </div>
-        <img src='/HomeAssets/Journal.jpg' alt="journal" className={styles.journalImg}/>
+        <img
+          src="/HomeAssets/Journal.jpg"
+          alt="journal"
+          className={styles.journalImg}
+        />
 
-            <ModalComponent showModal={showAddModal} setShowModal={setShowAddModal}>
-            <form className={styles.form}>
-                <input type='date' required className={styles.dateInput}/>
-                <textarea placeholder='Start writing your journal...' className={styles.textareaInput}></textarea>
-                <div className={styles.modalButtonsContainer}>
-                    <button className={styles.addButton}>Add</button>
-                    <button className={styles.closeButton}onClick={()=>setShowAddModal(false)}>Close</button>
-                </div>
-            </form> 
-            </ModalComponent>
+        {/* 
+        //* FORM FOR ADDING THE JOURNAL 
+        */}
+        <Dialog fullScreen open={showAddModal} TransitionComponent={Transition}>
+          <AddJournal setShowAddModal={setShowAddModal} />
+        </Dialog>
 
-            <ModalComponent showModal={showPastModal} setShowModal={setShowPastModal}>
-            <form className={styles.form}>
-                <input type='date' required className={styles.dateInput}/>
-                <div className={styles.modalButtonsContainer}>
-                    <button className={styles.closeButton}onClick={()=>setShowPastModal(false)}>Close</button>
-                </div>
-            </form> 
-            </ModalComponent>
+        {/* 
+        // * CHECK PAST JOURNAL AND JOURNAL OF ANY SPECIFIC DATE 
+        */}
+        <Dialog
+          fullScreen
+          open={showPastModal}
+          TransitionComponent={Transition}
+        >
+          <PastJournal setShowPastModal={setShowPastModal} />
+        </Dialog>
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default Journal
+export default Journal;

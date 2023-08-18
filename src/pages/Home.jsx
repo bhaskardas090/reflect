@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
 import Quote from "../common/Quote/Quote";
@@ -16,18 +16,14 @@ import useDB from "../hooks/useDB";
 function Home() {
   const { user } = useAuthContext();
   const { state } = useTaskContext();
-  const { logout } = useLogOut();
   const { todayRoutineDone, isRoutineAlreadyDone } = useDB("routineHistory");
-  const handleLogOut = async () => {
-    logout();
-  };
 
   const handleRoutineDone = async () => {
     const routineAlreadyDone = await isRoutineAlreadyDone(user.uid);
     console.log(routineAlreadyDone);
     if (routineAlreadyDone) {
       alert(
-        "You can not perform this action. You have already submitted the routine Today. Try again tomorrow."
+        "You can not perform this action. You have already submitted the routine for Today. Try again tomorrow."
       );
     } else {
       todayRoutineDone(user.uid, state);

@@ -1,5 +1,10 @@
 /* MUI STYLING */
 
 .css-6hp17o-MuiList-root-MuiMenu-list {
-    width: 45vw;
+  width: 45vw;
+}
+
+ol,
+ul {
+  padding-left: 1rem;
 }
