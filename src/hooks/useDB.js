@@ -262,6 +262,74 @@ function useDB(collection) {
         console.log(error);
       });
   };
+  // ! Resources Method
+  const getBlogs = async () => {
+    const blogs = [];
+    try {
+      const res = await ref.get();
+      await res.forEach((doc) =>
+        blogs.push({
+          id: doc.id,
+          title: doc.data().title,
+          description: doc.data().description,
+          img: doc.data().img,
+        })
+      );
+    } catch (error) {
+      console.log(error, "GET BLOGS");
+    }
+    return blogs;
+  };
+  const getBlog = async (id) => {
+    const docRef = ref.doc(id);
+
+    try {
+      const doc = await docRef.get();
+      if (doc.exists) {
+        return doc.data();
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.log("Error getting document:", error);
+    }
+  };
+  const getVideos = async () => {
+    const videos = [];
+    try {
+      const res = await ref.get();
+      await res.forEach((doc) =>
+        videos.push({
+          id: doc.id,
+          title: doc.data().title,
+          description: doc.data().description,
+          img: doc.data().img,
+          source: doc.data().source,
+        })
+      );
+    } catch (error) {
+      console.log(error, "GET VIDEOS");
+    }
+    return videos;
+  };
+  const getPodcasts = async () => {
+    const podCasts = [];
+    try {
+      const res = await ref.get();
+      await res.forEach((doc) =>
+        podCasts.push({
+          id: doc.id,
+          title: doc.data().title,
+          description: doc.data().description,
+          img: doc.data().img,
+          source: doc.data().source,
+        })
+      );
+    } catch (error) {
+      console.log(error, "GET PODCASTS");
+    }
+    return podCasts;
+  };
 
   // ? Helper Method
   function formatDateForHistory(dateString) {
@@ -327,6 +395,10 @@ function useDB(collection) {
     addJournal,
     isJournalAlreadyDone,
     getJournalHistory,
+    getBlogs,
+    getBlog,
+    getVideos,
+    getPodcasts,
   };
 }
 
