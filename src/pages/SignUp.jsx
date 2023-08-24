@@ -24,7 +24,7 @@ function SignUp() {
   });
 
   const onSubmit = async (data) => {
-    signup(data.email, data.password);
+    signup(data.email, data.password, data.username);
     // reset();
   };
   return (

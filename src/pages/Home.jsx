@@ -28,7 +28,6 @@ function Home() {
       todayRoutineDone(user.uid, state);
     }
   };
-
   return (
     <div className={styles.homeContainer}>
       <GreetingsNav />

@@ -62,9 +62,7 @@ function ResourceCard({ type, data }) {
                 Read More
               </Link>
             )}
-            {/* <Typography variant="body2" color="text.secondary">
-              {data.description.slice(0, 40)}
-            </Typography> */}
+
             {!type && (
               <img
                 src="https://cdn-icons-png.flaticon.com/128/260/260446.png"

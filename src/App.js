@@ -10,6 +10,7 @@ const Breathe = React.lazy(() => import("./pages/Breathe"));
 const Meditate = React.lazy(() => import("./pages/Meditate"));
 const ChatBot = React.lazy(() => import("./pages/ChatBot"));
 const Account = React.lazy(() => import("./pages/User/Account"));
+const Settings = React.lazy(() => import("./pages/User/Settings"));
 const Resource = React.lazy(() => import("./pages/Resource"));
 const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
 const MusicPlayer = React.lazy(() => import("./pages/MusicPlayer"));
@@ -37,6 +38,7 @@ function App() {
 
           <Route path="/chatbot" element={<ChatBot />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/routine-history" element={<RoutineHistory />} />

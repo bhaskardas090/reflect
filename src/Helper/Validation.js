@@ -15,3 +15,12 @@ export const signUpSchema = yup.object().shape({
 export const addTaskSchema = yup.object().shape({
   task: yup.string().min(3).max(60),
 });
+
+export const userDetails = yup.object().shape({
+  name: yup.string().min(5).required(),
+  phone: yup.number().min(10),
+  age: yup.number(),
+  dob: yup.string(),
+  working: yup.string(),
+  gender: yup.string(),
+});

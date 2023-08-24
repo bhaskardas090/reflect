@@ -4,8 +4,11 @@ import useTaskContext from "./useTaskContext";
 import { v4 as uuid } from "uuid";
 import { useState } from "react";
 import { getHomeTaskIcon } from "./../helper/HomeTaskIcon";
+import { useNavigate } from "react-router";
 
 function useDB(collection) {
+  const navigate = useNavigate();
+
   const { user } = useAuthContext();
   const { state, dispatch } = useTaskContext();
   const [breatheData, setBreatheData] = useState(null);
@@ -17,14 +20,22 @@ function useDB(collection) {
   const newState = { ...state };
   const selectRoutine = async (activeTask) => {
     newState.tasks = activeTask;
-    newState.totalReward = 0;
+    newState.reward = 100 / newState.tasks.length;
+    newState.totalReward = calculateTotalReward(
+      newState.tasks,
+      newState.reward
+    );
     dispatch({ type: "SELECT_ROUTINE", payload: newState });
-    await ref.doc(user.uid).set({
-      uid: user.uid,
-      activeRoutine: activeTask,
-      reward: newState.reward,
-      totalReward: newState.totalReward,
-    });
+    try {
+      await ref.doc(user.uid).set({
+        uid: user.uid,
+        activeRoutine: activeTask,
+        reward: newState.reward,
+        totalReward: newState.totalReward,
+      });
+    } catch (error) {
+      console.log(error, "SELECT ROUTINE");
+    }
   };
   const addTask = async (task, time) => {
     const newTask = {
@@ -330,6 +341,42 @@ function useDB(collection) {
     }
     return podCasts;
   };
+  // ! Account Methods
+  const addUser = async (email, username) => {
+    try {
+      await ref.doc(username).set({
+        email: email,
+        username: username,
+      });
+    } catch (error) {
+      console.log(error, "ADD USER");
+    }
+  };
+  const getUser = async (username) => {
+    const userRef = await ref.doc(username);
+    const doc = await userRef.get();
+
+    if (doc.exists) {
+      return doc.data();
+    }
+  };
+  const updateUser = async (data) => {
+    try {
+      await ref.doc(user.displayName).set({
+        email: user.email,
+        username: user.displayName,
+        name: data.name,
+        age: data.age,
+        dob: data.dob,
+        phone: data.phone,
+        gender: data.gender,
+        working: data.working,
+      });
+      navigate("/");
+    } catch (error) {
+      console.log(error, "UPDATE USER");
+    }
+  };
 
   // ? Helper Method
   function formatDateForHistory(dateString) {
@@ -399,6 +446,9 @@ function useDB(collection) {
     getBlog,
     getVideos,
     getPodcasts,
+    addUser,
+    getUser,
+    updateUser,
   };
 }
 

@@ -7,59 +7,70 @@ import {
   oldAgeRoutine,
   yourWay,
 } from "../helper/TaskType";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useDB from "../hooks/useDB";
+import PageHeader from "../common/PageHeader/PageHeader";
 
 function SelectTask() {
+  const navigate = useNavigate();
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-        alignItems: "center",
-        // gap: '1rem',
-      }}
-    >
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <BoxSx name="STUDENT" color="#2196f3" activeTask={studentRoutine} />
-      </Link>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <BoxSx
-          name="WORKING PRESSIONAL"
-          color="#4caf50"
-          activeTask={workingProfessionalRoutine}
-        />
-      </Link>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <BoxSx
-          name="HOUSE WIFE"
-          color="#673ab7"
-          activeTask={houseWifeRoutine}
-        />
-      </Link>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <BoxSx
-          name="RETIRED OLD AGE"
-          color="#ff9800"
-          activeTask={oldAgeRoutine}
-        />
-      </Link>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <BoxSx
-          name="YOUR WAY"
-          color="linear-gradient(to top, #2980b9, #6dd5fa, #ffffff)"
-          activeTask={yourWay}
-        />
-      </Link>
-    </div>
+    <>
+      <PageHeader
+        onclick={() => navigate(-1)}
+        type="primary"
+        title="Select Routine"
+      />
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
+          alignItems: "center",
+          paddingTop: "4rem",
+          // gap: '1rem',
+        }}
+      >
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <BoxSx name="STUDENT" color="#2196f3" activeTask={studentRoutine} />
+        </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <BoxSx
+            name="WORKING PRESSIONAL"
+            color="#4caf50"
+            activeTask={workingProfessionalRoutine}
+          />
+        </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <BoxSx
+            name="HOUSE WIFE"
+            color="#673ab7"
+            activeTask={houseWifeRoutine}
+          />
+        </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <BoxSx
+            name="RETIRED OLD AGE"
+            color="#ff9800"
+            activeTask={oldAgeRoutine}
+          />
+        </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <BoxSx
+            name="YOUR WAY"
+            color="linear-gradient(to top, #2980b9, #6dd5fa, #ffffff)"
+            activeTask={yourWay}
+          />
+        </Link>
+      </div>
+    </>
   );
 }
 
 function BoxSx({ name, color, activeTask }) {
   const { selectRoutine } = useDB("routines");
   const handleTask = async () => {
+    console.log(activeTask);
     selectRoutine(activeTask);
   };
   return (
