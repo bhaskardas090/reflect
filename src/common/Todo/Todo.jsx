@@ -36,7 +36,7 @@ function Todo({ img, title, time, id, checked, history }) {
             boxShadow:
               time === "must-do"
                 ? "0px 3px 3px 0px #69F0AE"
-                : "0px 1px 3px 0px rgba(0, 0, 0, 0.32);",
+                : "0px 1px 3px 0px rgba(0, 0, 0, 0.32)",
           }}
         >
           <button

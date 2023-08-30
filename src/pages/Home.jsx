@@ -39,13 +39,11 @@ function Home() {
       setShowTryModal(true);
       playFailed();
     } else {
-      // const bodyElement = document.querySelector("body");
-      // bodyElement.scrollIntoView(true);
-      // setTimeout(() => {
-      // setIsExploding(true);
+      const bodyElement = document.querySelector("body");
+      bodyElement.scrollIntoView(true);
+      setIsExploding(true);
       setShowCongratsModal(true);
       playComplete();
-      // }, 2000);
       todayRoutineDone(user.uid, state);
       setTimeout(() => {
         setIsExploding(false);
@@ -137,8 +135,9 @@ function Home() {
       {/* Congratulations effect */}
       {isExploding && (
         <Confetti
-          width="500px"
-          height="800px"
+          // width="100vw"
+          // height="800px"
+          style={{ zIndex: 9999 }}
           tweenDuration={3000}
           numberOfPieces={300}
         />

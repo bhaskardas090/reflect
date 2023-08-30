@@ -8,13 +8,13 @@ function Logo() {
   return (
     <div>
       <div className={styles.imgContainer}>
-        {/* <img src={logo} className={styles.logo}/> */}
+        <img src={logo} alt="logo" className={styles.logo} />
+        <img src={logoText} alt="logo" className={styles.logoText} />
         <img
           src={meditate}
           alt="meditate"
           // style={{ display: "flex", justifyContent: "center", marign: "auto" }}
         />
-        <img src={logoText} alt="logo" className={styles.logoText} />
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
               // onChange={(e) => setTask(e.target.value)}
             />
             <Button
-              variant="outlined"
+              variant="contained"
               sx={{ width: "90vw" }}
               onClick={handleSubmit(onSubmit)}
             >
