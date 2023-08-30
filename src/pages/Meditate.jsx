@@ -5,7 +5,7 @@ import Navigation from "../common/Navigation/Navigation";
 import Quote from "../common/Quote/Quote";
 import BreatheImg from "../assets/Breathe_Page.png";
 import Button from "@mui/material/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getRandomNumber } from "../helper/RanomNumber";
 
 function Meditate() {

@@ -27,7 +27,7 @@
 .todoContent {
   display: flex;
   justify-content: center;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32);
+  /* box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32); */
   border-radius: 10px;
 }
 .todoText {
@@ -49,4 +49,14 @@
   height: 79px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  animation: imageLoading ease-in 1.2s;
+}
+
+@keyframes imageLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

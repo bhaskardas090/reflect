@@ -62,13 +62,13 @@ const PlayerControl = ({ audioFile, setPlay }) => {
     }
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     pause();
-  //     setIsPlaying(false);
-  //     console.log("Unmounted ****");
-  //   };
-  // }, []);
+  useEffect(() => {
+    return () => {
+      pause();
+      // setIsPlaying(false);
+      console.log("Unmounted ****");
+    };
+  }, []);
 
   return (
     <div>
@@ -108,6 +108,7 @@ const PlayerControl = ({ audioFile, setPlay }) => {
           </button>
         )}
       </div>
+      {/* <button onClick={() => pause()}>test</button> */}
     </div>
   );
 };

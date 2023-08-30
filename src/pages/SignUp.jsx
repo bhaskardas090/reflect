@@ -104,7 +104,7 @@ function SignUp() {
         </div>
       </div>
       {/* OTHER AUTH METHOS */}
-      <SocialLogin />
+      {/* <SocialLogin /> */}
     </div>
   );
 }

@@ -18,6 +18,26 @@ function useDB(collection) {
 
   // ! ROUTINE METHODS
   const newState = { ...state };
+  const fetchRoutine = async () => {
+    try {
+      // setLoading(true);
+      await ref.doc(user?.uid).onSnapshot((doc) => {
+        dispatch({
+          type: "SELECT_ROUTINE",
+          payload: {
+            ...state,
+            tasks: doc.data()?.activeRoutine,
+            reward: doc.data()?.reward,
+            totalReward: doc.data()?.totalReward,
+          },
+        });
+      });
+      // setTimeout(() => {
+      // }, 1000);
+    } catch (error) {
+      console.log(error, "FETCH ROUTINE");
+    }
+  };
   const selectRoutine = async (activeTask) => {
     newState.tasks = activeTask;
     newState.reward = 100 / newState.tasks.length;
@@ -449,6 +469,7 @@ function useDB(collection) {
     addUser,
     getUser,
     updateUser,
+    fetchRoutine,
   };
 }
 

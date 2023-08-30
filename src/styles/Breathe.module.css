@@ -6,8 +6,8 @@
     #f5f1e5 22.92%,
     #f3efe4 79.17%
   );
-  height: fit-content;
-  padding-bottom: 15vh !important;
+  min-height: 100vh;
+  height: 100%;
 }
 .meditationCategory {
   display: flex;
@@ -17,6 +17,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 15vh;
   /* justify-content: center; */
   /* padding: 1rem 0rem; */
 }

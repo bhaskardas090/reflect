@@ -5,7 +5,6 @@ import {
   workingProfessionalRoutine,
   houseWifeRoutine,
   oldAgeRoutine,
-  yourWay,
 } from "../helper/TaskType";
 import { Link, useNavigate } from "react-router-dom";
 import useDB from "../hooks/useDB";
@@ -43,7 +42,7 @@ function SelectTask() {
         </Link>
         <Link to="/" style={{ textDecoration: "none" }}>
           <BoxSx
-            name="HOUSE WIFE"
+            name="HOMEMAKER"
             color="#673ab7"
             activeTask={houseWifeRoutine}
           />
@@ -53,13 +52,6 @@ function SelectTask() {
             name="RETIRED OLD AGE"
             color="#ff9800"
             activeTask={oldAgeRoutine}
-          />
-        </Link>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <BoxSx
-            name="YOUR WAY"
-            color="linear-gradient(to top, #2980b9, #6dd5fa, #ffffff)"
-            activeTask={yourWay}
           />
         </Link>
       </div>

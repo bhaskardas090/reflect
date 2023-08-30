@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import Logo from '../common/Logo/Logo';
-import styles from '../styles/Auth.module.css';
-import SocialLogin from '../common/SocialLogin/SocialLogin';
-import { Alert } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
-import useLogin from '../hooks/useLogin';
-
+import React, { useState } from "react";
+import Logo from "../common/Logo/Logo";
+import styles from "../styles/Auth.module.css";
+import SocialLogin from "../common/SocialLogin/SocialLogin";
+import { Alert } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import useLogin from "../hooks/useLogin";
 function SignIn() {
   const { login, error, loading } = useLogin();
 
   const [signInDeatils, setSignInDeatils] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleSubmit = async (e) => {
@@ -51,10 +50,10 @@ function SignIn() {
             className={styles.register}
             onClick={handleSubmit}
           >
-            {loading ? 'Loading...' : 'Log In'}
+            {loading ? "Loading..." : "Log In"}
           </Button>
           {error && (
-            <Alert severity="error" sx={{ width: '75vw' }}>
+            <Alert severity="error" sx={{ width: "75vw" }}>
               {error}
             </Alert>
           )}
@@ -64,7 +63,7 @@ function SignIn() {
             Forgot Password?
           </Link>
           <p>
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <Link to="/register" className={styles.redirect}>
               SIGN UP
             </Link>
@@ -72,7 +71,7 @@ function SignIn() {
         </div>
       </div>
       {/* OTHER AUTH METHOS */}
-      <SocialLogin />
+      {/* <SocialLogin /> */}
     </div>
   );
 }

@@ -1,14 +1,13 @@
-.todoForm{
- height: 30vh;
- display: grid;
- justify-content: center;
- align-items: center;
- /* width: 100vw; */
+.todoForm {
+  height: 25vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  /* width: 100vw; */
 }
 
-.todoFormContainer{
- display: grid;
- justify-content: center;
- gap: 1rem;
-
+.todoFormContainer {
+  display: grid;
+  justify-content: center;
+  gap: 1rem;
 }

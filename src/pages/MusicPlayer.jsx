@@ -3,6 +3,7 @@ import "../styles/MusicPlayer.css";
 import { useParams, useLocation } from "react-router";
 import useDB from "../hooks/useDB";
 import PlayerControl from "../common/PlayerController/PlayerControl";
+import { Link } from "react-router-dom";
 
 const MusicPlayer = () => {
   const { state } = useLocation();
@@ -31,28 +32,39 @@ const MusicPlayer = () => {
   return (
     <>
       <div className="component">
-        <h2 className="playing">Playing Now</h2>
-        <div className=""></div>
-        <img
-          className={play ? "musicCoverPlus" : "musicCover"}
-          alt="song cover"
-          src={audioFile?.imageUrl}
-          style={{}}
-        />
-        <div>
-          <h3 className="title">{audioFile?.songName}</h3>
-          <p className="subTitle">Tisha Saha</p>
-        </div>
         {!audioFile?.songUrl ? (
-          "Loading.."
+          <div
+            style={{
+              width: "100vw",
+              height: "90vh",
+              background: "grey",
+              fontSize: "4rem",
+            }}
+          >
+            "Loading.."
+          </div>
         ) : (
-          <PlayerControl
-            audioFile={audioFile}
-            setPlay={setPlay}
-            playState={play}
-          />
+          <>
+            <h2 className="playing">Playing Now</h2>
+            <div className=""></div>
+            <img
+              className={play ? "musicCoverPlus" : "musicCover"}
+              alt="song cover"
+              src={audioFile?.imageUrl}
+              style={{}}
+            />
+            <div>
+              <h3 className="title">{audioFile?.songName}</h3>
+              <p className="subTitle">Tisha Saha</p>
+            </div>
+            <PlayerControl
+              audioFile={audioFile}
+              setPlay={setPlay}
+              playState={play}
+            />
+          </>
         )}
-        <a href="/">
+        <Link to="/">
           <img
             src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
             alt="back"
@@ -64,7 +76,7 @@ const MusicPlayer = () => {
               height: "30px",
             }}
           />
-        </a>
+        </Link>
       </div>
     </>
   );

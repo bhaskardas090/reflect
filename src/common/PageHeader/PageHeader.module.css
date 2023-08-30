@@ -1,5 +1,6 @@
 .pageHeaderComponent {
   position: absolute;
+  z-index: 100;
 }
 .pageHeader {
   display: flex;

@@ -9,6 +9,7 @@ import HapinessMeter from "../../common/HapinessMeter/HapinessMeter";
 import useDB from "../../hooks/useDB";
 import PageHeader from "../../common/PageHeader/PageHeader";
 import { useNavigate } from "react-router";
+import NoData from "../../common/NoData/NoData";
 
 function RoutineHistory() {
   const { getRoutineHistory } = useDB("routineHistory");
@@ -42,6 +43,7 @@ function RoutineHistory() {
           />
         </DemoContainer>
       </LocalizationProvider>
+      {!history && <NoData />}
       {/* 
        // ***********************
       //* Result Part 
@@ -82,7 +84,7 @@ function RoutineHistory() {
             paddingBottom: "0.3rem",
           }}
         >
-          Inompleted Tasks
+          Incomplete Tasks
         </h3>
       )}
       {history?.tasks

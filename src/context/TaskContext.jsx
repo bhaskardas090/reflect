@@ -32,37 +32,37 @@ const initialState = {
   tasks: [],
   reward: 0,
   totalReward: 0,
+  loading: false,
 };
 function TaskContextProvider({ children }) {
   const [state, dispatch] = useReducer(TaskReducer, initialState);
   // console.log("REWARD PER TASK: ", state.reward);
   // console.log("TOTAL REWARD: ", state.totalReward);
-
   const { user } = useAuthContext();
   // ! SETTING THE REWARD PER TASK
   useEffect(() => {
     dispatch({ type: "SET_REWARD" });
   }, [state.tasks]);
   // ! FETCHING ROUTINE FROM FIRESTORE
-  useEffect(() => {
-    const fetchRoutine = async () => {
-      await db
-        .collection("routines")
-        .doc(user?.uid)
-        .onSnapshot((doc) => {
-          dispatch({
-            type: "SELECT_ROUTINE",
-            payload: {
-              ...state,
-              tasks: doc.data()?.activeRoutine,
-              reward: doc.data()?.reward,
-              totalReward: doc.data()?.totalReward,
-            },
-          });
-        });
-    };
-    fetchRoutine();
-  }, [user]);
+  // useEffect(() => {
+  //   const fetchRoutine = async () => {
+  //     await db
+  //       .collection("routines")
+  //       .doc(user?.uid)
+  //       .onSnapshot((doc) => {
+  //         dispatch({
+  //           type: "SELECT_ROUTINE",
+  //           payload: {
+  //             ...state,
+  //             tasks: doc.data()?.activeRoutine,
+  //             reward: doc.data()?.reward,
+  //             totalReward: doc.data()?.totalReward,
+  //           },
+  //         });
+  //       });
+  //   };
+  //   fetchRoutine();
+  // }, [user]);
 
   return (
     <TaskContext.Provider value={{ state, dispatch }}>

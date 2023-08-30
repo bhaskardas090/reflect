@@ -20,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userDetails } from "../../helper/Validation";
 
-const Settings = () => {
+const UpdateAccount = () => {
   const navigate = useNavigate();
   const { user } = useAuthContext();
   const { updateUser } = useDB("users");
@@ -56,6 +56,7 @@ const Settings = () => {
           noValidate
           autoComplete="off"
         >
+          <b style={{}}>! Please fill all the fields to update</b>
           <TextField
             label="Name"
             variant="outlined"
@@ -150,4 +151,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default UpdateAccount;

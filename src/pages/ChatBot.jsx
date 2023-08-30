@@ -9,10 +9,8 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 import "../styles/ChatBot.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PageHeader from "../common/PageHeader/PageHeader";
-import { bottom } from "@popperjs/core";
-import { padding } from "@mui/system";
 
 const API_KEY = "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";
 
@@ -26,13 +24,14 @@ const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
       message:
-        "Hello, I'm ReflectGPT! where we journey towards a happier and healthier you!",
+        "Hello, I'm Reflect! where we journey towards a happier and healthier you!",
       sentTime: "just now",
       sender: "ChatGPT",
       direction: "incoming",
     },
   ]);
   const [isTyping, setIsTyping] = useState(false);
+  const navigate = useNavigate();
 
   const sendMessage = async (message) => {
     const newMessage = {
@@ -82,8 +81,20 @@ const ChatBot = () => {
   };
   console.log("Messges List ***", messages);
   return (
-    <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
-      <MainContainer style={{ border: "none" }}>
+    <div
+      style={{
+        position: "relative",
+        height: "100vh",
+        width: "100vw",
+        backgroundColor: "red",
+      }}
+    >
+      <PageHeader
+        title="Ask Reflect"
+        type="primary"
+        onclick={() => navigate("/")}
+      />
+      <MainContainer style={{ border: "none", paddingTop: "4rem" }}>
         <ChatContainer>
           <MessageList
             scrollBehavior="smooth"
@@ -104,20 +115,6 @@ const ChatBot = () => {
           />
         </ChatContainer>
       </MainContainer>
-      <Link to="/">
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
-          alt="back"
-          style={{
-            position: "absolute",
-            top: "3vh",
-            right: "5vw",
-            width: "30px",
-            height: "30px",
-            zIndex: "100",
-          }}
-        />
-      </Link>
     </div>
   );
 };

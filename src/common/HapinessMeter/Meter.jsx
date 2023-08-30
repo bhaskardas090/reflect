@@ -5,15 +5,29 @@ import styles from "./HapinessMeter.module.css"; // Create this CSS file for sty
 const Meter = ({ progress }) => {
   const getColor = (progress) => {
     if (progress <= 10) {
-      return "red";
+      return "#b71c1c";
+    } else if (progress <= 20) {
+      return "#e53935";
     } else if (progress <= 30) {
-      return "orange";
+      return "#ff5722";
+    } else if (progress <= 40) {
+      return "#ff7043";
     } else if (progress <= 50) {
-      return "yellow";
+      return "#fbc02d";
+    } else if (progress <= 60) {
+      return "#ffee58";
     } else if (progress <= 70) {
-      return "lightgreen";
+      return "#aed581";
+    } else if (progress <= 80) {
+      return "#8bc34a";
+    } else if (progress <= 90) {
+      return "#66bb6a";
+    } else if (progress < 95) {
+      return "#4caf50";
+    } else if (progress >= 95) {
+      return "#005CC8";
     } else {
-      return "green";
+      return "transparent";
     }
   };
 

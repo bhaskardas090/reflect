@@ -24,6 +24,7 @@ function AuthContextProvider({ children }) {
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
+      console.log("USER SET ON RELOAD ****");
       dispatch({ type: "AUTH_IS_READY", payload: user });
     });
     return () => unsub;

@@ -44,14 +44,14 @@ function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
             <TextField
               label="Enter you task"
               variant="outlined"
-              sx={{ width: "75vw" }}
+              sx={{ width: "90vw" }}
               {...register("task")}
               // value={task}
               // onChange={(e) => setTask(e.target.value)}
             />
             <Button
               variant="outlined"
-              sx={{ width: "75vw" }}
+              sx={{ width: "90vw" }}
               onClick={handleSubmit(onSubmit)}
             >
               Add Task

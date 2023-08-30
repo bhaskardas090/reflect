@@ -12,18 +12,19 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { getHomeTaskIcon } from "../../helper/HomeTaskIcon";
 import { getJournalCover } from "../../helper/JournalCover";
+import NoData from "../NoData/NoData";
 
 function PastJournal({ setShowPastModal }) {
   const { getJournalHistory } = useDB("journals");
   const [history, setHistory] = useState(null);
   const [noData, setNoData] = useState(null);
 
+  let journalCover = getJournalCover();
+
   const handleChange = async (e) => {
     getJournalHistory(e.$d.toString(), setHistory, setNoData);
   };
-  const coverImg = getHomeTaskIcon(30);
   return (
     <div className={styles.form}>
       <PageHeader
@@ -45,6 +46,7 @@ function PastJournal({ setShowPastModal }) {
           />
         </DemoContainer>
       </LocalizationProvider>
+      {!history && <NoData />}
       {/* 
        // ***********************
       //* Result Part 
@@ -57,7 +59,7 @@ function PastJournal({ setShowPastModal }) {
           <Card sx={{ width: "90vw" }}>
             <CardActionArea>
               <img
-                src={getJournalCover()}
+                src={journalCover}
                 style={{ objectFit: "cover", height: "180px", width: "90vw" }}
                 alt="cover_image"
               />

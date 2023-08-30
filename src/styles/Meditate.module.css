@@ -12,6 +12,15 @@
   padding: 2rem 0rem;
   width: 100vw;
   height: 45vh;
+  animation: imageLoading ease-in 1.2s;
+}
+@keyframes imageLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .buttonContainer {
   display: flex;

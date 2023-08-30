@@ -5,6 +5,8 @@ import styles from "../styles/Breathe.module.css";
 import Quote from "../common/Quote/Quote";
 import MeditationType from "../common/MeditationType/MeditationType";
 import useDB from "../hooks/useDB";
+import Lazyloader from "../common/Lazyloader/Lazyloader";
+import { ListLoader } from "../helper/SkeletonLoader";
 
 function Breathe() {
   const { getPranayamas, breatheData } = useDB("breathe");
@@ -22,13 +24,17 @@ function Breathe() {
       </Quote>
       <div className={styles.meditationCategory}>
         <div className={styles.pranayams}>
-          {breatheData?.map((pranayam) => (
-            <MeditationType
-              data={pranayam.data}
-              id={pranayam.id}
-              key={pranayam.id}
-            />
-          ))}
+          {!breatheData ? (
+            <Lazyloader loaderLength={6} Loader={ListLoader} />
+          ) : (
+            breatheData?.map((pranayam) => (
+              <MeditationType
+                data={pranayam.data}
+                id={pranayam.id}
+                key={pranayam.id}
+              />
+            ))
+          )}
         </div>
       </div>
       <Navigation />

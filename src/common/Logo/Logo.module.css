@@ -1,11 +1,12 @@
-.imgContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
 }
-.logo{
-    padding-top: 48px;
+.logo {
+  padding-top: 48px;
 }
-.loginScreenOne{
-    padding: 32px;
+.loginScreenOne {
+  padding: 32px;
 }

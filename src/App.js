@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import "./App.css";
+import Loader from "./common/Loader/Loader";
 import { Route, Routes } from "react-router";
 import ProtectedRoute from "./helper/ProtectedRoute";
 import ResetPassword from "./pages/ResetPassword";
@@ -10,7 +11,7 @@ const Breathe = React.lazy(() => import("./pages/Breathe"));
 const Meditate = React.lazy(() => import("./pages/Meditate"));
 const ChatBot = React.lazy(() => import("./pages/ChatBot"));
 const Account = React.lazy(() => import("./pages/User/Account"));
-const Settings = React.lazy(() => import("./pages/User/Settings"));
+const UpdateAccount = React.lazy(() => import("./pages/User/UpdateAccount"));
 const Resource = React.lazy(() => import("./pages/Resource"));
 const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
 const MusicPlayer = React.lazy(() => import("./pages/MusicPlayer"));
@@ -22,7 +23,7 @@ const Blog = React.lazy(() => import("./pages/Blog"));
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
@@ -38,7 +39,7 @@ function App() {
 
           <Route path="/chatbot" element={<ChatBot />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/update-account" element={<UpdateAccount />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/routine-history" element={<RoutineHistory />} />

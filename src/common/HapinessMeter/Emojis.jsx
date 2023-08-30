@@ -10,10 +10,10 @@ function Emojis() {
         justifyContent: "space-around",
       }}
     >
-      <div style={{ fontSize: "2rem" }}>😠</div>
-      <div style={{ fontSize: "2rem" }}>😖</div>
-      <div style={{ fontSize: "2rem" }}>😐</div>
+      <div style={{ fontSize: "2rem" }}>🙂</div>
+      <div style={{ fontSize: "2rem" }}>😌</div>
       <div style={{ fontSize: "2rem" }}>😊</div>
+      <div style={{ fontSize: "2rem" }}>😄</div>
       <div style={{ fontSize: "2rem" }}>😁</div>
     </div>
   );

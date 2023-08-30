@@ -24,3 +24,16 @@
 .form .pass {
   margin-bottom: 20px;
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.textField {
+  width: 75vw;
+}
+
+.titleAndEdit {
+  display: flex;
+}
