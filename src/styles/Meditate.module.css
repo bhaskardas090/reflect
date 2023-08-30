@@ -64,5 +64,11 @@ p{
     justify-content: center;
 }
 
+.startButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
     
 }

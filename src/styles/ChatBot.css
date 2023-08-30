@@ -18,14 +18,38 @@
 .cs-message-input__content-editor,
 .cs-message-input__content-editor-container {
   background-color: transparent;
-} /* Chaning Color */
+}
 
-.cs-chat-container
-  .cs-message-input
-  .cs-message-input__content-editor-wrapper:first-child {
+/* Chaning Color */
+
+.cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {
   margin: 0px;
-} /* Changing Margin Left */
+}
+
+/* Changing Margin Left */
 
 .cs-button--send {
   color: #2c2c2c;
-} /* Changing Send Button Color */
+}
+
+/* Changing Send Button Color */
+
+@media (min-width: 768px) {
+
+  .cs-message-input__content-editor-wrapper,
+  .cs-message-input__content-editor,
+  .cs-message-input__content-editor-container {
+    width: 50%;
+    background-color: transparent;
+  }
+
+  .cs-message--outgoing .cs-message__content {
+    background-color: #2c2c2c;
+    margin: 1rem auto;
+    font-weight: 500;
+    color: white;
+    width: 50%;
+  }
+
+  
+}

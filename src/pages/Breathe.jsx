@@ -13,7 +13,7 @@ function Breathe() {
   }, []);
   return (
     <div className={styles.meditateContainer}>
-    <div className="greetings">
+    <div className={styles.greetings}>
     <GreetingsNav/>
     </div>
       

@@ -1,10 +1,10 @@
 import React from "react";
+import styles from "./HapinessMeter.module.css";
 
 function Emojis() {
   return (
-    <div
+    <div className={styles.Emojis}
       style={{
-        width: "100vw",
         margin: "auto",
         display: "flex",
         justifyContent: "space-around",

@@ -21,3 +21,23 @@
   transition: width 0.3s ease-in-out;
   /* border-radius: 10px; */
 }
+
+.Emojis {
+  width: 100vw;
+}
+
+@media (min-width: 768px) {
+  .happinessMeter {
+    width: 70vw;
+  }
+
+  .Emojis {
+    width: 70vw;
+  }
+
+  .HappinessMeter{
+    display: grid;
+    justify-content: center;
+    width: 100vw;
+  }
+}

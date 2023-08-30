@@ -31,3 +31,43 @@
   top: -10px;
   right: -8px;
 }
+
+@media (min-width: 768px)
+{
+  .meditationType{
+    display: flex;
+    height: 3vh; 
+  }
+  .meditationTypeImg {
+    width: 20vw;
+    /* height: 45vh; */
+    object-fit: contain;
+  }
+  .meditationTypeContent {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .meditationTypeContainer {
+  position: relative;
+}
+.title {
+  font-size: 20px;
+  font-weight:800px;
+  margin-bottom: 0.3rem;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 400;
+  /* padding-top: 8px; */
+}
+
+.info {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -10px;
+  right: -8px;
+}
+  
+}

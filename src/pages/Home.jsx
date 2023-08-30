@@ -24,17 +24,22 @@ function Home() {
 
   return (
     <div className={styles.homeContainer}>
+    <div className={styles.greetings}>
       <GreetingsNav />
+      </div>
       {/* <Quote>
         <p>
           “You have to create little pockets of joy in your life to take care of
           yourself.”
         </p>
       </Quote> */}
-
-      <HapinessMeter />
+      <div className={styles.meter}>
+      <HapinessMeter/>
+      </div>
+      
       {true && (
         <>
+        <div className={styles.todo}>
           <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
           {state?.tasks
             ?.filter((data) => data.time === "morning")
@@ -71,6 +76,7 @@ function Home() {
                 checked={data.complete}
               />
             ))}
+            </div>
         </>
       )}
       {/* <div style={{ textAlign: 'center', marginTop: '2rem' }}>

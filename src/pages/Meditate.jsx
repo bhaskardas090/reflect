@@ -18,7 +18,7 @@ function Meditate() {
       </Quote>
       <img src={BreatheImg} className={styles.breatheImg} alt="meditate" />
       <div className={styles.buttonContainer}>
-        <Button variant="contained" className={styles.startButton}>
+        <Button variant="contained" className={styles.startButton} style={{ width: '450px' }}>
           Start Meditating
         </Button>
       </div>
