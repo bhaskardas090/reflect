@@ -7,6 +7,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
+import meditate from "../assets/Login_Page_1.png";
+
 function SignIn() {
   const { login, error, loading } = useLogin();
 
@@ -22,6 +24,13 @@ function SignIn() {
   return (
     <div>
       <Logo />
+      <div className={styles.image}>
+        <img
+          src={meditate}
+          alt="meditate"
+          // style={{ display: "flex", justifyContent: "center", marign: "auto" }}
+        />
+      </div>
       <div className={styles.login}>
         <form className={styles.form}>
           <TextField

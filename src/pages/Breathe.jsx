@@ -17,10 +17,8 @@ function Breathe() {
     <div className={styles.meditateContainer}>
       <GreetingsNav />
       <Quote>
-        <p>
-          “Without full awareness of breathing, there can be no development of
-          meditative stability and understanding.”
-        </p>
+        “Without full awareness of breathing, there can be no development of
+        meditative stability and understanding.”
       </Quote>
       <div className={styles.meditationCategory}>
         <div className={styles.pranayams}>

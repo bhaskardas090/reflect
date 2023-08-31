@@ -39,7 +39,7 @@ const Meter = ({ progress }) => {
   };
 
   return (
-    <div className={styles.happinessMeter}>
+    <div className={styles.meter}>
       <div className={styles.meterBar} style={meterStyle}></div>
     </div>
   );

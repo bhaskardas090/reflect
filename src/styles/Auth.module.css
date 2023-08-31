@@ -1,37 +1,45 @@
-.loginScreenOne{
-    padding: 32px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.loginScreenOne {
+  padding: 32px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem auto;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
 }
-.inputField{
-    width: 75vw;
+.inputField {
+  width: 75vw;
 }
-.register{
-    width: 75vw;
-    padding: 10px 0px;
-    border-radius: 4px;
-    background: linear-gradient(180deg, #FDA52B 21.30%, #FE7401 100%);
-}
-
-.login p{
-    text-align: center;
+.register {
+  width: 75vw;
+  padding: 10px 0px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fda52b 21.3%, #fe7401 100%);
 }
 
-.redirect{
-    text-decoration: none;
-    color:#FDA52B;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 1px;
+.login p {
+  text-align: center;
 }
-.signup{
-    text-align: center;
+
+.redirect {
+  text-decoration: none;
+  color: #fda52b;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.signup {
+  text-align: center;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+}
+.image img {
+  width: 60%;
 }

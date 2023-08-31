@@ -5,9 +5,14 @@
   color: red;
 }
 
+.HapinessMeter {
+  /* position: sticky;
+  top: 0px; */
+}
+
 /* METER STYLES */
 
-.happinessMeter {
+.meter {
   width: 95vw;
   height: 20px;
   background: #ccc;

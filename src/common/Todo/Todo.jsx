@@ -51,7 +51,7 @@ function Todo({ img, title, time, id, checked, history }) {
             src={img}
             className={`${styles.todoImg} ${styles.globalImg}`}
             loading="lazy"
-            style={{ backgroundColor: "grey" }}
+            style={{ backgroundColor: "#00000026" }}
           />
         </div>
       </div>

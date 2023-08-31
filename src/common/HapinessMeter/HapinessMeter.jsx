@@ -1,14 +1,16 @@
 import React from "react";
 import Emojis from "./Emojis";
 import Meter from "./Meter";
+import styles from "./HapinessMeter.module.css";
 
 function HapinessMeter({ progress }) {
   return (
     <div
-      style={{
-        margin: "auto",
-        position: "relative",
-      }}
+      className={styles.HapinessMeter}
+      // style={{
+      //   margin: "auto",
+      //   position: "relative",
+      // }
     >
       <Emojis />
       <Meter progress={progress} />

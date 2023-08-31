@@ -58,7 +58,7 @@ function Home() {
   return (
     <div className={styles.homeContainer}>
       <GreetingsNav />
-
+      <Quote>"Discipline is the bridge between goals and accomplishment"</Quote>
       <HapinessMeter progress={state.totalReward} />
       {true && (
         <>

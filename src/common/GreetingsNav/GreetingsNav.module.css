@@ -1,22 +1,22 @@
-.greetingsNavContainer{
-    display: flex;
-    padding: 2rem 1rem;
+.greetingsNavContainer {
+  display: flex;
+  padding: 2rem 1rem 0rem 1rem;
 }
-.helloEmoji{
-    width: 10vw;
-    font-size: 1.5rem;
+.helloEmoji {
+  width: 10vw;
+  font-size: 1.5rem;
 }
-.greetingsMessage{
-    width: 40vw;
-    font-weight: bolder;
+.greetingsMessage {
+  width: 40vw;
+  font-weight: bolder;
 }
-.navigationButtons{
-    width: 50vw;
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 0.5rem;
+.navigationButtons {
+  width: 50vw;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 0.5rem;
 }
-.navigationButtons img{
-    width: 2rem;
-    height: 2rem;
+.navigationButtons img {
+  width: 2rem;
+  height: 2rem;
 }
