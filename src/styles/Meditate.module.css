@@ -6,7 +6,8 @@
     #f5f1e5 22.92%,
     #f3efe4 79.17%
   );
-  height: 100vh;
+  height: 100%;
+  padding-bottom: 3rem;
 }
 .breatheImg {
   padding: 2rem 0rem;

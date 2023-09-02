@@ -1,17 +1,12 @@
 import React from "react";
+import styles from "./HapinessMeter.module.css";
+// Importing Sub Components
 import Emojis from "./Emojis";
 import Meter from "./Meter";
-import styles from "./HapinessMeter.module.css";
 
 function HapinessMeter({ progress }) {
   return (
-    <div
-      className={styles.HapinessMeter}
-      // style={{
-      //   margin: "auto",
-      //   position: "relative",
-      // }
-    >
+    <div className={styles.HapinessMeter}>
       <Emojis />
       <Meter progress={progress} />
     </div>

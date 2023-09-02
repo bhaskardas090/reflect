@@ -1,20 +1,14 @@
 import React from "react";
+import styles from "./HapinessMeter.module.css";
 
 function Emojis() {
   return (
-    <div
-      style={{
-        width: "100vw",
-        margin: "auto",
-        display: "flex",
-        justifyContent: "space-around",
-      }}
-    >
-      <div style={{ fontSize: "2rem" }}>🙂</div>
-      <div style={{ fontSize: "2rem" }}>😌</div>
-      <div style={{ fontSize: "2rem" }}>😊</div>
-      <div style={{ fontSize: "2rem" }}>😄</div>
-      <div style={{ fontSize: "2rem" }}>😁</div>
+    <div className={styles.emojis}>
+      <div className={styles.emoji}>🙂</div>
+      <div className={styles.emoji}>😌</div>
+      <div className={styles.emoji}>😊</div>
+      <div className={styles.emoji}>😄</div>
+      <div className={styles.emoji}>😁</div>
     </div>
   );
 }

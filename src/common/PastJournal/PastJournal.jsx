@@ -46,12 +46,13 @@ function PastJournal({ setShowPastModal }) {
           />
         </DemoContainer>
       </LocalizationProvider>
-      {!history && <NoData />}
+      {!history && !noData && <NoData />}
       {/* 
        // ***********************
       //* Result Part 
       // ************************
       */}
+      {console.log(journalCover, "*****")}
       {history && (
         <div
           style={{ width: "100vw", display: "flex", justifyContent: "center" }}

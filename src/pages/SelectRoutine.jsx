@@ -16,6 +16,12 @@ import oldage from "../assets/OLDAGE.jpg";
 
 function SelectTask() {
   const navigate = useNavigate();
+  const { selectRoutine } = useDB("routines");
+  const handleTask = async (activeTask) => {
+    console.log(activeTask);
+    selectRoutine(activeTask);
+    navigate("/");
+  };
   return (
     <>
       <PageHeader
@@ -28,16 +34,41 @@ function SelectTask() {
           height: "100vh",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-around",
-          alignItems: "center",
-          paddingTop: "4rem",
-          gap: "1rem",
+          // justifyContent: "space-around",
+          // alignItems: "center",
+          paddingTop: "70px",
+          // backgroundColor: "#CDFFF4",
+          // gap: "1rem",
         }}
       >
-        <img src={student} wdth="100vw" alt="student-routine" />
-        <img src={working} alt="working-routine" />
-        <img src={homemaker} alt="homemaker-routine" />
-        <img src={oldage} alt="oldage-routine" />
+        <img
+          src={student}
+          width="100%"
+          alt="student-routine"
+          style={{ padding: ".3rem 1rem", borderRadius: "30px" }}
+          onClick={() => handleTask(studentRoutine)}
+        />
+        <img
+          src={working}
+          width="100%"
+          alt="working-routine"
+          style={{ padding: ".3rem 1rem", borderRadius: "30px" }}
+          onClick={() => handleTask(workingProfessionalRoutine)}
+        />
+        <img
+          src={homemaker}
+          width="100%"
+          alt="homemaker-routine"
+          style={{ padding: ".3rem 1rem", borderRadius: "30px" }}
+          onClick={() => handleTask(houseWifeRoutine)}
+        />
+        <img
+          src={oldage}
+          width="100%"
+          alt="oldage-routine"
+          style={{ padding: ".3rem 1rem", borderRadius: "30px" }}
+          onClick={() => handleTask(oldAgeRoutine)}
+        />
         {/* <Link to="/" style={{ textDecoration: "none" }}>
           <BoxSx name="STUDENT" color="#2196f3" activeTask={studentRoutine} />
         </Link>

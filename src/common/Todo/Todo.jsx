@@ -15,6 +15,7 @@ function Todo({ img, title, time, id, checked, history }) {
   return (
     <div>
       <div className={styles.todo}>
+        {/* Home page checbox. We can toggle the checkbox. MUTABLE */}
         {!history && (
           <input
             type="checkbox"
@@ -23,6 +24,7 @@ function Todo({ img, title, time, id, checked, history }) {
             checked={checked}
           />
         )}
+        {/* History page checkbox. Its checked status is always false. IMMUTABLE */}
         {history && (
           <input
             type="checkbox"

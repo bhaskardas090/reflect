@@ -1,40 +1,48 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+// Compnents imports
+import { TodoLoader } from "../helper/SkeletonLoader";
 import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
 import Quote from "../common/Quote/Quote";
 import Navigation from "../common/Navigation/Navigation";
 import Todo from "../common/Todo/Todo";
-import useAuthContext from "../hooks/useAuthContext";
-import useTaskContext from "../hooks/useTaskContext";
 import TodoTitle from "../common/TodoTitle/TodoTitle";
 import HapinessMeter from "../common/HapinessMeter/HapinessMeter";
+import Lazyloader from "../common/Lazyloader/Lazyloader";
+import ModalComponent from "../common/ModalComponent/ModalComponent";
+// MUI components import
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
+// Custom hooks imports
+import useAuthContext from "../hooks/useAuthContext";
+import useTaskContext from "../hooks/useTaskContext";
 import useDB from "../hooks/useDB";
-import { TodoLoader } from "../helper/SkeletonLoader";
-import Lazyloader from "../common/Lazyloader/Lazyloader";
+// Library imports
 import useSound from "use-sound";
 import Confetti from "react-confetti";
-import ModalComponent from "../common/ModalComponent/ModalComponent";
+// Assets imports
 import tryTomorrow from "../assets/try-tomorrow.png";
 import congrats from "../assets/congrats.png";
 import failed from "../assets/failed.mp3";
 import complete from "../assets/complete.mp3";
 
 function Home() {
-  const { user } = useAuthContext();
-  const { state } = useTaskContext();
+  //Calling the backend
   const { fetchRoutine } = useDB("routines");
   const { todayRoutineDone, isRoutineAlreadyDone } = useDB("routineHistory");
+  //Consuming state data
+  const { user } = useAuthContext();
+  const { state } = useTaskContext();
+  // States
   const [isExploding, setIsExploding] = useState(false);
   const [showTryModal, setShowTryModal] = useState(false);
   const [showCongratsModal, setShowCongratsModal] = useState(false);
+  //Music player state
   const [playComplete] = useSound(complete);
   const [playFailed] = useSound(failed);
-
+  // Function for checking if the routine is submitted for today or not
   const handleRoutineDone = async () => {
     const routineAlreadyDone = await isRoutineAlreadyDone(user.uid);
-    // console.log(routineAlreadyDone);
     if (routineAlreadyDone) {
       setShowTryModal(true);
       playFailed();
@@ -50,7 +58,7 @@ function Home() {
       }, 6000);
     }
   };
-
+  // Fetched new data every time on reload
   useEffect(() => {
     fetchRoutine();
   }, [user]);
@@ -60,83 +68,80 @@ function Home() {
       <GreetingsNav />
       <Quote>"Discipline is the bridge between goals and accomplishment"</Quote>
       <HapinessMeter progress={state.totalReward} />
-      {true && (
-        <>
-          <TodoTitle imgSrc="/HomeAssets/mustdo.png" time="Must Do" />
-          {!state?.tasks?.length ? (
-            <Lazyloader Loader={TodoLoader} />
-          ) : (
-            state?.tasks
-              ?.filter((data) => data.time === "must-do")
-              .map((data) => (
-                <Todo
-                  img={data.img}
-                  title={data.task}
-                  id={data.id}
-                  key={data.id}
-                  time={data.time}
-                  checked={data.complete}
-                />
-              ))
-          )}
-          <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
-          {!state?.tasks?.length ? (
-            <Lazyloader Loader={TodoLoader} />
-          ) : (
-            state?.tasks
-              ?.filter((data) => data.time === "morning")
-              .map((data) => (
-                <Todo
-                  img={data.img}
-                  title={data.task}
-                  id={data.id}
-                  key={data.id}
-                  time={data.time}
-                  checked={data.complete}
-                />
-              ))
-          )}
-          <TodoTitle imgSrc="/HomeAssets/afternoon.png" time="Afternoon" />
-          {!state?.tasks?.length ? (
-            <Lazyloader Loader={TodoLoader} />
-          ) : (
-            state?.tasks
-              ?.filter((data) => data.time === "afternoon")
-              .map((data) => (
-                <Todo
-                  img={data.img}
-                  title={data.task}
-                  id={data.id}
-                  key={data.id}
-                  time={data.time}
-                  checked={data.complete}
-                />
-              ))
-          )}
-          <TodoTitle imgSrc="/HomeAssets/night.png" time="Night" />
-          {!state?.tasks?.length ? (
-            <Lazyloader Loader={TodoLoader} />
-          ) : (
-            state?.tasks
-              ?.filter((data) => data.time === "night")
-              .map((data) => (
-                <Todo
-                  img={data.img}
-                  title={data.task}
-                  id={data.id}
-                  key={data.id}
-                  time={data.time}
-                  checked={data.complete}
-                />
-              ))
-          )}
-        </>
-      )}
+      {/* TASKS Section */}
+      <div className={styles.todos}>
+        <TodoTitle imgSrc="/HomeAssets/mustdo.png" time="Must Do" />
+        {!state?.tasks?.length ? (
+          <Lazyloader Loader={TodoLoader} />
+        ) : (
+          state?.tasks
+            ?.filter((data) => data.time === "must-do")
+            .map((data) => (
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+                time={data.time}
+                checked={data.complete}
+              />
+            ))
+        )}
+        <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
+        {!state?.tasks?.length ? (
+          <Lazyloader Loader={TodoLoader} />
+        ) : (
+          state?.tasks
+            ?.filter((data) => data.time === "morning")
+            .map((data) => (
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+                time={data.time}
+                checked={data.complete}
+              />
+            ))
+        )}
+        <TodoTitle imgSrc="/HomeAssets/afternoon.png" time="Afternoon" />
+        {!state?.tasks?.length ? (
+          <Lazyloader Loader={TodoLoader} />
+        ) : (
+          state?.tasks
+            ?.filter((data) => data.time === "afternoon")
+            .map((data) => (
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+                time={data.time}
+                checked={data.complete}
+              />
+            ))
+        )}
+        <TodoTitle imgSrc="/HomeAssets/night.png" time="Night" />
+        {!state?.tasks?.length ? (
+          <Lazyloader Loader={TodoLoader} />
+        ) : (
+          state?.tasks
+            ?.filter((data) => data.time === "night")
+            .map((data) => (
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+                time={data.time}
+                checked={data.complete}
+              />
+            ))
+        )}
+      </div>
       {/* Congratulations effect */}
       {isExploding && (
         <Confetti
-          // width="100vw"
-          // height="800px"
           style={{ zIndex: 9999 }}
           tweenDuration={3000}
           numberOfPieces={300}
@@ -147,7 +152,7 @@ function Home() {
         <ModalComponent
           showModal={showCongratsModal}
           setShowModal={setShowCongratsModal}
-          height="40vh"
+          height="44vh"
         >
           <div
             style={{
@@ -216,7 +221,7 @@ function Home() {
           </Button>
         </div>
       )}
-
+      {/* Bottom Navigation */}
       <Navigation />
     </div>
   );

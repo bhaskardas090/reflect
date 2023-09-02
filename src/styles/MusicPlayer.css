@@ -43,6 +43,15 @@
   height: 30vh;
   object-fit: cover;
   margin: 3rem auto;
+  animation: imageLoading ease-in 1.2s;
+}
+@keyframes imageLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .musicCoverPlus {
   height: 30vh;

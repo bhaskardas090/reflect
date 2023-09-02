@@ -17,3 +17,16 @@
   /* gap: 1rem; */
   justify-content: center;
 }
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .todos {
+    width: 50vw;
+    margin: auto;
+  }
+  .actionButton {
+    width: 50vw;
+    margin: auto;
+  }
+}

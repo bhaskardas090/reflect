@@ -18,3 +18,15 @@
   align-items: center;
   font-size: 14px;
 }
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .navbarContainer {
+    width: 100vw;
+  }
+  .links {
+    width: 70vw;
+    margin: auto;
+  }
+}

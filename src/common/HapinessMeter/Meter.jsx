@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./HapinessMeter.module.css"; // Create this CSS file for styling
 
 const Meter = ({ progress }) => {
+  // Assigning color based on the progress status
   const getColor = (progress) => {
     if (progress <= 10) {
       return "#b71c1c";
@@ -31,6 +32,7 @@ const Meter = ({ progress }) => {
     }
   };
 
+  // Dynamacilly changing css for the meter bar
   const meterStyle = {
     width: `${progress}%`,
     background: `linear-gradient(to right, ${getColor(progress)}, ${getColor(

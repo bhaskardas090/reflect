@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
 import useSound from "use-sound";
+import Skeleton from "@mui/material/Skeleton";
 
 const PlayerControl = ({ audioFile, setPlay }) => {
   const [isPlaying, setIsPlaying] = useState(false);

@@ -1,22 +1,9 @@
-.css-5xe99f-MuiLinearProgress-bar1 {
-  background-color: red;
-}
-.MuiLinearProgress-bar {
-  color: red;
-}
-
-.HapinessMeter {
-  /* position: sticky;
-  top: 0px; */
-}
-
 /* METER STYLES */
-
 .meter {
   width: 95vw;
   height: 20px;
   background: #ccc;
-  /* border-radius: 10px; */
+  border-radius: 10px;
   overflow: hidden;
   margin: auto;
 }
@@ -24,5 +11,26 @@
 .meterBar {
   height: 100%;
   transition: width 0.3s ease-in-out;
-  /* border-radius: 10px; */
+}
+
+/* EMOJIS STYLE */
+.emojis {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+}
+.emoji {
+  font-size: 2rem;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .meter {
+    width: 60vw;
+  }
+  .emojis {
+    width: 60vw;
+  }
 }

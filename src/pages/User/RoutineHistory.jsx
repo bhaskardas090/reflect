@@ -43,7 +43,7 @@ function RoutineHistory() {
           />
         </DemoContainer>
       </LocalizationProvider>
-      {!history && <NoData />}
+      {!history && !noData && <NoData />}
       {/* 
        // ***********************
       //* Result Part 

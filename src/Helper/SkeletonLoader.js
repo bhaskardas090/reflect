@@ -44,3 +44,46 @@ export function ListLoader() {
     </Card>
   );
 }
+
+export function PlayerLoader() {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "50vh",
+        display: "grid",
+        justifyContent: "center",
+        textAlign: "center",
+        margin: "auto",
+        gap: "1rem",
+      }}
+    >
+      <Skeleton
+        variant="text"
+        sx={{ fontSize: "1rem", width: "30vw", margin: "auto" }}
+      />
+      <Skeleton variant="circular" height={"30vh"} width={"30vh"} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Skeleton animation="wave" height={30} width="80%" />
+        <Skeleton animation="wave" height={30} width="30%" />
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Skeleton animation="wave" height={10} width="10%" />
+        <Skeleton animation="wave" height={10} width="10%" />
+      </div>
+      <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+      <Skeleton
+        variant="circular"
+        width={40}
+        height={40}
+        sx={{ margin: "auto" }}
+      />
+    </div>
+  );
+}

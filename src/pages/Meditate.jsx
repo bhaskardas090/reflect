@@ -39,6 +39,7 @@ function Meditate() {
           marginTop: "1rem",
           fontSize: ".8rem",
           textAlign: "center",
+          marginBottom: "3rem",
         }}
       >
         Click on the above button. Close your eyes and start meditating with

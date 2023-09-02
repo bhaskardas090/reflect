@@ -1,22 +1,48 @@
 .greetingsNavContainer {
   display: flex;
+  justify-content: space-between;
   padding: 2rem 1rem 0rem 1rem;
+  gap: 1rem;
 }
-.helloEmoji {
-  width: 10vw;
+.helloSection {
+  display: flex;
+  gap: 1rem;
   font-size: 1.5rem;
 }
 .greetingsMessage {
-  width: 40vw;
   font-weight: bolder;
+  font-size: 1rem;
 }
 .navigationButtons {
-  width: 50vw;
   display: flex;
+  gap: 1rem;
   justify-content: space-evenly;
   padding-top: 0.5rem;
+  cursor: pointer;
 }
 .navigationButtons img {
   width: 2rem;
   height: 2rem;
+}
+.subMenu {
+  margin-top: 10%;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .greetingComponent {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    /* padding: auto 10%; */
+  }
+  .greetingsNavContainer {
+    width: 80vw;
+  }
+  .subMenu {
+    width: 240px;
+    margin-top: 3%;
+    /* margin-right: 10%; */
+  }
 }

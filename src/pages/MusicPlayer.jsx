@@ -4,6 +4,8 @@ import { useParams, useLocation } from "react-router";
 import useDB from "../hooks/useDB";
 import PlayerControl from "../common/PlayerController/PlayerControl";
 import { Link } from "react-router-dom";
+import Lazyloader from "../common/Lazyloader/Lazyloader";
+import { PlayerLoader } from "../helper/SkeletonLoader";
 
 const MusicPlayer = () => {
   const { state } = useLocation();
@@ -32,17 +34,8 @@ const MusicPlayer = () => {
   return (
     <>
       <div className="component">
-        {!audioFile?.songUrl ? (
-          <div
-            style={{
-              width: "100vw",
-              height: "90vh",
-              background: "grey",
-              fontSize: "4rem",
-            }}
-          >
-            "Loading.."
-          </div>
+        {!audioFile ? (
+          <Lazyloader Loader={PlayerLoader} loaderLength={1} />
         ) : (
           <>
             <h2 className="playing">Playing Now</h2>
@@ -62,21 +55,21 @@ const MusicPlayer = () => {
               setPlay={setPlay}
               playState={play}
             />
+            <Link to="/">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
+                alt="back"
+                style={{
+                  position: "absolute",
+                  left: "3%",
+                  top: "3%",
+                  width: "30px",
+                  height: "30px",
+                }}
+              />
+            </Link>
           </>
         )}
-        <Link to="/">
-          <img
-            src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
-            alt="back"
-            style={{
-              position: "absolute",
-              left: "3%",
-              top: "3%",
-              width: "30px",
-              height: "30px",
-            }}
-          />
-        </Link>
       </div>
     </>
   );
