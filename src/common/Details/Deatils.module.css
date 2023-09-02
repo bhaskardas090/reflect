@@ -8,3 +8,21 @@
   font-size: 0.8rem;
   padding: 1rem;
 }
+
+.player {
+  width: 100%;
+  height: 25vh;
+}
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .player {
+    height: 50vh;
+    margin: auto;
+  }
+  .benefits,
+  .precautions,
+  .direction {
+    margin: 1rem 3rem;
+  }
+}

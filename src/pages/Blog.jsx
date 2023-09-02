@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from "../styles/Blog.module.css";
 import { useLocation, useNavigate } from "react-router";
 import useDB from "../hooks/useDB";
 import PageHeader from "../common/PageHeader/PageHeader";
@@ -22,17 +23,22 @@ function Blog() {
     <>
       <PageHeader
         type="primary"
-        onclick={() => navigate(-1)}
+        onclick={() => navigate("/resource")}
         title="Resource Blog"
       />
-      <div style={{ padding: "1rem" }}>
-        <img
-          src={blogData?.img}
-          alt="blog_image"
-          style={{ width: "100%", marginTop: "4rem" }}
+      <div className={styles.blog} style={{ padding: "1rem" }}>
+        <div className={styles.blogImgContainer}>
+          <img
+            src={blogData?.img}
+            alt="blog_image"
+            className={styles.blogImg}
+          />
+        </div>
+        <h2 className={styles.blogTitle}>{blogData?.title}</h2>
+        <div
+          className={styles.blogContent}
+          dangerouslySetInnerHTML={{ __html: blogData?.description }}
         />
-        <h2 style={{ margin: "1rem auto" }}>{blogData?.title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: blogData?.description }} />
       </div>
     </>
   );

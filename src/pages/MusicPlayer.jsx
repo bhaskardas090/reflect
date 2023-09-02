@@ -55,7 +55,7 @@ const MusicPlayer = () => {
               setPlay={setPlay}
               playState={play}
             />
-            <Link to="/">
+            <a href="/">
               <img
                 src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
                 alt="back"
@@ -67,7 +67,7 @@ const MusicPlayer = () => {
                   height: "30px",
                 }}
               />
-            </Link>
+            </a>
           </>
         )}
       </div>

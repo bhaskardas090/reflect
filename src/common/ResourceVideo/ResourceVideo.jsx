@@ -1,7 +1,7 @@
 import React from "react";
 import Backdrop from "@mui/material/Backdrop";
 import ReactPlayer from "react-player";
-
+import styles from "./ResourceVideo.module.css";
 function ResourceVideo({ setIsOpen, isOpen, videoSource }) {
   return (
     <Backdrop
@@ -15,8 +15,7 @@ function ResourceVideo({ setIsOpen, isOpen, videoSource }) {
     >
       <ReactPlayer
         url={videoSource}
-        width="100%"
-        height="25vh"
+        className={styles.reactPlayer}
         controls={true}
       />
     </Backdrop>

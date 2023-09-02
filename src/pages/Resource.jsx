@@ -40,7 +40,6 @@ function Resource() {
     if (activeTab === "blogs") getBlogsData();
     if (activeTab === "videos") getVideosData();
     if (activeTab === "podcasts") getPodcastsData();
-    // console.log(res);
   }, [activeTab]);
 
   return (

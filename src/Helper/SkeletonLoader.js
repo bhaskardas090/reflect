@@ -62,7 +62,12 @@ export function PlayerLoader() {
         variant="text"
         sx={{ fontSize: "1rem", width: "30vw", margin: "auto" }}
       />
-      <Skeleton variant="circular" height={"30vh"} width={"30vh"} />
+      <Skeleton
+        variant="circular"
+        height={"30vh"}
+        width={"30vh"}
+        style={{ margin: "auto" }}
+      />
       <div
         style={{
           display: "flex",

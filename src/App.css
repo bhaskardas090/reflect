@@ -1,4 +1,4 @@
-/* MUI STYLING */
+/* //! MUI STYLING */
 
 /* sub-menu */
 .css-6hp17o-MuiList-root-MuiMenu-list {
@@ -17,8 +17,12 @@
   background: linear-gradient(180deg, #fda52b 21.3%, #fe7401 100%) !important;
 }
 
-/* HTML */
+/*//! HTML */
 ol,
 ul {
   padding-left: 1.5rem;
+}
+
+body {
+  overflow-x: hidden !important;
 }

@@ -1,5 +1,4 @@
 .meditateContainer {
-  /* background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%); */
   background-image: linear-gradient(
     180deg,
     #fda026 0%,
@@ -18,6 +17,13 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 15vh;
-  /* justify-content: center; */
-  /* padding: 1rem 0rem; */
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .pranayams {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

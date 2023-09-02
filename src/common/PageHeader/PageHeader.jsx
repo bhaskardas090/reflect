@@ -1,20 +1,17 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 import styles from "./PageHeader.module.css";
-import { useNavigate } from "react-router";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-
+import back from "../../assets/back.png";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { IconButton } from "@mui/material";
 function PageHeader({ onclick, title, type }) {
-  const navigate = useNavigate();
   return (
     <div className={styles.pageHeaderComponent}>
       {type === "transparent" ? (
         <div className={styles.pageHeader}>
           <img
-            src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
+            src={back}
             className={styles.backButton}
             onClick={() => onclick()}
             alt="back"
@@ -24,6 +21,7 @@ function PageHeader({ onclick, title, type }) {
       ) : (
         <AppBar
           sx={{
+            overflowX: "hidden",
             width: "100vw",
             background: `linear-gradient(180deg, #fda52b 21.3%, #fe7401 100%)`,
           }}

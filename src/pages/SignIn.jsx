@@ -22,14 +22,10 @@ function SignIn() {
     login(signInDeatils.email, signInDeatils.password);
   };
   return (
-    <div>
+    <div className={styles.loginComponent}>
       <Logo />
       <div className={styles.image}>
-        <img
-          src={meditate}
-          alt="meditate"
-          // style={{ display: "flex", justifyContent: "center", marign: "auto" }}
-        />
+        <img src={meditate} alt="meditate" className={styles.loginImg} />
       </div>
       <div className={styles.login}>
         <form className={styles.form}>

@@ -37,7 +37,7 @@ function RoutineHistory() {
             sx={{
               width: "95%",
               maxWidth: "800px",
-              margin: "4rem auto 1rem auto",
+              margin: "70px auto 1rem auto",
             }}
             disableFuture
           />
@@ -52,19 +52,26 @@ function RoutineHistory() {
       <>
         {history && <HapinessMeter progress={history?.totalReward} />}
 
-        {history && (
-          <h3
-            style={{
-              borderBottom: "1px solid green",
-              margin: "1rem",
-              paddingBottom: "0.3rem",
-            }}
-          >
-            Completed Tasks
-          </h3>
-        )}
+        {history && <h3 className={styles.complete}>Completed Tasks</h3>}
+        <div className={styles.completetasks}>
+          {history?.tasks
+            .filter((task) => task.complete === true)
+            .map((data) => (
+              <Todo
+                img={data.img}
+                title={data.task}
+                id={data.id}
+                key={data.id}
+                checked={data.complete}
+                history="true"
+              />
+            ))}
+        </div>
+      </>
+      {history && <h3 className={styles.incomplete}>Incomplete Tasks</h3>}
+      <div className={styles.incompletetasks}>
         {history?.tasks
-          .filter((task) => task.complete === true)
+          .filter((task) => task.complete === false)
           .map((data) => (
             <Todo
               img={data.img}
@@ -75,30 +82,7 @@ function RoutineHistory() {
               history="true"
             />
           ))}
-      </>
-      {history && (
-        <h3
-          style={{
-            borderBottom: "1px solid red",
-            margin: "1rem",
-            paddingBottom: "0.3rem",
-          }}
-        >
-          Incomplete Tasks
-        </h3>
-      )}
-      {history?.tasks
-        .filter((task) => task.complete === false)
-        .map((data) => (
-          <Todo
-            img={data.img}
-            title={data.task}
-            id={data.id}
-            key={data.id}
-            checked={data.complete}
-            history="true"
-          />
-        ))}
+      </div>
       {/* 
        // ***********************
       //* No Data Part

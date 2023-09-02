@@ -6,7 +6,7 @@ function Details({ pranayamTitle, benefits, direction, precautions, video }) {
   return (
     <div>
       <h3>Pranayam : {pranayamTitle}</h3>
-      <ReactPlayer url={video} width="100%" height="25vh" controls={true} />
+      <ReactPlayer url={video} controls={true} className={styles.player} />
       <div className={styles.benefits}>
         <h3>DIRECTION:</h3>
         <ul className={styles.list}>

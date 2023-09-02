@@ -32,7 +32,7 @@ const ChatBot = () => {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const navigate = useNavigate();
-
+  // Message send logic. Send the data to backend and getting the response and stroring it on state
   const sendMessage = async (message) => {
     const newMessage = {
       message,
@@ -71,7 +71,6 @@ const ChatBot = () => {
         sentTime: new Date().toLocaleTimeString(),
         sender: "ChatGPT",
       };
-      // console.log('Bot Message ***',botMessage)
       setMessages([...messages, newMessage, botMessage]);
     } catch (error) {
       console.error("Error sending message to ChatGPT:", error);
@@ -79,7 +78,6 @@ const ChatBot = () => {
 
     setIsTyping(false);
   };
-  console.log("Messges List ***", messages);
   return (
     <div
       style={{

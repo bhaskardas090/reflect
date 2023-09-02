@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
+import styles from "../styles/Breathe.module.css";
+//Component imports
 import GreetingsNav from "../common/GreetingsNav/GreetingsNav";
 import Navigation from "../common/Navigation/Navigation";
-import styles from "../styles/Breathe.module.css";
 import Quote from "../common/Quote/Quote";
-import MeditationType from "../common/MeditationType/MeditationType";
-import useDB from "../hooks/useDB";
 import Lazyloader from "../common/Lazyloader/Lazyloader";
+import MeditationType from "../common/MeditationType/MeditationType";
 import { ListLoader } from "../helper/SkeletonLoader";
+//Custom Hook imports
+import useDB from "../hooks/useDB";
 
 function Breathe() {
   const { getPranayamas, breatheData } = useDB("breathe");
+  // Consuming the hook to get pranayams from backend
   useEffect(() => {
     getPranayamas();
   }, []);

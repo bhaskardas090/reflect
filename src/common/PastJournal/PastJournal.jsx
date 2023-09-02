@@ -40,7 +40,7 @@ function PastJournal({ setShowPastModal }) {
             sx={{
               width: "95%",
               maxWidth: "800px",
-              margin: " 4rem auto 1rem auto",
+              margin: " 70px auto 1rem auto",
             }}
             disableFuture
           />
@@ -57,7 +57,7 @@ function PastJournal({ setShowPastModal }) {
         <div
           style={{ width: "100vw", display: "flex", justifyContent: "center" }}
         >
-          <Card sx={{ width: "90vw" }}>
+          <Card className={styles.journal}>
             <CardActionArea>
               <img
                 src={journalCover}

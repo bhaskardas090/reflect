@@ -37,3 +37,14 @@
 .titleAndEdit {
   display: flex;
 }
+.updateButton {
+  width: 85%;
+}
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .updateButton {
+    width: 20%;
+    margin: auto;
+  }
+}

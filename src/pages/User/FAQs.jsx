@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../styles/User/FAQ.module.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -10,21 +11,14 @@ import { useNavigate } from "react-router";
 function FAQs() {
   const navigate = useNavigate();
   return (
-    <>
+    <div className={styles.faq}>
       <PageHeader
         title={"Frequently Asked Questions"}
         type="transparent"
         onclick={() => navigate("/")}
       />
 
-      <div
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 65.17%, #6E83B7 100%)",
-          padding: "1rem",
-          paddingTop: "4rem",
-        }}
-      >
+      <div className={styles.according}>
         <Accordion style={{ marginBottom: "0.5rem" }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -337,7 +331,7 @@ function FAQs() {
           </AccordionDetails>
         </Accordion>
       </div>
-    </>
+    </div>
   );
 }
 

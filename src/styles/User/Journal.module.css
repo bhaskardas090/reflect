@@ -2,23 +2,17 @@
   height: 100vh;
   width: 100vw;
   /* background-color: #fef6ad; */
-  background: linear-gradient(
-      180deg,
-      #fda026 0%,
-      #f5f1e5 22.92%,
-      #f3efe4 79.17%,
-      #6e83b7 100%
-    ),
-    linear-gradient(0deg, #ffffff, #ffffff);
+  background: #fef6ad;
   position: relative;
   overflow: hidden;
-}
-.journalContainer {
 }
 .journalImg {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+}
+.journalImgDesktop {
+  display: none;
 }
 
 .buttonContainer {
@@ -44,22 +38,23 @@
   padding: 8px;
 }
 
-/* .dateInput {
-  width: 78vw;
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .journalImg {
+    display: none;
+  }
+  .journalImgDesktop {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+  .buttonContainer {
+    top: 80%;
+  }
+  .button {
+    width: 40vw;
+    margin: auto;
+  }
 }
-.textareaInput {
-  width: 78vw;
-  height: 45vh;
-}
-.addButton {
-  background-color: green !important;
-  color: white;
-  font-size: 16px;
-  width: 70vw;
-}
-.closeButton {
-  background-color: red !important;
-  color: white;
-  font-size: 16px;
-  width: 70vw;
-} */

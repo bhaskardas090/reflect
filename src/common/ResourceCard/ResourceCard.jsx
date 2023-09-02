@@ -18,7 +18,7 @@ function ResourceCard({ type, data }) {
     }
   };
   return (
-    <Card sx={{ width: "90vw" }}>
+    <Card className={styles.card}>
       <CardActionArea>
         <div className={styles.contentContainer} onClick={handleClick}>
           <img
@@ -30,7 +30,7 @@ function ResourceCard({ type, data }) {
           <CardContent>
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
               sx={{ fontWeight: "bold" }}
             >
@@ -40,7 +40,7 @@ function ResourceCard({ type, data }) {
             {type && (
               <div
                 dangerouslySetInnerHTML={{
-                  __html: `${data?.description.slice(0, 190)}....`,
+                  __html: `${data?.description.slice(0, 130)}....`,
                 }}
               />
             )}
@@ -51,17 +51,7 @@ function ResourceCard({ type, data }) {
                 }}
               />
             )}
-            {type && (
-              <Link
-                style={{
-                  textDecoration: "none",
-                  fontWeight: "bold",
-                  color: "inherit",
-                }}
-              >
-                Read More
-              </Link>
-            )}
+            {type && <Link className={styles.readMore}>Read More</Link>}
 
             {!type && (
               <img

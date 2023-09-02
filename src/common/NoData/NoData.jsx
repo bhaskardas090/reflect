@@ -1,21 +1,19 @@
 import React from "react";
+import styles from "./NoData.module.css";
 import DataImg from "../../assets/data.svg";
 
 function NoData() {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        marginTop: "5rem",
-        flexDirection: "column",
-      }}
-    >
-      <img src={DataImg} width="80%" alt="search_to_see_data" />
-      <b style={{ textAlign: "center" }}>
+    <div className={styles.noData}>
+      <img
+        src={DataImg}
+        className={styles.nodataimg}
+        alt="search_to_see_data"
+      />
+      <div className={styles.nodatatext}>
         Select a date <br />
         To have a glance at your past acitvities
-      </b>
+      </div>
     </div>
   );
 }

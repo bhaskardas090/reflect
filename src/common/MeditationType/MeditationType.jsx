@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MeditationType.module.css";
-import { useState } from "react";
+//Component imports
 import Details from "../Details/Details";
 import ModalComponent from "../ModalComponent/ModalComponent";
+// Library imports
 import { useNavigate } from "react-router";
+//Asset import
+import info from "../../assets/info.png";
 
 function MeditationType({ data, id }) {
   const [showModal, setShowModal] = useState(false);
@@ -29,7 +32,7 @@ function MeditationType({ data, id }) {
         </div>
       </div>
       <img
-        src="https://cdn-icons-png.flaticon.com/128/9627/9627593.png"
+        src={info}
         alt="info"
         className={styles.info}
         onClick={() => setShowModal(!showModal)}

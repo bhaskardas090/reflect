@@ -140,8 +140,8 @@ const UpdateAccount = () => {
           />
         </Box>
         <Button
+          className={styles.updateButton}
           variant="contained"
-          sx={{ width: "85%" }}
           onClick={handleSubmit(onSubmit)}
         >
           Update Profile

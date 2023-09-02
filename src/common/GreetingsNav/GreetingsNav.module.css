@@ -31,17 +31,12 @@
 /* RESPONSIVENESS FOR LARGE SCREEN */
 
 @media (min-width: 768px) {
-  .greetingComponent {
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    /* padding: auto 10%; */
-  }
   .greetingsNavContainer {
     width: 80vw;
+    margin: auto;
   }
   .subMenu {
-    width: 240px;
+    width: 200px;
     margin-top: 3%;
     /* margin-right: 10%; */
   }

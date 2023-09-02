@@ -8,7 +8,7 @@ import PastJournal from "../../common/PastJournal/PastJournal";
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router";
-
+import journalDesktop from "../../assets/Journal-Desktop.jpg";
 // import journalImg from '/HomeAssets/Journal.jpg'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -47,7 +47,11 @@ function Journal() {
           alt="journal"
           className={styles.journalImg}
         />
-
+        <img
+          src={journalDesktop}
+          alt="journal_background"
+          className={styles.journalImgDesktop}
+        />
         {/* 
         //* FORM FOR ADDING THE JOURNAL 
         */}

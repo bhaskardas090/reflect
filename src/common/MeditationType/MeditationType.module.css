@@ -5,10 +5,9 @@
   width: 44vw;
   min-height: max-content !important;
   height: 27vh;
-  /* min-height: 25vh;
-  max-height: max-content; */
   background-color: #ffffff;
   border-radius: 8px;
+  cursor: pointer;
 }
 .meditationTypeContent {
   padding: 5px 0.4rem;
@@ -36,7 +35,6 @@
 .description {
   font-size: 11px;
   font-weight: 500;
-  /* padding-top: 8px; */
 }
 .info {
   width: 25px;
@@ -44,10 +42,30 @@
   position: absolute;
   top: 5px;
   right: 7px;
+  cursor: pointer;
 }
+/* RESPONSIVENESS FOR LARGE SCREEN */
 
-@media only screen and (max-height: 750px) {
+@media (min-width: 768px) {
   .meditationType {
     height: 35vh;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+  }
+  .meditationTypeImg {
+    height: 100%;
+    width: 15vw;
+    object-fit: cover;
+  }
+  .meditationTypeContent {
+    margin: auto 2rem;
+    width: 50%;
+  }
+  .meditationTypeContent h4 {
+    font-size: 1.1rem;
+  }
+  .meditationTypeContent h5 {
+    font-size: 0.9rem;
   }
 }
