@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/Account.module.css";
 // MUI componetns
 import Box from "@mui/material/Box";
@@ -17,7 +17,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import NumbersIcon from "@mui/icons-material/Numbers";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import TransgenderIcon from "@mui/icons-material/Transgender";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
@@ -111,18 +110,6 @@ const Account = () => {
               <TextField
                 label="Age"
                 defaultValue={account?.age}
-                InputProps={{
-                  readOnly: true,
-                }}
-                variant="standard"
-                className={styles.textField}
-              />
-            </div>
-            <div className={styles.wrapper}>
-              <CalendarMonthIcon sx={{ fontSize: "32px", color: "grey" }} />
-              <TextField
-                label="Date Of Birth"
-                defaultValue={account?.dob}
                 InputProps={{
                   readOnly: true,
                 }}

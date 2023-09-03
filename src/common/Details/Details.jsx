@@ -13,15 +13,15 @@ function Details({ pranayamTitle, benefits, direction, precautions, video }) {
         height="40vw"
         className={styles.player}
       />
-      <div className={styles.benefits}>
+      {/* <div className={styles.direction}>
         <h3>DIRECTION:</h3>
         <ul className={styles.list}>
           {direction.map((data) => (
             <li key={data}>{data}</li>
           ))}
         </ul>
-      </div>
-      <div className={styles.direction}>
+      </div> */}
+      <div className={styles.benefits}>
         <h3>BENEFITS:</h3>
         <ul className={styles.list}>
           {benefits.map((data) => (
@@ -30,7 +30,7 @@ function Details({ pranayamTitle, benefits, direction, precautions, video }) {
         </ul>
       </div>
       <div className={styles.precautions}>
-        <h3>PRECAUTIONS:</h3>
+        <h3>Things to keep in mind:</h3>
         <ul className={styles.list}>
           {precautions.map((data) => (
             <li key={data}>{data}</li>

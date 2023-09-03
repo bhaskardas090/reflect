@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import styles from '../styles/Auth.module.css';
+import React, { useState } from "react";
+import styles from "../styles/Auth.module.css";
 // MUI Component
-import { Alert, Button, TextField } from '@mui/material';
+import { Alert, Button, TextField } from "@mui/material";
 // Library imports
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 // Component imports
-import Logo from '../common/Logo/Logo';
+import Logo from "../common/Logo/Logo";
 // Custom hook imports
-import useResetPassword from '../hooks/useResetPassword';
+import useResetPassword from "../hooks/useResetPassword";
 
 function ResetPassword() {
   const [email, setEmail] = useState();
@@ -23,7 +23,7 @@ function ResetPassword() {
       <Logo />
       <form className={styles.form}>
         <TextField
-          label="Reset Password Email"
+          label="Enter your email"
           variant="outlined"
           type="email"
           value={email}
@@ -35,11 +35,11 @@ function ResetPassword() {
           className={styles.register}
           onClick={handleSubmit}
         >
-          {loading ? 'Loading...' : 'Reset Password'}
+          {loading ? "Loading..." : "Send Reset Link"}
         </Button>
-        <Button onClick={() => navigate('/login')}>Go Back</Button>
+        <Button onClick={() => navigate("/login")}>Go Back</Button>
         {error && (
-          <Alert severity="error" sx={{ width: '75vw' }}>
+          <Alert severity="error" sx={{ width: "75vw" }}>
             {error}
           </Alert>
         )}

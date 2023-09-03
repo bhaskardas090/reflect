@@ -19,13 +19,6 @@
   text-align: center;
 }
 
-.redirect {
-  text-decoration: none;
-  color: #fda52b;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 1px;
-}
 .signup {
   text-align: center;
 }
@@ -51,6 +44,6 @@
     width: 40vw;
   }
   .alert {
-    width: 50vw;
+    width: 40vw;
   }
 }

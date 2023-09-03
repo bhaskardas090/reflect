@@ -393,7 +393,6 @@ function useDB(collection) {
         username: user.displayName,
         name: data.name,
         age: data.age,
-        dob: data.dob,
         phone: data.phone,
         gender: data.gender,
         working: data.working,

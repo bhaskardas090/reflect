@@ -43,7 +43,7 @@ function SignUp() {
             {...register("email")}
           />
           {errors.email && (
-            <Alert severity="error" className={styles.redirect}>
+            <Alert severity="error" className={styles.alert}>
               {errors.email?.message}
             </Alert>
           )}
@@ -56,7 +56,7 @@ function SignUp() {
             {...register("username")}
           />
           {errors.username && (
-            <Alert severity="error" className={styles.redirect}>
+            <Alert severity="error" className={styles.alert}>
               {errors.username?.message}
             </Alert>
           )}
@@ -68,7 +68,7 @@ function SignUp() {
             {...register("password")}
           />
           {errors.password && (
-            <Alert severity="error" className={styles.redirect}>
+            <Alert severity="error" className={styles.alert}>
               {errors.password?.message}
             </Alert>
           )}
@@ -80,7 +80,7 @@ function SignUp() {
             {...register("confirmPassword")}
           />
           {errors.confirmPassword && (
-            <Alert severity="error" className={styles.redirect}>
+            <Alert severity="error" className={styles.alert}>
               Password do not match
             </Alert>
           )}
@@ -92,7 +92,7 @@ function SignUp() {
             {loading ? "Loading..." : "Register"}
           </Button>
           {error && (
-            <Alert severity="error" className={styles.redirect}>
+            <Alert severity="error" className={styles.alert}>
               {error}
             </Alert>
           )}
@@ -100,7 +100,7 @@ function SignUp() {
         <div className={styles.login}>
           <p>
             Already Have an account?{" "}
-            <Link to="/login" className={styles.redirect}>
+            <Link to="/login" className={styles.alert}>
               SIGN IN
             </Link>
           </p>

@@ -25,6 +25,10 @@ import tryTomorrow from "../assets/try-tomorrow.png";
 import congrats from "../assets/congrats.png";
 import failed from "../assets/failed.mp3";
 import complete from "../assets/complete.mp3";
+import morning from "../assets/morning.png";
+import afternoon from "../assets/afternoon.png";
+import night from "../assets/night.png";
+import mustdo from "../assets/mustdo.png";
 
 function Home() {
   //Calling the backend
@@ -70,7 +74,7 @@ function Home() {
       <HapinessMeter progress={state?.totalReward} />
       {/* TASKS Section */}
       <div className={styles.todos}>
-        <TodoTitle imgSrc="/HomeAssets/mustdo.png" time="Must Do" />
+        <TodoTitle imgSrc={mustdo} time="Must Do" />
         {!state?.tasks?.length ? (
           <Lazyloader Loader={TodoLoader} />
         ) : (
@@ -87,7 +91,7 @@ function Home() {
               />
             ))
         )}
-        <TodoTitle imgSrc="/HomeAssets/morning.png" time="Morning" />
+        <TodoTitle imgSrc={morning} time="Morning" />
         {!state?.tasks?.length ? (
           <Lazyloader Loader={TodoLoader} />
         ) : (
@@ -104,7 +108,7 @@ function Home() {
               />
             ))
         )}
-        <TodoTitle imgSrc="/HomeAssets/afternoon.png" time="Afternoon" />
+        <TodoTitle imgSrc={afternoon} time="Afternoon" />
         {!state?.tasks?.length ? (
           <Lazyloader Loader={TodoLoader} />
         ) : (
@@ -121,7 +125,7 @@ function Home() {
               />
             ))
         )}
-        <TodoTitle imgSrc="/HomeAssets/night.png" time="Night" />
+        <TodoTitle imgSrc={night} time="Night" />
         {!state?.tasks?.length ? (
           <Lazyloader Loader={TodoLoader} />
         ) : (

@@ -12,6 +12,7 @@ import Slide from "@mui/material/Slide";
 // Library imports
 import { useNavigate } from "react-router";
 // Asset imports
+import journalMobile from "../assets/Journal.jpg";
 import journalDesktop from "../assets/Journal-Desktop.jpg";
 import tryTomorrow from "../assets/try-tomorrow.png";
 import congrats from "../assets/congrats.png";
@@ -51,11 +52,7 @@ function Journal() {
           </Button>
         </div>
         {/* Mobile Journal Background */}
-        <img
-          src="/HomeAssets/Journal.jpg"
-          alt="journal"
-          className={styles.journalImg}
-        />
+        <img src={journalMobile} alt="journal" className={styles.journalImg} />
         {/* Desktop Journal Background */}
         <img
           src={journalDesktop}
@@ -89,18 +86,19 @@ function Journal() {
         <ModalComponent
           showModal={showCongratsModal}
           setShowModal={setShowCongratsModal}
-          height="44vh"
+          height="45vh"
         >
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              justifyContent: "center",
               textAlign: "center",
             }}
           >
             <img src={congrats} alt="congrats" />
-            Congratulations
+            <p>That's Great! Hope to see you tomorrow with new thoughts!</p>
           </div>
         </ModalComponent>
       )}

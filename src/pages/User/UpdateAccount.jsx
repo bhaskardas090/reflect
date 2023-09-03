@@ -11,7 +11,6 @@ import { useNavigate } from "react-router";
 import PageHeader from "../../common/PageHeader/PageHeader";
 //ICONS
 import PersonIcon from "@mui/icons-material/Person";
-import CakeIcon from "@mui/icons-material/Cake";
 import PhoneIcon from "@mui/icons-material/Phone";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import WcIcon from "@mui/icons-material/Wc";
@@ -86,19 +85,6 @@ const UpdateAccount = () => {
               startAdornment: (
                 <InputAdornment position="start">
                   <AcUnitIcon style={{ color: "#6E83B7" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            label="Birthday"
-            variant="outlined"
-            placeholder="dd/mm/yy"
-            {...register("dob")}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <CakeIcon style={{ color: "#6E83B7" }} />
                 </InputAdornment>
               ),
             }}

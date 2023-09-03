@@ -13,12 +13,14 @@ function TodoTitle({ imgSrc, time }) {
         <img src={imgSrc} alt="icon" className={styles.timePeriodImg} />
         <h3 className={styles.timePeriodText}>{time}</h3>
       </div>
-      <img
-        src={add}
-        onClick={() => setShowTodoForm(true)}
-        className={styles.add}
-        alt="add"
-      />
+      {time !== "Must Do" && (
+        <img
+          src={add}
+          onClick={() => setShowTodoForm(true)}
+          className={styles.add}
+          alt="add"
+        />
+      )}
       {/* ADD TODO FORM Drawer*/}
       <TodoAddForm
         setShowTodoForm={setShowTodoForm}
