@@ -1,23 +1,30 @@
 import React, { useState } from "react";
-import styles from "../../styles/User/RoutineHistory.module.css";
+import styles from "../../styles/RoutineHistory.module.css";
+// MUI component imports
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+// Component imports
 import Todo from "../../common/Todo/Todo";
 import HapinessMeter from "../../common/HapinessMeter/HapinessMeter";
-import useDB from "../../hooks/useDB";
 import PageHeader from "../../common/PageHeader/PageHeader";
-import { useNavigate } from "react-router";
 import NoData from "../../common/NoData/NoData";
+// Custom hook
+import useDB from "../../hooks/useDB";
+// Library import
+import { useNavigate } from "react-router";
+// Asset imports
+import nodatasearch from "../../assets/nodata-search.png";
 
 function RoutineHistory() {
-  const { getRoutineHistory } = useDB("routineHistory");
-  const [history, setHistory] = useState(null);
-  const [noData, setNoData] = useState(null);
+  const { getRoutineHistory } = useDB("routineHistory"); // Calling the backend service
+  const [history, setHistory] = useState(null); // State to store previous data
+  const [noData, setNoData] = useState(null); // State to check if data is available or not
 
   const navigate = useNavigate();
 
+  // Event handler : getting the routine from backend
   const handleChange = async (e) => {
     getRoutineHistory(e.$d.toString(), setHistory, setNoData);
   };
@@ -43,6 +50,7 @@ function RoutineHistory() {
           />
         </DemoContainer>
       </LocalizationProvider>
+      {/* Initial Page : No Data Fallback */}
       {!history && !noData && <NoData />}
       {/* 
        // ***********************
@@ -92,10 +100,7 @@ function RoutineHistory() {
         <div
           style={{ height: "70vh", textAlign: "center", paddingTop: "3rem" }}
         >
-          <img
-            alt="no data"
-            src="https://cdn-icons-png.flaticon.com/256/7591/7591003.png"
-          />
+          <img alt="no data" src={nodatasearch} />
           <h3 style={{ padding: "1rem", fontSize: "1rem" }}>
             Nothing no show.
             <br />

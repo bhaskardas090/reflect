@@ -1,3 +1,4 @@
+// NOT USED
 import React ,{useState} from 'react'
 import Logo from '../common/Logo/Logo'
 import styles from '../styles/AuthOTP.module.css'

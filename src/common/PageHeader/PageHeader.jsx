@@ -1,13 +1,17 @@
 import React from "react";
 import styles from "./PageHeader.module.css";
+// mui components import
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import back from "../../assets/back.png";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { IconButton } from "@mui/material";
+// asset import
+import back from "../../assets/back.png";
+
 function PageHeader({ onclick, title, type }) {
   return (
     <div className={styles.pageHeaderComponent}>
+      {/* Conditionally rendering the component */}
       {type === "transparent" ? (
         <div className={styles.pageHeader}>
           <img

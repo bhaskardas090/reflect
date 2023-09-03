@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./GreetingsNav.module.css";
+// Library imports
 import { Link } from "react-router-dom";
+// Custom hooks
 import useLogOut from "../../hooks/useLogOut";
 import useAuthContext from "../../hooks/useAuthContext";
 //MUI component Import
@@ -13,7 +15,7 @@ import extra from "../../assets/Extra.png";
 
 function GreetingsNav() {
   const { logout } = useLogOut();
-  const { user } = useAuthContext();
+  const { user } = useAuthContext(); 
   // MUI Sub Menu State
   const [anchorElAcc, setAnchorElAcc] = React.useState(null);
   const openAcc = Boolean(anchorElAcc);

@@ -16,6 +16,7 @@ function Breathe() {
   useEffect(() => {
     getPranayamas();
   }, []);
+
   return (
     <div className={styles.meditateContainer}>
       <GreetingsNav />

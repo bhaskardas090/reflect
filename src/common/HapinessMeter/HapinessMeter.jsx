@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./HapinessMeter.module.css";
-// Importing Sub Components
+// Importing Components
 import Emojis from "./Emojis";
 import Meter from "./Meter";
 

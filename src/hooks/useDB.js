@@ -20,7 +20,6 @@ function useDB(collection) {
   const newState = { ...state };
   const fetchRoutine = async () => {
     try {
-      // setLoading(true);
       await ref.doc(user?.uid).onSnapshot((doc) => {
         dispatch({
           type: "SELECT_ROUTINE",
@@ -32,8 +31,6 @@ function useDB(collection) {
           },
         });
       });
-      // setTimeout(() => {
-      // }, 1000);
     } catch (error) {
       console.log(error, "FETCH ROUTINE");
     }
@@ -72,12 +69,16 @@ function useDB(collection) {
     newState.reward = reward;
     newState.totalReward = totalReward;
     dispatch({ type: "ADD_TASK", payload: newState });
-    await ref.doc(user.uid).set({
-      uid: user.uid,
-      activeRoutine: newState.tasks,
-      reward: newState.reward,
-      totalReward: newState.totalReward,
-    });
+    try {
+      await ref.doc(user.uid).set({
+        uid: user.uid,
+        activeRoutine: newState.tasks,
+        reward: newState.reward,
+        totalReward: newState.totalReward,
+      });
+    } catch (error) {
+      console.log(error, "ADD TASK");
+    }
   };
   const deleteTask = async (taskId) => {
     const deletedTask = newState.tasks.filter((task) => task.id === taskId);
@@ -93,14 +94,16 @@ function useDB(collection) {
         type: "DELETE_TASK",
         payload: newState,
       });
-      // dispatch({ type: "SET_REWARD" });
-      // dispatch({ type: "SET_TOTAL_REWARD" });
-      await ref.doc(user.uid).set({
-        uid: user.uid,
-        activeRoutine: newTasks,
-        reward: newState.reward,
-        totalReward: newState.totalReward,
-      });
+      try {
+        await ref.doc(user.uid).set({
+          uid: user.uid,
+          activeRoutine: newTasks,
+          reward: newState.reward,
+          totalReward: newState.totalReward,
+        });
+      } catch (error) {
+        console.log(error, "DELETE TASK");
+      }
     } else {
       alert(
         "Action Denied. You can't delete an task while is marked as completed."
@@ -116,12 +119,16 @@ function useDB(collection) {
       newState.totalReward -= newState.reward;
     }
     dispatch({ type: "TASK_COMPLETE_STATUS_CHANGE", payload: newState });
-    await ref.doc(user.uid).set({
-      uid: user.uid,
-      activeRoutine: newState.tasks,
-      reward: newState.reward,
-      totalReward: newState.totalReward,
-    });
+    try {
+      await ref.doc(user.uid).set({
+        uid: user.uid,
+        activeRoutine: newState.tasks,
+        reward: newState.reward,
+        totalReward: newState.totalReward,
+      });
+    } catch (error) {
+      console.log(error, "UPDATE TASK COMPLETE");
+    }
   };
   const todayRoutineDone = async (userId, state) => {
     // Sending the tasks to routineHistory
@@ -133,17 +140,22 @@ function useDB(collection) {
         totalReward: state.totalReward,
       });
     } catch (error) {
-      console.log(error);
+      console.log(error, "TODAY ROUTINE DONE - ROUTINE HISTORY");
     }
-    // Resting the activeRoutine in Local and Server
+    // Resetting the activeRoutine in Local and Server
     newState.totalReward = 0;
     newState.tasks.forEach((task) => (task.complete = false));
-    await db.collection("routines").doc(user.uid).set({
-      uid: user.uid,
-      activeRoutine: newState.tasks,
-      reward: newState.reward,
-      totalReward: newState.totalReward,
-    });
+    try {
+      await db.collection("routines").doc(user.uid).set({
+        uid: user.uid,
+        activeRoutine: newState.tasks,
+        reward: newState.reward,
+        totalReward: newState.totalReward,
+      });
+    } catch (error) {
+      console.log(error, "TODAY ROUTINE DONE - RESET ROUTINE");
+    }
+
     dispatch({ type: "SELECT_ROUTINE", payload: newState });
   };
   const isRoutineAlreadyDone = async (userId) => {
@@ -161,21 +173,23 @@ function useDB(collection) {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error, "ROUTINE ALREADY DONE");
       });
     return res;
   };
   // ! Breathe METHODS
   const getPranayamas = async () => {
     const data = [];
-    await ref.get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id);
-        data.push({ id: doc.id, data: doc.data() });
-        // console.log(doc.id, " => ", doc.data());
+    try {
+      await ref.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          data.push({ id: doc.id, data: doc.data() });
+        });
       });
-    });
+    } catch (error) {
+      console.log(error, "GET PRANAYAMS'S");
+    }
+
     setBreatheData(data);
   };
 
@@ -224,16 +238,12 @@ function useDB(collection) {
         if (!querySnapshot.empty) {
           setNoData(false);
           querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            //   result.push(doc.data());
             setHistory(doc.data());
-
-            //   console.log(doc.id, " => ", doc.data());
           });
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error, "GET ROUTINE HISTORY");
       });
   };
   // ! Journal Methods
@@ -245,7 +255,7 @@ function useDB(collection) {
         title: formatDate(new Date()),
       });
     } catch (error) {
-      console.log(error, "ADD_JOURNAL_ERROR");
+      console.log(error, "ADD JOURNAL");
     }
   };
   const isJournalAlreadyDone = async (userId) => {
@@ -263,7 +273,7 @@ function useDB(collection) {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error, "JOURNAL ALREADY DONE");
       });
     return res;
   };
@@ -281,16 +291,12 @@ function useDB(collection) {
         if (!querySnapshot.empty) {
           setNoData(false);
           querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            //   result.push(doc.data());
             setHistory(doc.data());
-
-            //   console.log(doc.id, " => ", doc.data());
           });
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error, "GET JOURNAL HISTORY");
       });
   };
   // ! Resources Method
@@ -433,7 +439,6 @@ function useDB(collection) {
     return totalRewardL;
   };
   function formatDate(dateString) {
-    // const dateObject = new Date(dateString);
     const dateObject = dateString;
     const day = dateObject.getDate();
     const month = dateObject.getMonth() + 1;

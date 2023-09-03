@@ -26,7 +26,7 @@ const Meter = ({ progress }) => {
     } else if (progress < 95) {
       return "#4caf50";
     } else if (progress >= 95) {
-      return "#005CC8";
+      return "#4caf50";
     } else {
       return "transparent";
     }

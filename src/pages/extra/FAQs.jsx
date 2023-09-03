@@ -1,11 +1,14 @@
 import React from "react";
-import styles from "../../styles/User/FAQ.module.css";
+import styles from "../../styles/FAQ.module.css";
+// MUI component imports
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// Component imports
 import PageHeader from "../../common/PageHeader/PageHeader";
+// Library imports
 import { useNavigate } from "react-router";
 
 function FAQs() {

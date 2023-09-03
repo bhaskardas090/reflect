@@ -1,13 +1,16 @@
 import React from "react";
 import styles from "./Todo.module.css";
-
+// Custom hook import
 import useDB from "../../hooks/useDB";
-function Todo({ img, title, time, id, checked, history }) {
-  const { deleteTask, updateTaskComplete } = useDB("routines");
 
+function Todo({ img, title, time, id, checked, history }) {
+  const { deleteTask, updateTaskComplete } = useDB("routines"); // Getting the backend methods
+
+  // Event Handler : Task delete function
   const handleDelete = (taskId) => {
     if (time !== "must-do") deleteTask(taskId);
   };
+  // Event Handler : Checkbox toggle function
   const handleChecked = async (taskId) => {
     updateTaskComplete(taskId);
   };
@@ -32,6 +35,7 @@ function Todo({ img, title, time, id, checked, history }) {
             checked={checked}
           />
         )}
+        {/* If it is "must do" task a green shadow or else shwoing black shadow */}
         <div
           className={styles.todoContent}
           style={{

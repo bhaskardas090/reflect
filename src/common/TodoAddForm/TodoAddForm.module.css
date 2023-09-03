@@ -3,11 +3,28 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  /* width: 100vw; */
 }
 
 .todoFormContainer {
   display: grid;
   justify-content: center;
   gap: 1rem;
+}
+.textField,
+.addButton {
+  width: 90vw;
+}
+.alert {
+  width: 90vw;
+}
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .textField,
+  .addButton {
+    width: 60vw;
+  }
+  .alert {
+    width: 60vw;
+  }
 }

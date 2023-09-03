@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Blog.module.css";
+import styles from "../../styles/Blog.module.css";
+// Library imports
 import { useLocation, useNavigate } from "react-router";
-import useDB from "../hooks/useDB";
-import PageHeader from "../common/PageHeader/PageHeader";
+// Custom hook imports
+import useDB from "../../hooks/useDB";
+// Component imports
+import PageHeader from "../../common/PageHeader/PageHeader";
 
 function Blog() {
+  // Getting the id from URL
   const { pathname } = useLocation();
   const id = pathname.split("/")[2];
-  const { getBlog } = useDB("blogs");
   const navigate = useNavigate();
-
+  // Getting a single blog
+  const { getBlog } = useDB("blogs");
+  // State : Storing blog data
   const [blogData, setBlogData] = useState("");
+
+  // Call the backend to get the blog
   useEffect(() => {
     const getData = async () => {
       const res = await getBlog(id);

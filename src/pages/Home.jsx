@@ -67,7 +67,7 @@ function Home() {
     <div className={styles.homeContainer}>
       <GreetingsNav />
       <Quote>"Discipline is the bridge between goals and accomplishment"</Quote>
-      <HapinessMeter progress={state.totalReward} />
+      <HapinessMeter progress={state?.totalReward} />
       {/* TASKS Section */}
       <div className={styles.todos}>
         <TodoTitle imgSrc="/HomeAssets/mustdo.png" time="Must Do" />

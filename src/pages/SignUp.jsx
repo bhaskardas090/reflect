@@ -1,14 +1,17 @@
 import React from "react";
-import Logo from "../common/Logo/Logo";
 import styles from "../styles/Auth.module.css";
-import SocialLogin from "../common/SocialLogin/SocialLogin";
+// Component imports
+import Logo from "../common/Logo/Logo";
+// MUI component imports
 import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
+// Library imports
 import { Link } from "react-router-dom";
 import { signUpSchema } from "../helper/Validation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+// Custom hook import
 import useRegister from "../hooks/useRegister";
 
 function SignUp() {
@@ -23,9 +26,9 @@ function SignUp() {
     resolver: yupResolver(signUpSchema),
   });
 
+  // Event Handler - Signing up the user
   const onSubmit = async (data) => {
     signup(data.email, data.password, data.username);
-    // reset();
   };
   return (
     <div>
@@ -40,7 +43,7 @@ function SignUp() {
             {...register("email")}
           />
           {errors.email && (
-            <Alert severity="error" sx={{ width: "75vw" }}>
+            <Alert severity="error" className={styles.redirect}>
               {errors.email?.message}
             </Alert>
           )}
@@ -53,7 +56,7 @@ function SignUp() {
             {...register("username")}
           />
           {errors.username && (
-            <Alert severity="error" sx={{ width: "75vw" }}>
+            <Alert severity="error" className={styles.redirect}>
               {errors.username?.message}
             </Alert>
           )}
@@ -65,7 +68,7 @@ function SignUp() {
             {...register("password")}
           />
           {errors.password && (
-            <Alert severity="error" sx={{ width: "75vw" }}>
+            <Alert severity="error" className={styles.redirect}>
               {errors.password?.message}
             </Alert>
           )}
@@ -77,7 +80,7 @@ function SignUp() {
             {...register("confirmPassword")}
           />
           {errors.confirmPassword && (
-            <Alert severity="error" sx={{ width: "75vw" }}>
+            <Alert severity="error" className={styles.redirect}>
               Password do not match
             </Alert>
           )}
@@ -89,7 +92,7 @@ function SignUp() {
             {loading ? "Loading..." : "Register"}
           </Button>
           {error && (
-            <Alert severity="error" sx={{ width: "75vw" }}>
+            <Alert severity="error" className={styles.redirect}>
               {error}
             </Alert>
           )}
@@ -103,8 +106,6 @@ function SignUp() {
           </p>
         </div>
       </div>
-      {/* OTHER AUTH METHOS */}
-      {/* <SocialLogin /> */}
     </div>
   );
 }

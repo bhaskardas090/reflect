@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import styles from "./ResourceCard.module.css";
+// MUI component imports
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+// Library imports
 import { Link, useNavigate } from "react-router-dom";
+// Component imports
 import ResourceVideo from "../ResourceVideo/ResourceVideo";
 
 function ResourceCard({ type, data }) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  //! if type (primary) is there it indicates the blogs else it indicates video
+  // Event handler : If type is primary navigating to blog page else It will show the video
   const handleClick = () => {
     if (type) navigate(`/blogs/${data.id}`);
     if (!type) {

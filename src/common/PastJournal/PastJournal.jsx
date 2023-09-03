@@ -1,27 +1,31 @@
 import React, { useState } from "react";
-import dayjs from "dayjs";
 import styles from "./PastJournal.module.css";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import PageHeader from "../PageHeader/PageHeader";
+// Custom hook
 import useDB from "../../hooks/useDB";
-// MUI CARD
+// MUI componets
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { getJournalCover } from "../../helper/JournalCover";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+// Components imports
 import NoData from "../NoData/NoData";
+import PageHeader from "../PageHeader/PageHeader";
+import { getJournalCover } from "../../helper/JournalCover";
+// Asset imports
+import nodatasearch from "../../assets/nodata-search.png";
 
 function PastJournal({ setShowPastModal }) {
-  const { getJournalHistory } = useDB("journals");
-  const [history, setHistory] = useState(null);
-  const [noData, setNoData] = useState(null);
+  const { getJournalHistory } = useDB("journals"); // Calling the backend service
+  const [history, setHistory] = useState(null); // State to store previous data
+  const [noData, setNoData] = useState(null); // State to check if data is available or not
 
-  let journalCover = getJournalCover();
+  let journalCover = getJournalCover(); // Getting a random journal cover
 
+  // Event handler : getting the journal from backend
   const handleChange = async (e) => {
     getJournalHistory(e.$d.toString(), setHistory, setNoData);
   };
@@ -46,13 +50,13 @@ function PastJournal({ setShowPastModal }) {
           />
         </DemoContainer>
       </LocalizationProvider>
+      {/* Initial Page : No Data Fallback */}
       {!history && !noData && <NoData />}
       {/* 
        // ***********************
       //* Result Part 
       // ************************
       */}
-      {console.log(journalCover, "*****")}
       {history && (
         <div
           style={{ width: "100vw", display: "flex", justifyContent: "center" }}
@@ -83,10 +87,7 @@ function PastJournal({ setShowPastModal }) {
         <div
           style={{ height: "70vh", textAlign: "center", paddingTop: "3rem" }}
         >
-          <img
-            alt="no data"
-            src="https://cdn-icons-png.flaticon.com/256/7591/7591003.png"
-          />
+          <img alt="no data" src={nodatasearch} />
           <h3 style={{ padding: "1rem", fontSize: "1rem" }}>
             Nothing no show.
             <br />

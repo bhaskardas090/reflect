@@ -10,15 +10,15 @@ const SignIn = React.lazy(() => import("./pages/SignIn"));
 const Breathe = React.lazy(() => import("./pages/Breathe"));
 const Meditate = React.lazy(() => import("./pages/Meditate"));
 const ChatBot = React.lazy(() => import("./pages/ChatBot"));
-const Account = React.lazy(() => import("./pages/User/Account"));
-const UpdateAccount = React.lazy(() => import("./pages/User/UpdateAccount"));
-const Resource = React.lazy(() => import("./pages/Resource"));
-const SelectRoutine = React.lazy(() => import("./pages/SelectRoutine"));
+const Account = React.lazy(() => import("./pages/user/Account"));
+const UpdateAccount = React.lazy(() => import("./pages/user/UpdateAccount"));
+const Resource = React.lazy(() => import("./pages/extra/Resource"));
+const SelectRoutine = React.lazy(() => import("./pages/extra/SelectRoutine"));
 const MusicPlayer = React.lazy(() => import("./pages/MusicPlayer"));
-const FAQs = React.lazy(() => import("./pages/User/FAQs"));
-const Journal = React.lazy(() => import("./pages/User/Journal"));
-const RoutineHistory = React.lazy(() => import("./pages/User/RoutineHistory"));
-const Blog = React.lazy(() => import("./pages/Blog"));
+const FAQs = React.lazy(() => import("./pages/extra/FAQs"));
+const Journal = React.lazy(() => import("./pages/Journal"));
+const RoutineHistory = React.lazy(() => import("./pages/extra/RoutineHistory"));
+const Blog = React.lazy(() => import("./pages/extra/Blog"));
 
 function App() {
   return (

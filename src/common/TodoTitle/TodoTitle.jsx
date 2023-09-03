@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styles from "./TodoTitle.module.css";
+// Component imports
 import TodoAddForm from "../TodoAddForm/TodoAddForm";
+// Asset imports
 import add from "../../assets/add.png";
+
 function TodoTitle({ imgSrc, time }) {
   const [showTodoForm, setShowTodoForm] = useState(false);
   return (

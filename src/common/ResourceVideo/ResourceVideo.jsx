@@ -1,7 +1,10 @@
 import React from "react";
-import Backdrop from "@mui/material/Backdrop";
-import ReactPlayer from "react-player";
 import styles from "./ResourceVideo.module.css";
+// MUI component
+import Backdrop from "@mui/material/Backdrop";
+// Library imports
+import ReactPlayer from "react-player";
+
 function ResourceVideo({ setIsOpen, isOpen, videoSource }) {
   return (
     <Backdrop

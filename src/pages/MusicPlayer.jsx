@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 import "../styles/MusicPlayer.css";
-import { useParams, useLocation } from "react-router";
+// Library imports
+import { useLocation } from "react-router";
+// Hooks imports
 import useDB from "../hooks/useDB";
+// Component imports
 import PlayerControl from "../common/PlayerController/PlayerControl";
-import { Link } from "react-router-dom";
 import Lazyloader from "../common/Lazyloader/Lazyloader";
 import { PlayerLoader } from "../helper/SkeletonLoader";
 
 const MusicPlayer = () => {
   const { state } = useLocation();
-  // const { id, collection } = useParams();
-  // console.log(state.id, state.collection, "MEDITATION DETAILS");
   const { getMeditationMusic, meditationMusic, getPranayam, pranayam } = useDB(
     state.collection
-  );
-  const [audioFile, setAudioFile] = useState(null);
-  const [play, setPlay] = useState(false);
+  ); // Backend methods for breathe and meditation
+  const [audioFile, setAudioFile] = useState(null); // State for storing audioFile
+  const [play, setPlay] = useState(false); // State for play state
+  // Conditionally calling the backend 
   useEffect(() => {
     state.collection === "breathe" && getPranayam(state.id);
     state.collection === "meditation" && getMeditationMusic(state.id);
   }, [state.id]);
 
+  // Setting the audioFile data conditionally
   useEffect(() => {
     if (state.collection === "breathe") {
       setAudioFile(pranayam);

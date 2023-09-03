@@ -1,21 +1,25 @@
 import React from "react";
+import styles from "../../styles/Account.module.css";
+// MUI component imports
 import Box from "@mui/material/Box";
-import styles from "../../styles/User/Account.module.css";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment"; // Import InputAdornmentx
 import Button from "@mui/material/Button";
-import PersonIcon from "@mui/icons-material/Person";
-import PageHeader from "../../common/PageHeader/PageHeader";
+// Library imports
 import { useNavigate } from "react-router";
-
+// Component imports
+import PageHeader from "../../common/PageHeader/PageHeader";
 //ICONS
+import PersonIcon from "@mui/icons-material/Person";
 import CakeIcon from "@mui/icons-material/Cake";
 import PhoneIcon from "@mui/icons-material/Phone";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import WcIcon from "@mui/icons-material/Wc";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
+//Custom hook
 import useDB from "../../hooks/useDB";
 import useAuthContext from "../../hooks/useAuthContext";
+//Library imports
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userDetails } from "../../helper/Validation";
@@ -29,11 +33,11 @@ const UpdateAccount = () => {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
   } = useForm({
     resolver: yupResolver(userDetails),
   });
 
+  // Event handler : Update the user details
   const onSubmit = async (data) => {
     updateUser(data);
   };
@@ -56,7 +60,9 @@ const UpdateAccount = () => {
           noValidate
           autoComplete="off"
         >
-          <b style={{}}>! Please fill all the fields to update</b>
+          <b style={{ textAlign: "center" }}>
+            Please fill all the fields to update
+          </b>
           <TextField
             label="Name"
             variant="outlined"

@@ -1,26 +1,32 @@
+import { useState } from "react";
 import styles from "./AddJournal.module.css";
-
+// Library imports
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useState } from "react";
+// Custom hook imports
 import useDB from "../../hooks/useDB";
 import useAuthContext from "../../hooks/useAuthContext";
 
-function AddJournal({ setShowAddModal }) {
+function AddJournal({
+  setShowAddModal,
+  setShowCongratsModal,
+  setShowTryModal,
+}) {
   const [journal, setJournal] = useState("");
+  // Hooks consumed
   const { user } = useAuthContext();
   const { addJournal, isJournalAlreadyDone } = useDB("journals");
 
+  // Event Handler : Checking if the journal added for today or not
   const handleAddJournal = async (data) => {
     const journalAlreadyDone = await isJournalAlreadyDone(user.uid);
     if (journalAlreadyDone) {
-      alert(
-        "You can not perform this action. You have already submitted the journal for Today. Try again tomorrow."
-      );
+      setShowTryModal(true);
     } else {
       addJournal(user.uid, data);
       setJournal("");
       setShowAddModal(false);
+      setShowCongratsModal(true);
     }
   };
 
@@ -35,7 +41,7 @@ function AddJournal({ setShowAddModal }) {
           width: "100vw",
           marginTop: "-2px",
         }}
-        placeholder="What about what your day in brief... Like what you learned today, your activities, about anyone you helped and charity that makes you your better self... :)"
+        placeholder="Write about your day in brief... Like what you learned today, your activities, about anyone you helped and charity that makes you your better self... :)"
       />
       <div className={styles.modalButtonsContainer}>
         <button

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import Logo from "../common/Logo/Logo";
 import styles from "../styles/Auth.module.css";
-import SocialLogin from "../common/SocialLogin/SocialLogin";
+// Component imports
+import Logo from "../common/Logo/Logo";
+// MUI component imports
 import { Alert } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+// Library imports
 import { Link } from "react-router-dom";
+// Custom hook import
 import useLogin from "../hooks/useLogin";
+// Asset import
 import meditate from "../assets/Login_Page_1.png";
 
 function SignIn() {
@@ -17,6 +21,7 @@ function SignIn() {
     password: "",
   });
 
+  // Event handler : signing in the user
   const handleSubmit = async (e) => {
     e.preventDefault();
     login(signInDeatils.email, signInDeatils.password);
@@ -58,7 +63,7 @@ function SignIn() {
             {loading ? "Loading..." : "Log In"}
           </Button>
           {error && (
-            <Alert severity="error" sx={{ width: "75vw" }}>
+            <Alert severity="error" className={styles.alert}>
               {error}
             </Alert>
           )}
@@ -75,8 +80,6 @@ function SignIn() {
           </p>
         </div>
       </div>
-      {/* OTHER AUTH METHOS */}
-      {/* <SocialLogin /> */}
     </div>
   );
 }

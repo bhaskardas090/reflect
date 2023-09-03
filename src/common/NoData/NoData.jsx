@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./NoData.module.css";
+// Asset import
 import DataImg from "../../assets/data.svg";
 
 function NoData() {

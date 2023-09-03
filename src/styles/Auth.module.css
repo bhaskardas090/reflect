@@ -34,6 +34,9 @@
   display: flex;
   justify-content: center;
 }
+.alert {
+  width: 75vw;
+}
 
 /* RESPONSIVENESS FOR LARGE SCREEN */
 
@@ -46,5 +49,8 @@
   }
   .register {
     width: 40vw;
+  }
+  .alert {
+    width: 50vw;
   }
 }

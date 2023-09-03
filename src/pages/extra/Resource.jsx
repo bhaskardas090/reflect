@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Resources.module.css";
-import PageHeader from "./../common/PageHeader/PageHeader";
-import { useNavigate } from "react-router";
-import Quote from "./../common/Quote/Quote";
-import meditate from "../assets/meditation_resource.png";
+import styles from "../../styles/Resources.module.css";
+// MUI imports
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import ResourceCard from "../common/ResourceCard/ResourceCard";
-import useDB from "../hooks/useDB";
+// Component imports
+import PageHeader from "../../common/PageHeader/PageHeader";
+import Quote from "../../common/Quote/Quote";
+import ResourceCard from "../../common/ResourceCard/ResourceCard";
+// Custom hook imports
+import useDB from "../../hooks/useDB";
+// Library imports
+import { useNavigate } from "react-router";
 
 function Resource() {
   const navigate = useNavigate();
-  const [value, setValue] = useState(0);
-  const [activeTab, setActiveTab] = useState("blogs");
-  const { getBlogs, getVideos, getPodcasts } = useDB(activeTab);
-  const [resData, setResData] = useState("");
+  const [value, setValue] = useState(0); // Used for toggle
+  const [activeTab, setActiveTab] = useState("blogs"); // Used for checking the activetab
+  const { getBlogs, getVideos, getPodcasts } = useDB(activeTab); // Backend methods
+  const [resData, setResData] = useState(""); // Used to store the resource data
 
+  // Event handler : toogle tabs
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  // Event handeler : toogle active tab changes
   const handleActiveTab = (e) => {
     setActiveTab(e.target.firstChild.data.toLowerCase());
   };
 
+  // Conditionally callin the backend based on active tab
   useEffect(() => {
     const getBlogsData = async () => {
       const res = await getBlogs();
@@ -78,7 +84,6 @@ function Resource() {
               <ResourceCard data={podcast} key={podcast.id} />
             ))}
         </div>
-        {/* <img src={meditate} alt="meditation" className={styles.meditate} /> */}
       </div>
     </div>
   );

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Alert, Button, TextField } from '@mui/material';
-import { useNavigate } from 'react-router';
 import styles from '../styles/Auth.module.css';
+// MUI Component
+import { Alert, Button, TextField } from '@mui/material';
+// Library imports
+import { useNavigate } from 'react-router';
+// Component imports
 import Logo from '../common/Logo/Logo';
+// Custom hook imports
 import useResetPassword from '../hooks/useResetPassword';
 
 function ResetPassword() {
@@ -12,7 +16,7 @@ function ResetPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    resetpassword();
+    resetpassword(email);
   };
   return (
     <>

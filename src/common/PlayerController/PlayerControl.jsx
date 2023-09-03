@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
+// Icon imports
 import { IconContext } from "react-icons";
 import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
+// Library imports
 import useSound from "use-sound";
-import Skeleton from "@mui/material/Skeleton";
 
 const PlayerControl = ({ audioFile, setPlay }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false); // player playing state
+  // total time
   const [time, setTime] = useState({
     min: "",
     sec: "",
   });
+  // current time
   const [currTime, setCurrTime] = useState({
     min: "",
     sec: "",
@@ -17,12 +20,14 @@ const PlayerControl = ({ audioFile, setPlay }) => {
 
   const [seconds, setSeconds] = useState("0");
 
+  // using the library to get the methods
   const [play, { pause, duration, sound }] = useSound(audioFile?.songUrl, {
     onend: () => {
       setIsPlaying(false);
     },
   });
 
+  // used for calculation the total time
   useEffect(() => {
     if (duration) {
       const sec = duration / 1000;
@@ -35,6 +40,7 @@ const PlayerControl = ({ audioFile, setPlay }) => {
     }
   }, [isPlaying, duration]);
 
+  // used for calculating the current time
   useEffect(() => {
     const interval = setInterval(() => {
       if (sound) {
@@ -51,6 +57,7 @@ const PlayerControl = ({ audioFile, setPlay }) => {
     return () => clearInterval(interval);
   }, [sound]);
 
+  // toggle between play and pause
   const playingButton = () => {
     if (isPlaying) {
       pause();
@@ -62,14 +69,6 @@ const PlayerControl = ({ audioFile, setPlay }) => {
       setPlay(true);
     }
   };
-
-  useEffect(() => {
-    return () => {
-      pause();
-      // setIsPlaying(false);
-      console.log("Unmounted ****");
-    };
-  }, []);
 
   return (
     <div>
@@ -109,7 +108,6 @@ const PlayerControl = ({ audioFile, setPlay }) => {
           </button>
         )}
       </div>
-      {/* <button onClick={() => pause()}>test</button> */}
     </div>
   );
 };

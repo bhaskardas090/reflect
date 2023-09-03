@@ -1,25 +1,29 @@
 import React from "react";
-import styles from "../styles/SelectRoutine.module.css";
+import styles from "../../styles/SelectRoutine.module.css";
+// Component imports
 import {
   studentRoutine,
   workingProfessionalRoutine,
   houseWifeRoutine,
   oldAgeRoutine,
-} from "../helper/TaskType";
-
+} from "../../helper/TaskType";
+import PageHeader from "../../common/PageHeader/PageHeader";
+// Library import
 import { useNavigate } from "react-router-dom";
-import useDB from "../hooks/useDB";
-import PageHeader from "../common/PageHeader/PageHeader";
-import student from "../assets/STUDENT.jpg";
-import working from "../assets/WORKING.jpg";
-import homemaker from "../assets/HOMEMAKER.jpg";
-import oldage from "../assets/OLDAGE.jpg";
+// Custom hook
+import useDB from "../../hooks/useDB";
+// Asset imports
+import student from "../../assets/STUDENT.jpg";
+import working from "../../assets/WORKING.jpg";
+import homemaker from "../../assets/HOMEMAKER.jpg";
+import oldage from "../../assets/OLDAGE.jpg";
 
 function SelectTask() {
   const navigate = useNavigate();
   const { selectRoutine } = useDB("routines");
+
+  // Event handler : Select the active task
   const handleTask = async (activeTask) => {
-    console.log(activeTask);
     selectRoutine(activeTask);
     navigate("/");
   };

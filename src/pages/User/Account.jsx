@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
+import React, { useEffect,useState } from "react";
+import styles from "../../styles/Account.module.css";
+// MUI componetns
 import Box from "@mui/material/Box";
-import styles from "../../styles/User/Account.module.css";
-import { useState } from "react";
 import TextField from "@mui/material/TextField";
-import PageHeader from "../../common/PageHeader/PageHeader";
-import { useNavigate } from "react-router";
-import useDB from "../../hooks/useDB";
 import IconButton from "@mui/material/IconButton";
-import EditIcon from "@mui/icons-material/Edit";
+// Component imports
+import PageHeader from "../../common/PageHeader/PageHeader";
+// Hook imports
+import useDB from "../../hooks/useDB";
 import useAuthContext from "../../hooks/useAuthContext";
+// Library import
+import { useNavigate } from "react-router";
 //ICONS
+import EditIcon from "@mui/icons-material/Edit";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
@@ -21,11 +23,12 @@ import TransgenderIcon from "@mui/icons-material/Transgender";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 
 const Account = () => {
-  const [account, setAccount] = useState(null);
   const { user } = useAuthContext();
-  const { getUser } = useDB("users");
+  const { getUser } = useDB("users"); // Getting the user form the backend
+  const [account, setAccount] = useState(null);
   const navigate = useNavigate();
 
+  // Getting the user from the backend
   useEffect(() => {
     const getUserData = async () => {
       const data = await getUser(user?.displayName);

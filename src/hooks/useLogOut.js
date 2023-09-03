@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { auth } from '../firebase/config';
-import { useNavigate } from 'react-router';
-import useAuthContext from '../hooks/useAuthContext';
+import { useState } from "react";
+import { auth } from "../firebase/config";
+import { useNavigate } from "react-router";
+import useAuthContext from "../hooks/useAuthContext";
 
 function useLogOut() {
   const { dispatch } = useAuthContext();
@@ -13,9 +13,9 @@ function useLogOut() {
     setLoading(true);
     try {
       await auth.signOut();
-      dispatch({ type: 'LOGOUT' });
+      dispatch({ type: "LOGOUT" });
       setError(null);
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       setError(error.message);
     }
