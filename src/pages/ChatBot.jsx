@@ -12,7 +12,7 @@ import "../styles/ChatBot.css";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../common/PageHeader/PageHeader";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",

@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 // Library imports
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // Hooks imports
 import useDB from "../../hooks/useDB";
@@ -16,8 +16,10 @@ function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
   const { addTask } = useDB("routines");
 
   const {
+    control,
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(addTaskSchema),
@@ -27,6 +29,7 @@ function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
   const onSubmit = (data) => {
     addTask(data.task, time);
     setShowTodoForm(false);
+    reset();
   };
 
   return (
@@ -39,11 +42,25 @@ function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
       >
         <div className={styles.todoForm}>
           <div className={styles.todoFormContainer}>
-            <TextField
+            {/* <TextField
               label="Enter you task"
               variant="outlined"
+              defaultValue=""
               className={styles.textField}
               {...register("task")}
+            /> */}
+            <Controller
+              name="task"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <TextField
+                  label="Enter your task"
+                  variant="outlined"
+                  fullWidth
+                  {...field}
+                />
+              )}
             />
             <Button
               variant="contained"
