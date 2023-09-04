@@ -100,7 +100,7 @@ function SignUp() {
         <div className={styles.login}>
           <p>
             Already Have an account?{" "}
-            <Link to="/login" className={styles.alert}>
+            <Link to="/login" className={styles.redirect}>
               SIGN IN
             </Link>
           </p>
