@@ -40,10 +40,12 @@
 }
 
 .musicCover {
-  height: 30vh;
+  height: 250px;
+  height: 250px;
   object-fit: cover;
   margin: 3rem auto;
   animation: imageLoading ease-in 1.2s;
+  border-radius: 50%;
 }
 @keyframes imageLoading {
   from {
@@ -57,6 +59,7 @@
   height: 30vh;
   object-fit: cover;
   margin: 3rem auto;
+  border-radius: 50%;
   animation: rotation 30s infinite linear;
 }
 @keyframes rotation {

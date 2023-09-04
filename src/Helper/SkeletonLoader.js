@@ -45,6 +45,25 @@ export function ListLoader() {
   );
 }
 
+export function ResourceCardLoader() {
+  return (
+    <Card sx={{ width: "90%", margin: "1rem auto" }}>
+      <Skeleton
+        sx={{ width: "100%", height: "120px" }}
+        animation="wave"
+        variant="rectangular"
+      />
+
+      <CardContent>
+        <React.Fragment>
+          <Skeleton animation="wave" height={30} style={{ marginBottom: 6 }} />
+          <Skeleton animation="wave" height={10} />
+        </React.Fragment>
+      </CardContent>
+    </Card>
+  );
+}
+
 export function PlayerLoader() {
   return (
     <div

@@ -10,7 +10,7 @@ export const authReducer = (state, action) => {
     case "LOGOUT":
       return { ...state, user: null };
     case "AUTH_IS_READY":
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload, authIsReady: true };
     default:
       return state;
   }
@@ -24,7 +24,6 @@ function AuthContextProvider({ children }) {
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
-      console.log("USER SET ON RELOAD ****");
       dispatch({ type: "AUTH_IS_READY", payload: user });
     });
     return () => unsub;

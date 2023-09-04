@@ -6,13 +6,6 @@ function Details({ pranayamTitle, benefits, direction, precautions, video }) {
   return (
     <div>
       <h3>Pranayam : {pranayamTitle}</h3>
-      <ReactPlayer
-        url={video}
-        controls={true}
-        width="80vw"
-        height="40vw"
-        className={styles.player}
-      />
       {/* <div className={styles.direction}>
         <h3>DIRECTION:</h3>
         <ul className={styles.list}>

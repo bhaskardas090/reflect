@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "../styles/Auth.module.css";
 // Component imports
 import Logo from "../common/Logo/Logo";
@@ -8,6 +7,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 // Library imports
 import { Link } from "react-router-dom";
+import { signInSchema } from "../helper/Validation";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 // Custom hook import
 import useLogin from "../hooks/useLogin";
 // Asset import
@@ -16,16 +18,19 @@ import meditate from "../assets/Login_Page_1.png";
 function SignIn() {
   const { login, error, loading } = useLogin();
 
-  const [signInDeatils, setSignInDeatils] = useState({
-    email: "",
-    password: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(signInSchema),
   });
 
   // Event handler : signing in the user
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    login(signInDeatils.email, signInDeatils.password);
+  const onSubmit = async (data) => {
+    login(data.email, data.password);
   };
+
   return (
     <div className={styles.loginComponent}>
       <Logo />
@@ -38,27 +43,31 @@ function SignIn() {
             label="Enter your email"
             variant="outlined"
             type="email"
-            value={signInDeatils.email}
-            onChange={(e) =>
-              setSignInDeatils({ ...signInDeatils, email: e.target.value })
-            }
+            {...register("email")}
             className={styles.inputField}
           />
+          {errors.password && (
+            <Alert severity="error" className={styles.alert}>
+              {errors.email?.message}
+            </Alert>
+          )}
           <TextField
             label="Enter Password"
             variant="outlined"
             type="password"
-            value={signInDeatils.password}
+            {...register("password")}
             autoComplete="false"
-            onChange={(e) =>
-              setSignInDeatils({ ...signInDeatils, password: e.target.value })
-            }
             className={styles.inputField}
           />
+          {errors.password && (
+            <Alert severity="error" className={styles.alert}>
+              {errors.password?.message}
+            </Alert>
+          )}
           <Button
             variant="contained"
             className={styles.register}
-            onClick={handleSubmit}
+            onClick={handleSubmit(onSubmit)}
           >
             {loading ? "Loading..." : "Log In"}
           </Button>

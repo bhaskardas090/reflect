@@ -218,6 +218,7 @@ function useDB(collection) {
         songUrl: doc.data().songSrc,
         songName: doc.data().songTitle,
         bgSrc: doc.data().bgImgSrc,
+        credit: doc.data().credit,
       });
     }
     return doc.data();

@@ -9,8 +9,11 @@ import MeditationType from "../common/MeditationType/MeditationType";
 import { ListLoader } from "../helper/SkeletonLoader";
 //Custom Hook imports
 import useDB from "../hooks/useDB";
+import { useLocation } from "react-router";
 
 function Breathe() {
+  const { pathname } = useLocation();
+  const path = pathname.split("/")[1]; // Getting the pathname for redirecting the user for audio version
   const { getPranayamas, breatheData } = useDB("breathe");
   // Consuming the hook to get pranayams from backend
   useEffect(() => {
@@ -34,6 +37,7 @@ function Breathe() {
                 data={pranayam.data}
                 id={pranayam.id}
                 key={pranayam.id}
+                path={path}
               />
             ))
           )}

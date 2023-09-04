@@ -8,7 +8,9 @@ import { CardActionArea } from "@mui/material";
 // Library imports
 import { Link, useNavigate } from "react-router-dom";
 // Component imports
-import ResourceVideo from "../ResourceVideo/ResourceVideo";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
+//Asset imports
+import play from "../../assets/play.png";
 
 function ResourceCard({ type, data }) {
   const navigate = useNavigate();
@@ -57,21 +59,17 @@ function ResourceCard({ type, data }) {
             )}
             {type && <Link className={styles.readMore}>Read More</Link>}
 
-            {!type && (
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/260/260446.png"
-                alt="play"
-                className={styles.play}
-              />
-            )}
+            {!type && <img src={play} alt="play" className={styles.play} />}
           </CardContent>
         </div>
       </CardActionArea>
-      <ResourceVideo
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        videoSource={data.source}
-      />
+      {data.source && (
+        <VideoPlayer
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          videoSource={data.source}
+        />
+      )}
     </Card>
   );
 }

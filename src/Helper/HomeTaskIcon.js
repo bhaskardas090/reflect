@@ -30,7 +30,7 @@ const data = [
   "https://firebasestorage.googleapis.com/v0/b/reflect-manas.appspot.com/o/home%2Ficon%2FtaskImg6.jpg?alt=media&token=d81af21a-e95b-4ec4-95b4-25cb3775693f",
   "https://firebasestorage.googleapis.com/v0/b/reflect-manas.appspot.com/o/home%2Ficon%2FtaskImg7.jpg?alt=media&token=7f084a1a-c801-483e-84c8-d63ac70b899f",
   "https://firebasestorage.googleapis.com/v0/b/reflect-manas.appspot.com/o/home%2Ficon%2FtaskImg8.jpg?alt=media&token=fee4c377-a5ae-41ec-b98f-020acd4ccb78",
-  "https://firebasestorage.googleapis.com/v0/b/reflect-manas.appspot.com/o/home%2Ficon%2FtaskImg9.jpg?alt=media&token=fb7ff0ea-93c8-4f96-9fbd-0d8a533cf0a4",
+  " ",
 ];
 
 export const getHomeTaskIcon = () => {

@@ -67,23 +67,25 @@ function Resource() {
             <Tab label="Podcasts" onClick={handleActiveTab} />
           </Tabs>
         </Box>
-        <div className={styles.cardContainer}>
-          {activeTab === "blogs" &&
-            resData &&
-            resData?.map((blog) => (
-              <ResourceCard type="blog" data={blog} key={blog.id} />
-            ))}
-          {activeTab === "videos" &&
-            resData &&
-            resData?.map((video) => (
-              <ResourceCard data={video} key={video.id} />
-            ))}
-          {activeTab === "podcasts" &&
-            resData &&
-            resData?.map((podcast) => (
-              <ResourceCard data={podcast} key={podcast.id} />
-            ))}
-        </div>
+        {
+          <div className={styles.cardContainer}>
+            {activeTab === "blogs" &&
+              resData &&
+              resData?.map((blog) => (
+                <ResourceCard type="blog" data={blog} key={blog.id} />
+              ))}
+            {activeTab === "videos" &&
+              resData &&
+              resData?.map((video) => (
+                <ResourceCard data={video} key={video.id} />
+              ))}
+            {activeTab === "podcasts" &&
+              resData &&
+              resData?.map((podcast) => (
+                <ResourceCard data={podcast} key={podcast.id} />
+              ))}
+          </div>
+        }
       </div>
     </div>
   );

@@ -14,7 +14,8 @@ import BreatheImg from "../assets/Breathe_Page.png";
 
 function Meditate() {
   const navigate = useNavigate();
-  const medId = getRandomNumber(2);
+  const medId = getRandomNumber(9);
+  console.log(medId, "Mediation id");
   return (
     <div className={styles.breatheContainer}>
       <GreetingsNav />

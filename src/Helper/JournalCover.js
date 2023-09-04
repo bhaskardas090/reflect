@@ -14,6 +14,6 @@ const data = [
 ];
 
 export const getJournalCover = () => {
-  const id = getRandomNumber(9);
+  const id = getRandomNumber(10);
   return data[id];
 };

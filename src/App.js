@@ -4,6 +4,7 @@ import Loader from "./common/Loader/Loader";
 import { Route, Routes } from "react-router";
 import ProtectedRoute from "./helper/ProtectedRoute";
 import ResetPassword from "./pages/ResetPassword";
+import useAuthContext from "./hooks/useAuthContext";
 const Home = React.lazy(() => import("./pages/Home"));
 const SignUp = React.lazy(() => import("./pages/SignUp"));
 const SignIn = React.lazy(() => import("./pages/SignIn"));
@@ -21,35 +22,42 @@ const RoutineHistory = React.lazy(() => import("./pages/extra/RoutineHistory"));
 const Blog = React.lazy(() => import("./pages/extra/Blog"));
 
 function App() {
+  const { authIsReady } = useAuthContext();
   return (
-    <div className="App">
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/resetpassword" element={<ResetPassword />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/meditate" element={<Meditate />} />
-          <Route path="/music-player/meditate" element={<MusicPlayer />} />
+    <>
+      {authIsReady && (
+        <div className="App">
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/register" element={<SignUp />} />
+              <Route path="/login" element={<SignIn />} />
+              <Route path="/resetpassword" element={<ResetPassword />} />
 
-          {/* <Route element={<ProtectedRoute />}> */}
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/breathe" element={<Breathe />} />
-          <Route path="/music-player/breathe" element={<MusicPlayer />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/meditate" element={<Meditate />} />
+                <Route path="/breathe" element={<Breathe />} />
+                <Route path="/chatbot" element={<ChatBot />} />
+                <Route path="/music-player/breathe" element={<MusicPlayer />} />
+                <Route
+                  path="/music-player/meditate"
+                  element={<MusicPlayer />}
+                />
 
-          <Route path="/chatbot" element={<ChatBot />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/update-account" element={<UpdateAccount />} />
-          <Route path="/faqs" element={<FAQs />} />
-          <Route path="/journal" element={<Journal />} />
-          <Route path="/routine-history" element={<RoutineHistory />} />
-          {/* </Route> */}
-          <Route path="/resource" element={<Resource />} />
-          <Route path="/blogs/:id" element={<Blog />} />
-          <Route path="/select-routine" element={<SelectRoutine />} />
-        </Routes>
-      </Suspense>
-    </div>
+                <Route path="/account" element={<Account />} />
+                <Route path="/update-account" element={<UpdateAccount />} />
+                <Route path="/faqs" element={<FAQs />} />
+                <Route path="/journal" element={<Journal />} />
+                <Route path="/routine-history" element={<RoutineHistory />} />
+                <Route path="/resource" element={<Resource />} />
+                <Route path="/blogs/:id" element={<Blog />} />
+                <Route path="/select-routine" element={<SelectRoutine />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </div>
+      )}
+    </>
   );
 }
 

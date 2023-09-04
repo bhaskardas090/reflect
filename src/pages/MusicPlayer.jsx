@@ -8,6 +8,8 @@ import useDB from "../hooks/useDB";
 import PlayerControl from "../common/PlayerController/PlayerControl";
 import Lazyloader from "../common/Lazyloader/Lazyloader";
 import { PlayerLoader } from "../helper/SkeletonLoader";
+// Asset import
+import back from "../assets/back.png";
 
 const MusicPlayer = () => {
   const { state } = useLocation();
@@ -16,7 +18,7 @@ const MusicPlayer = () => {
   ); // Backend methods for breathe and meditation
   const [audioFile, setAudioFile] = useState(null); // State for storing audioFile
   const [play, setPlay] = useState(false); // State for play state
-  // Conditionally calling the backend 
+  // Conditionally calling the backend based on the previous url
   useEffect(() => {
     state.collection === "breathe" && getPranayam(state.id);
     state.collection === "meditation" && getMeditationMusic(state.id);
@@ -50,16 +52,16 @@ const MusicPlayer = () => {
             />
             <div>
               <h3 className="title">{audioFile?.songName}</h3>
-              <p className="subTitle">Tisha Saha</p>
+              <p className="subTitle">{audioFile?.credit}</p>
             </div>
             <PlayerControl
               audioFile={audioFile}
               setPlay={setPlay}
               playState={play}
             />
-            <a href="/">
+            <a href={state.collection === "breathe" ? "/breathe" : "/meditate"}>
               <img
-                src="https://cdn-icons-png.flaticon.com/128/318/318477.png"
+                src={back}
                 alt="back"
                 style={{
                   position: "absolute",

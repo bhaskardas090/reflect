@@ -1,3 +1,4 @@
+import { Skeleton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 // Icon imports
 import { IconContext } from "react-icons";
@@ -72,42 +73,86 @@ const PlayerControl = ({ audioFile, setPlay }) => {
 
   return (
     <div>
-      <div>
-        <div className="time">
-          <p className="min-sec-start">
-            {currTime.min}:{currTime.sec}
-          </p>
-          <p className="min-sec-end">
-            {time.min}:{time.sec}
-          </p>
+      {!time.sec ? (
+        // Loader
+        <div style={{ width: "260px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "1rem",
+            }}
+          >
+            <Skeleton animation="wave" height={10} width="10%" />
+            <Skeleton animation="wave" height={10} width="10%" />
+          </div>
+          <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+          <Skeleton
+            variant="circular"
+            width={40}
+            height={40}
+            sx={{ margin: "auto" }}
+          />
         </div>
-        <input
-          type="range"
-          min="0"
-          max={duration / 1000}
-          default="0"
-          value={seconds}
-          className="timeline"
-          onChange={(e) => {
-            sound.seek([e.target.value]);
-          }}
-        />
-      </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {!isPlaying ? (
-          <button className="playButton" onClick={playingButton}>
-            <IconContext.Provider value={{ size: "4rem", color: "#27AE60" }}>
-              <AiFillPlayCircle style={{ color: "black" }} />
-            </IconContext.Provider>
-          </button>
-        ) : (
-          <button className="playButton" onClick={playingButton}>
-            <IconContext.Provider value={{ size: "4rem", color: "#27AE60" }}>
-              <AiFillPauseCircle style={{ color: "black" }} />
-            </IconContext.Provider>
-          </button>
-        )}
-      </div>
+      ) : (
+        <>
+          <div>
+            <div className="time">
+              <p className="min-sec-start">
+                {currTime.min}:{currTime.sec}
+              </p>
+              <p className="min-sec-end">
+                {time.min}:{time.sec}
+              </p>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max={duration / 1000}
+              default="0"
+              value={seconds}
+              className="timeline"
+              onChange={(e) => {
+                sound.seek([e.target.value]);
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              outline: "none",
+            }}
+          >
+            {!isPlaying ? (
+              <button
+                className="playButton"
+                onClick={playingButton}
+                style={{ cursor: "pointer", outline: "none" }}
+              >
+                <IconContext.Provider
+                  value={{ size: "4rem", color: "#27AE60" }}
+                >
+                  <AiFillPlayCircle style={{ color: "black" }} />
+                </IconContext.Provider>
+              </button>
+            ) : (
+              <button
+                className="playButton"
+                onClick={playingButton}
+                style={{ cursor: "pointer", outline: "none" }}
+              >
+                <IconContext.Provider
+                  value={{ size: "4rem", color: "#27AE60" }}
+                >
+                  <AiFillPauseCircle style={{ color: "black" }} />
+                </IconContext.Provider>
+              </button>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };

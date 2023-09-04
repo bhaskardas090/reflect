@@ -3,24 +3,16 @@ import styles from "./MeditationType.module.css";
 //Component imports
 import Details from "../Details/Details";
 import ModalComponent from "../ModalComponent/ModalComponent";
-// Library imports
-import { useNavigate } from "react-router";
 //Asset import
 import info from "../../assets/info.png";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
-function MeditationType({ data, id }) {
+function MeditationType({ data, id, path }) {
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={styles.meditationTypeContainer}>
-      <div
-        className={styles.meditationType}
-        onClick={() =>
-          navigate(`/music-player/breathe`, {
-            state: { id: id, collection: "breathe" },
-          })
-        }
-      >
+      <div className={styles.meditationType} onClick={() => setIsOpen(true)}>
         <img
           src={data.coverImgSrc}
           alt="cover_image"
@@ -46,6 +38,16 @@ function MeditationType({ data, id }) {
           video={data.video}
         />
       </ModalComponent>
+      {/* Video Player for showing the video */}
+      {isOpen && (
+        <VideoPlayer
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          videoSource={data.video}
+          audioId={id}
+          path={path}
+        />
+      )}
     </div>
   );
 }
