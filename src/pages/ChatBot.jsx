@@ -12,7 +12,7 @@ import "../styles/ChatBot.css";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../common/PageHeader/PageHeader";
 
-const API_KEY = "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";
+// const API_KEY = "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";
 
 const systemMessage = {
   role: "system",
@@ -50,7 +50,7 @@ const ChatBot = () => {
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${API_KEY}`,
+            Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
