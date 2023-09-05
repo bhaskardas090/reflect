@@ -1,17 +1,71 @@
-.meditationType{
-    width: 44vw;
-    height: 13rem;
-    background-color: #ffffff;
-    border-radius: 8px;
+.meditationTypeContainer {
+  position: relative;
 }
-.meditationTypeContent{
-    padding: 0px 0.4rem;
+.meditationType {
+  width: 44vw;
+  min-height: max-content !important;
+  height: 60vw;
+  background-color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
 }
-.title{
-    font-size: 13px;
-    font-weight: bold;
+.meditationTypeContent {
+  padding: 5px 0.4rem;
 }
-.description{
-    font-size: 11px;
-    /* padding-top: 8px; */
+.meditationTypeImg {
+  width: 44vw;
+  height: 120px;
+  object-fit: cover;
+  animation: imageLoading ease-in 1.2s;
+  background-color: #abefd1;
+}
+@keyframes imageLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.title {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+.description {
+  font-size: 11px;
+  font-weight: 500;
+}
+.info {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  cursor: pointer;
+}
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .meditationType {
+    height: 35vh;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+  }
+  .meditationTypeImg {
+    height: 100%;
+    width: 15vw;
+    object-fit: cover;
+  }
+  .meditationTypeContent {
+    margin: auto 2rem;
+    width: 50%;
+  }
+  .meditationTypeContent h4 {
+    font-size: 1.1rem;
+  }
+  .meditationTypeContent h5 {
+    font-size: 0.9rem;
+  }
 }

@@ -1,0 +1,24 @@
+.complete {
+  border-bottom: 1px solid green;
+  margin: 1rem;
+  padding-bottom: 0.3rem;
+}
+.incomplete {
+  border-bottom: 1px solid red;
+  margin: 1rem;
+  padding-bottom: 0.3rem;
+}
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .complete,
+  .incomplete {
+    width: 55%;
+    margin: 1rem auto;
+  }
+  .completetasks,
+  .incompletetasks {
+    width: 50%;
+    margin: auto;
+  }
+}

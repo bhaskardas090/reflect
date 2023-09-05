@@ -1,34 +1,65 @@
-.loginScreenOne{
-    padding: 32px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.loginComponent {
+  height: 100vh;
 }
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem auto;
+.loginImg {
+  width: 50%;
 }
-.inputField{
-    width: 75vw;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
 }
-.register{
-    width: 75vw;
-    padding: 10px 0px;
-    border-radius: 4px;
-    background: linear-gradient(180deg, #FDA52B 21.30%, #FE7401 100%);
+.inputField {
+  width: 75vw;
 }
-
-.login p{
-    text-align: center;
+.register {
+  width: 75vw;
+  padding: 10px 0px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fda52b 21.3%, #fe7401 100%);
 }
 
-.redirect{
-    text-decoration: none;
-    color:#FDA52B;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 1px;
+.login p {
+  text-align: center;
+}
+
+.signup {
+  text-align: center;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+}
+.alert {
+  width: 75vw;
+}
+
+.redirect {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  color: #fd9c23;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .loginImg {
+    width: 220px;
+  }
+  .form {
+    margin: 1rem auto;
+  }
+  .inputField {
+    width: 40vw;
+  }
+  .register {
+    width: 40vw;
+  }
+  .alert {
+    width: 40vw;
+  }
 }

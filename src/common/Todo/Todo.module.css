@@ -1,32 +1,58 @@
-.todo{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 12px;
+.todo {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 12px;
+  gap: 0.3rem;
+  margin-left: 0.5rem;
 }
-.checkbox{
-    width: 25px;
-    height: 25px;
-    background-color: none;
-    border-radius: 50%;
-    border: 1px solid gray;
-    appearance: none;
-    outline: none;
-    margin: 24px 10px ;
-    padding: 1rem;
+.checkbox {
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  outline: none;
+  margin: 24px 10px;
+  padding: 1rem;
+  cursor: pointer;
 }
-.todoText{
-    
-    width: 219px;
-    height: 79px;
-    font-size: 15px;
-    text-align: left;
-    padding: 0px 2rem;
-    border-radius: 62px 0px 0px 62px;
-    background: #FFF;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.32);
-    border: none;
+
+.todoContent {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
 }
-.todoImg{
-    width: 101px;
-    height: 82px;
+.todoText {
+  width: 55vw;
+  height: 79px;
+  font-size: 15px;
+  text-align: left;
+  padding: 0px 1rem;
+  overflow: hidden;
+  background: #fff;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.todoImg {
+  width: 101px;
+  height: 79px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  animation: imageLoading ease-in 1.2s;
+}
+
+@keyframes imageLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .todoText {
+    width: 39vw;
+  }
 }

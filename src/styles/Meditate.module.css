@@ -1,10 +1,60 @@
-.meditateContainer{
-    /* background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%); */
-    background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%);
-    height: 100vh;
+.breatheContainer {
+  /* background-image: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%); */
+  background-image: linear-gradient(
+    180deg,
+    #fda026 0%,
+    #f5f1e5 22.92%,
+    #f3efe4 79.17%
+  );
+  height: 100%;
+  padding-bottom: 3rem;
 }
-.meditationCategory{
+.breatheImg {
+  padding: 2rem 0rem;
+  width: 100vw;
+  height: 45vh;
+  animation: imageLoading ease-in 1.2s;
+}
+@keyframes imageLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+.startButton {
+  width: 75vw;
+  padding: 10px 0px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fda52b 21.3%, #fe7401 100%);
+}
+.info {
+  color: black;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .bretheImgContainer {
+    width: 100vw;
     display: flex;
-    justify-content: space-evenly;
-    padding: 1rem 0rem;
+    justify-content: center;
+  }
+  .breatheImg {
+    width: 30vw;
+    height: 100%;
+  }
+  .startButton {
+    width: 35vw;
+    padding: 5px auto;
+  }
 }

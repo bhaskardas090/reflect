@@ -1,12 +1,12 @@
-import React from 'react'
-import styles from './Quote.module.css'
+import React from "react";
+import styles from "./Quote.module.css";
 
-function Quote({children}) {
+function Quote({ children }) {
   return (
     <div className={styles.quoteContainer}>
-        {children}
+      <p>{children}</p>
     </div>
-  )
+  );
 }
 
-export default Quote
+export default Quote;

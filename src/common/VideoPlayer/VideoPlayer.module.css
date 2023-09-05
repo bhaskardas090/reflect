@@ -1,0 +1,21 @@
+.audioAndClose {
+  position: absolute;
+  top: 1.5rem;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.closeBtn {
+  width: 2.1rem;
+  cursor: pointer;
+}
+.audio {
+  font-size: 15px;
+  width: 130px;
+  /* height: 38px; */
+  color: white;
+  background-color: #4ad295;
+  border-radius: 20px;
+  cursor: pointer;
+}

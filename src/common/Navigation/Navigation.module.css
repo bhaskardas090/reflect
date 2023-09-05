@@ -1,20 +1,32 @@
-.navbarContainer{
-    bottom: 0;
-    background-color: white;
-    padding: 0.6rem 0rem;
-    border-radius: 1rem 1rem 0rem 0rem;
-    position: fixed;
+.navbarContainer {
+  bottom: 0;
+  background-color: white;
+  padding: 0.6rem 0rem;
+  border-radius: 1rem 1rem 0rem 0rem;
+  position: fixed;
 }
-.links{
+.links {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .navbarContainer {
     width: 100vw;
-    display: flex;
-    justify-content: space-evenly;
-}
-.link{
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 14px;
+  }
+  .links {
+    width: 70vw;
+    margin: auto;
+  }
 }

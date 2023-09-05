@@ -1,0 +1,28 @@
+.routines {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+}
+
+.routine {
+  width: 100%;
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .routines {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80vw;
+    margin: auto;
+  }
+  .routine {
+    width: 40vw;
+    margin: auto;
+    cursor: pointer;
+  }
+}

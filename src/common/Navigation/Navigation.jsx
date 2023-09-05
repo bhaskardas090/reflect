@@ -1,42 +1,80 @@
-import React from 'react'
-import styles from './Navigation.module.css'
-import home from '../../assets/home.png'
-import meditate from '../../assets/medidate.png'
-import breathe from '../../assets/breathe.png'
-import chat from '../../assets/chat.png'
-import {Link} from 'react-router-dom';
+import React from "react";
+import styles from "./Navigation.module.css";
+// Library imports
+import { NavLink } from "react-router-dom";
+// Assets import
+import home from "../../assets/home.png";
+import meditate from "../../assets/medidate.png";
+import breathe from "../../assets/breathe.png";
+import chat from "../../assets/chat.png";
 
 function Navigation() {
   return (
     <div className={styles.navbarContainer}>
-        <div className={styles.links}>
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className={styles.link}>
-                    <img src={home} />
-                    <p>Home</p>
-                </div>
-            </Link>
-            <Link to="/meditate" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className={styles.link}>
-                    <img src={meditate} />
-                    <p>Meditate</p>
-                </div>
-            </Link>
-            <Link to="/breathe" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className={styles.link}>
-                    <img src={breathe} />
-                    <p>Breathe</p>
-                </div>
-            </Link>
-            <Link to="/chatbot" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className={styles.link}>
-                    <img src={chat} />
-                    <p>ChatBot</p>
-                </div>
-            </Link>
-        </div>
+      <div className={styles.links}>
+        <NavLink
+          to="/"
+          style={({ isActive, isPending }) => {
+            return {
+              color: isActive ? "#FFB02E" : "black",
+              textDecoration: "none",
+              fontSize: "14px",
+            };
+          }}
+        >
+          <div className={styles.link}>
+            <img src={home} alt="home" />
+            <p>Home</p>
+          </div>
+        </NavLink>
+        <NavLink
+          to="/meditate"
+          style={({ isActive, isPending }) => {
+            return {
+              color: isActive ? "#FFB02E" : "black",
+              textDecoration: "none",
+              fontSize: "14px",
+            };
+          }}
+        >
+          <div className={styles.link}>
+            <img src={meditate} alt="meditate" />
+            <p>Meditate</p>
+          </div>
+        </NavLink>
+        <NavLink
+          to="/breathe"
+          style={({ isActive, isPending }) => {
+            return {
+              color: isActive ? "#FFB02E" : "black",
+              textDecoration: "none",
+              fontSize: "14px",
+            };
+          }}
+        >
+          <div className={styles.link}>
+            <img src={breathe} alt="breathe" />
+            <p>Breathe</p>
+          </div>
+        </NavLink>
+        <NavLink
+          to="/chatbot"
+          style={({ isActive, isPending }) => {
+            return {
+              color: isActive ? "#FFB02E" : "black",
+              textDecoration: "none",
+              fontSize: "14px",
+            };
+          }}
+        >
+          <div className={styles.link}>
+            <img src={chat} alt="chat" />
+            <p>ChatBot</p>
+          </div>
+        </NavLink>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Navigation
+export default Navigation;
