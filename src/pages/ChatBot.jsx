@@ -84,7 +84,6 @@ const ChatBot = () => {
         position: "relative",
         height: "100vh",
         width: "100vw",
-        backgroundColor: "red",
       }}
     >
       <PageHeader
@@ -92,7 +91,15 @@ const ChatBot = () => {
         type="primary"
         onclick={() => navigate("/")}
       />
-      <MainContainer style={{ border: "none", paddingTop: "4rem" }}>
+      <MainContainer
+        style={{
+          border: "none",
+          paddingTop: "70px",
+          height: "100dvh",
+          // position: "abosolute",
+          // bottom: "0px",
+        }}
+      >
         <ChatContainer>
           <MessageList
             scrollBehavior="smooth"

@@ -1,3 +1,9 @@
+.loginComponent {
+  height: 100dvh;
+}
+.loginImg {
+  width: 50%;
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -41,6 +47,9 @@
 /* RESPONSIVENESS FOR LARGE SCREEN */
 
 @media (min-width: 768px) {
+  .loginImg {
+    width: auto;
+  }
   .form {
     margin: 1rem auto;
   }

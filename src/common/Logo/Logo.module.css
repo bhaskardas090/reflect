@@ -5,6 +5,7 @@
 }
 .logo {
   padding-top: 48px;
+  width: 20%;
 }
 .loginScreenOne {
   padding: 32px;
@@ -13,5 +14,7 @@
 /* RESPONSIVENESS FOR LARGE SCREEN */
 
 @media (min-width: 768px) {
-  
+  .logo {
+    width: auto;
+  }
 }
