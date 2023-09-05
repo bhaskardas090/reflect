@@ -3,6 +3,7 @@
   display: grid;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
 .todoFormContainer {
@@ -20,6 +21,9 @@
 /* RESPONSIVENESS FOR LARGE SCREEN */
 
 @media (min-width: 768px) {
+  .todoForm {
+    padding-bottom: 0;
+  }
   .textField,
   .addButton {
     width: 60vw;

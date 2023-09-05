@@ -82,7 +82,7 @@ const ChatBot = () => {
     <div
       style={{
         position: "relative",
-        height: "100vh",
+        height: "100dvh",
         width: "100vw",
       }}
     >
@@ -95,7 +95,9 @@ const ChatBot = () => {
         style={{
           border: "none",
           paddingTop: "70px",
-          height: "100dvh",
+          // height: "90vh",
+
+          // maxHeight: "100dvh",
           // position: "abosolute",
           // bottom: "0px",
         }}
