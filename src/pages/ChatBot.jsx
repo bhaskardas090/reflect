@@ -104,9 +104,7 @@ const ChatBot = () => {
           <MessageList
             scrollBehavior="smooth"
             typingIndicator={
-              isTyping ? (
-                <TypingIndicator content="Reflect AI is thinkging" />
-              ) : null
+              isTyping ? <TypingIndicator content="Reflect is typing" /> : null
             }
           >
             {messages.map((message, index) => (
