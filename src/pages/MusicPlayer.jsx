@@ -73,9 +73,7 @@ const MusicPlayer = () => {
                 cursor: "pointer",
               }}
               onClick={() => {
-                state.collection === "breathe"
-                  ? window.location.replace("./index.html#/breathe")
-                  : window.location.replace("./index.html#/meditate");
+                window.location.replace("./index.html");
               }}
             />
           </>
