@@ -44,7 +44,11 @@ function VideoPlayer({ setIsOpen, isOpen, videoSource, audioId, path }) {
         />
       </div>
 
-      <ReactPlayer url={videoSource} controls={true} />
+      {videoSource ? (
+        <ReactPlayer url={videoSource} controls={true} />
+      ) : (
+        <h1 style={{ color: "white" }}>Loading...</h1>
+      )}
     </Backdrop>
   );
 }
