@@ -59,7 +59,8 @@ const MusicPlayer = () => {
               setPlay={setPlay}
               playState={play}
             />
-            <a href={state.collection === "breathe" ? "/breathe" : "/meditate"}>
+            {/* <a href={state.collection === "breathe" ? "/breathe" : "/meditate"}> */}
+            <a href="/">
               <img
                 src={back}
                 alt="back"

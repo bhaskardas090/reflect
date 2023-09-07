@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import "./App.css";
 import Loader from "./common/Loader/Loader";
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./helper/ProtectedRoute";
 import ResetPassword from "./pages/ResetPassword";
 import useAuthContext from "./hooks/useAuthContext";
@@ -28,6 +28,7 @@ function App() {
       {authIsReady && (
         <div className="App">
           <Suspense fallback={<Loader />}>
+            {/* <HashRouter> */}
             <Routes>
               <Route path="/register" element={<SignUp />} />
               <Route path="/login" element={<SignIn />} />
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/select-routine" element={<SelectRoutine />} />
               </Route>
             </Routes>
+            {/* </HashRouter> */}
           </Suspense>
         </div>
       )}
