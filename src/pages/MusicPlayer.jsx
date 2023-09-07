@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/MusicPlayer.css";
 // Library imports
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 // Hooks imports
 import useDB from "../hooks/useDB";
 // Component imports
@@ -10,9 +10,11 @@ import Lazyloader from "../common/Lazyloader/Lazyloader";
 import { PlayerLoader } from "../helper/SkeletonLoader";
 // Asset import
 import back from "../assets/back.png";
+import { Link } from "react-router-dom";
 
 const MusicPlayer = () => {
   const { state } = useLocation();
+  console.log(state);
   const { getMeditationMusic, meditationMusic, getPranayam, pranayam } = useDB(
     state.collection
   ); // Backend methods for breathe and meditation
@@ -59,20 +61,23 @@ const MusicPlayer = () => {
               setPlay={setPlay}
               playState={play}
             />
-            {/* <a href={state.collection === "breathe" ? "/breathe" : "/meditate"}> */}
-            <a href="/">
-              <img
-                src={back}
-                alt="back"
-                style={{
-                  position: "absolute",
-                  left: "3%",
-                  top: "3%",
-                  width: "30px",
-                  height: "30px",
-                }}
-              />
-            </a>
+            <img
+              src={back}
+              alt="back"
+              style={{
+                position: "absolute",
+                left: "3%",
+                top: "3%",
+                width: "30px",
+                height: "30px",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                state.collection === "breathe"
+                  ? window.location.replace("./index.html#/breathe")
+                  : window.location.replace("./index.html#/meditate");
+              }}
+            />
           </>
         )}
       </div>
