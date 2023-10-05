@@ -357,7 +357,7 @@ export const oldAgeRoutine = [
   // ***** AFTERNOON *****
   {
     id: 6,
-    task: "Participate in hobbies or activities that the person enjoys, such as painting, gardening, or playing a musical instrument.",
+    task: "Participate in hobbies or activities that the person enjoys, such as painting, gardening.",
     complete: false,
     time: "afternoon",
     img: "https://firebasestorage.googleapis.com/v0/b/reflect-manas.appspot.com/o/home%2Ficon%2FtaskImg26.jpg?alt=media&token=a46ab49f-1659-42cc-abef-81e7d90e6051",

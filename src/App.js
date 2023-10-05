@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import "./App.css";
 import Loader from "./common/Loader/Loader";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import ProtectedRoute from "./helper/ProtectedRoute";
 import ResetPassword from "./pages/ResetPassword";
 import useAuthContext from "./hooks/useAuthContext";
@@ -22,7 +22,7 @@ const RoutineHistory = React.lazy(() => import("./pages/extra/RoutineHistory"));
 const Blog = React.lazy(() => import("./pages/extra/Blog"));
 
 function App() {
-  const { authIsReady } = useAuthContext();
+  const { authIsReady, user } = useAuthContext();
   return (
     <>
       {authIsReady && (
@@ -30,9 +30,18 @@ function App() {
           <Suspense fallback={<Loader />}>
             {/* <HashRouter> */}
             <Routes>
-              <Route path="/register" element={<SignUp />} />
-              <Route path="/login" element={<SignIn />} />
-              <Route path="/resetpassword" element={<ResetPassword />} />
+              <Route
+                path="/register"
+                element={user ? <Navigate to="/" /> : <SignUp />}
+              />
+              <Route
+                path="/login"
+                element={user ? <Navigate to="/" /> : <SignIn />}
+              />
+              <Route
+                path="/resetpassword"
+                element={user ? <Navigate to="/" /> : <ResetPassword />}
+              />
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/" element={<Home />} />
