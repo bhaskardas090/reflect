@@ -32,15 +32,15 @@ function App() {
             <Routes>
               <Route
                 path="/register"
-                element={user ? <Navigate to="/" /> : <SignUp />}
+                element={user ? <Navigate to="/" replace /> : <SignUp />}
               />
               <Route
                 path="/login"
-                element={user ? <Navigate to="/" /> : <SignIn />}
+                element={user ? <Navigate to="/" replace /> : <SignIn />}
               />
               <Route
                 path="/resetpassword"
-                element={user ? <Navigate to="/" /> : <ResetPassword />}
+                element={user ? <Navigate to="/" replace /> : <ResetPassword />}
               />
 
               <Route element={<ProtectedRoute />}>
