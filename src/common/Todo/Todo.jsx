@@ -49,7 +49,8 @@ function Todo({ img, title, time, id, checked, history }) {
             className={styles.todoText}
             onDoubleClick={() => handleDelete(id)}
           >
-            {title}
+            {title.slice(0, 67)}
+            {title.length >= 67 && "..."}
           </button>
 
           <img
