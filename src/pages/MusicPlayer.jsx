@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 const MusicPlayer = () => {
   const { state } = useLocation();
-  console.log(state);
+  console.log(state, "*****");
   const { getMeditationMusic, meditationMusic, getPranayam, pranayam } = useDB(
     state.collection
   ); // Backend methods for breathe and meditation
@@ -24,6 +24,7 @@ const MusicPlayer = () => {
   useEffect(() => {
     state.collection === "breathe" && getPranayam(state.id);
     state.collection === "meditation" && getMeditationMusic(state.id);
+    console.log(state.collection, "********");
   }, [state.id]);
 
   // Setting the audioFile data conditionally
@@ -73,7 +74,8 @@ const MusicPlayer = () => {
                 cursor: "pointer",
               }}
               onClick={() => {
-                window.location.replace("./index.html");
+                // window.location.replace("./index.html");
+                window.location.replace("/");
               }}
             />
           </>
