@@ -11,9 +11,9 @@ root.render(
   // <React.StrictMode>
   <AuthContextProvider>
     <TaskContextProvider>
-      <BrowserRouter>
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </TaskContextProvider>
   </AuthContextProvider>
   // </React.StrictMode>
