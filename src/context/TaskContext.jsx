@@ -1,6 +1,4 @@
 import React, { createContext, useEffect, useReducer } from "react";
-import { db } from "../firebase/config";
-import useAuthContext from "../hooks/useAuthContext";
 
 export const TaskContext = createContext();
 export const TaskReducer = (state, action) => {
@@ -36,9 +34,7 @@ const initialState = {
 };
 function TaskContextProvider({ children }) {
   const [state, dispatch] = useReducer(TaskReducer, initialState);
-  // console.log("REWARD PER TASK: ", state.reward);
-  // console.log("TOTAL REWARD: ", state.totalReward);
-  const { user } = useAuthContext();
+
   // ! SETTING THE REWARD PER TASK
   useEffect(() => {
     dispatch({ type: "SET_REWARD" });

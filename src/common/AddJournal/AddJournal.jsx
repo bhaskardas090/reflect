@@ -5,7 +5,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 // Custom hook imports
 import useDB from "../../hooks/useDB";
-import useAuthContext from "../../hooks/useAuthContext";
 
 function AddJournal({
   setShowAddModal,
@@ -14,16 +13,15 @@ function AddJournal({
 }) {
   const [journal, setJournal] = useState("");
   // Hooks consumed
-  const { user } = useAuthContext();
   const { addJournal, isJournalAlreadyDone } = useDB("journals");
 
   // Event Handler : Checking if the journal added for today or not
   const handleAddJournal = async (data) => {
-    const journalAlreadyDone = await isJournalAlreadyDone(user.uid);
+    const journalAlreadyDone = await isJournalAlreadyDone();
     if (journalAlreadyDone) {
       setShowTryModal(true);
     } else {
-      addJournal(user.uid, data);
+      // addJournal(user.uid, data);
       setJournal("");
       setShowAddModal(false);
       setShowCongratsModal(true);

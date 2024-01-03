@@ -2,9 +2,6 @@ import React from "react";
 import styles from "./GreetingsNav.module.css";
 // Library imports
 import { Link } from "react-router-dom";
-// Custom hooks
-import useLogOut from "../../hooks/useLogOut";
-import useAuthContext from "../../hooks/useAuthContext";
 //MUI component Import
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
@@ -14,8 +11,6 @@ import journal from "../../assets/journal.png";
 import extra from "../../assets/Extra.png";
 
 function GreetingsNav() {
-  const { logout } = useLogOut();
-  const { user } = useAuthContext(); 
   // MUI Sub Menu State
   const [anchorElAcc, setAnchorElAcc] = React.useState(null);
   const openAcc = Boolean(anchorElAcc);
@@ -44,7 +39,7 @@ function GreetingsNav() {
         <div className={styles.helloSection}>
           <p>🖐🏻</p>
           <div className={styles.greetingsMessage}>
-            <h4>Hey {user?.displayName.slice(0, 10)}</h4>
+            <h4>Hey Manas,</h4>
             <h5>Have a Great Day!</h5>
           </div>
         </div>
@@ -58,7 +53,7 @@ function GreetingsNav() {
           <Menu
             anchorOrigin={{
               vertical: "top",
-              horizontal: "right",
+              horizontal: "left",
             }}
             className={styles.subMenu}
             anchorEl={anchorElExtra}
@@ -91,32 +86,6 @@ function GreetingsNav() {
             </Link>
           </Menu>
           <img src={extra} onClick={handleExtra} alt="extra" />
-          {/* //! ACCOUNT */}
-          <img src={account} onClick={handleAccount} alt="account" />
-          <Menu
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            className={styles.subMenu}
-            anchorEl={anchorElAcc}
-            open={openAcc}
-            onClose={handleAccClose}
-          >
-            <Link
-              to="/account"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <MenuItem>My Account</MenuItem>
-            </Link>
-            <Link
-              to="/update-account"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <MenuItem>Update Account</MenuItem>
-            </Link>
-            <MenuItem onClick={() => logout()}>Logout</MenuItem>
-          </Menu>
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
 import { db } from "../firebase/config";
-import useAuthContext from "./useAuthContext";
 import useTaskContext from "./useTaskContext";
 import { v4 as uuid } from "uuid";
 import { useState } from "react";
@@ -9,7 +8,6 @@ import { useNavigate } from "react-router";
 function useDB(collection) {
   const navigate = useNavigate();
 
-  const { user } = useAuthContext();
   const { state, dispatch } = useTaskContext();
   const [breatheData, setBreatheData] = useState(null);
   const [pranayam, setPranayam] = useState(null);
@@ -18,19 +16,12 @@ function useDB(collection) {
 
   // ! ROUTINE METHODS
   const newState = { ...state };
-  const fetchRoutine = async () => {
+  const fetchRoutine = () => {
     try {
-      await ref.doc(user?.uid).onSnapshot((doc) => {
-        dispatch({
-          type: "SELECT_ROUTINE",
-          payload: {
-            ...state,
-            tasks: doc.data()?.activeRoutine,
-            reward: doc.data()?.reward,
-            totalReward: doc.data()?.totalReward,
-          },
-        });
-      });
+      const data = localStorage.getItem("routine");
+      if (data) {
+        dispatch({ type: "SELECT_ROUTINE", payload: JSON.parse(data) });
+      }
     } catch (error) {
       console.log(error, "FETCH ROUTINE");
     }
@@ -42,14 +33,9 @@ function useDB(collection) {
       newState.tasks,
       newState.reward
     );
-    dispatch({ type: "SELECT_ROUTINE", payload: newState });
     try {
-      await ref.doc(user.uid).set({
-        uid: user.uid,
-        activeRoutine: activeTask,
-        reward: newState.reward,
-        totalReward: newState.totalReward,
-      });
+      dispatch({ type: "SELECT_ROUTINE", payload: newState });
+      localStorage.setItem("routine", newState);
     } catch (error) {
       console.log(error, "SELECT ROUTINE");
     }
@@ -70,12 +56,7 @@ function useDB(collection) {
     newState.totalReward = totalReward;
     dispatch({ type: "ADD_TASK", payload: newState });
     try {
-      await ref.doc(user.uid).set({
-        uid: user.uid,
-        activeRoutine: newState.tasks,
-        reward: newState.reward,
-        totalReward: newState.totalReward,
-      });
+      localStorage.setItem("routine", JSON.stringify(newState));
     } catch (error) {
       console.log(error, "ADD TASK");
     }
@@ -95,12 +76,7 @@ function useDB(collection) {
         payload: newState,
       });
       try {
-        await ref.doc(user.uid).set({
-          uid: user.uid,
-          activeRoutine: newTasks,
-          reward: newState.reward,
-          totalReward: newState.totalReward,
-        });
+        localStorage.setItem("routine", JSON.stringify(newState));
       } catch (error) {
         console.log(error, "DELETE TASK");
       }
@@ -120,44 +96,39 @@ function useDB(collection) {
     }
     dispatch({ type: "TASK_COMPLETE_STATUS_CHANGE", payload: newState });
     try {
-      await ref.doc(user.uid).set({
-        uid: user.uid,
-        activeRoutine: newState.tasks,
-        reward: newState.reward,
-        totalReward: newState.totalReward,
-      });
+      localStorage.setItem("routine", JSON.stringify(newState));
     } catch (error) {
       console.log(error, "UPDATE TASK COMPLETE");
     }
   };
-  const todayRoutineDone = async (userId, state) => {
-    // Sending the tasks to routineHistory
-    try {
-      await ref.add({
-        id: userId,
-        title: formatDate(new Date()),
-        tasks: state.tasks,
-        totalReward: state.totalReward,
-      });
-    } catch (error) {
-      console.log(error, "TODAY ROUTINE DONE - ROUTINE HISTORY");
-    }
-    // Resetting the activeRoutine in Local and Server
-    newState.totalReward = 0;
-    newState.tasks.forEach((task) => (task.complete = false));
-    try {
-      await db.collection("routines").doc(user.uid).set({
-        uid: user.uid,
-        activeRoutine: newState.tasks,
-        reward: newState.reward,
-        totalReward: newState.totalReward,
-      });
-    } catch (error) {
-      console.log(error, "TODAY ROUTINE DONE - RESET ROUTINE");
-    }
+  // const todayRoutineDone = async (state) => {
+  //   // Sending the tasks to routineHistory
+  //   try {
+  //     await ref.add({
+  //       id: userId,
+  //       title: formatDate(new Date()),
+  //       tasks: state.tasks,
+  //       totalReward: state.totalReward,
+  //     });
+  //   } catch (error) {
+  //     console.log(error, "TODAY ROUTINE DONE - ROUTINE HISTORY");
+  //   }
+  //   // Resetting the activeRoutine in Local and Server
+  //   newState.totalReward = 0;
+  //   newState.tasks.forEach((task) => (task.complete = false));
+  //   try {
+  //     await db.collection("routines").doc(user.uid).set({
+  //       uid: user.uid,
+  //       activeRoutine: newState.tasks,
+  //       reward: newState.reward,
+  //       totalReward: newState.totalReward,
+  //     });
+  //   } catch (error) {
+  //     console.log(error, "TODAY ROUTINE DONE - RESET ROUTINE");
+  //   }
 
-    dispatch({ type: "SELECT_ROUTINE", payload: newState });
-  };
+  //   dispatch({ type: "SELECT_ROUTINE", payload: newState });
+  // };
   const isRoutineAlreadyDone = async (userId) => {
     const formattedDate = formatDate(new Date());
     const res = await ref
@@ -225,36 +196,37 @@ function useDB(collection) {
   };
 
   // ! Routine History Method
-  const getRoutineHistory = async (date, setHistory, setNoData) => {
-    const formattedDate = formatDateForHistory(date);
-    await ref
-      .where("id", "==", user.uid)
-      .where("title", "==", formattedDate)
-      .get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          setNoData(true);
-          setHistory(null);
-        }
-        if (!querySnapshot.empty) {
-          setNoData(false);
-          querySnapshot.forEach((doc) => {
-            setHistory(doc.data());
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error, "GET ROUTINE HISTORY");
-      });
-  };
+  // const getRoutineHistory = async (date, setHistory, setNoData) => {
+  //   const formattedDate = formatDateForHistory(date);
+  //   await ref
+  //     .where("id", "==", user.uid)
+  //     .where("title", "==", formattedDate)
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       if (querySnapshot.empty) {
+  //         setNoData(true);
+  //         setHistory(null);
+  //       }
+  //       if (!querySnapshot.empty) {
+  //         setNoData(false);
+  //         querySnapshot.forEach((doc) => {
+  //           setHistory(doc.data());
+  //         });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error, "GET ROUTINE HISTORY");
+  //     });
+  // };
   // ! Journal Methods
-  const addJournal = async (userId, journal) => {
+  const addJournal = (journal) => {
+    const fullJournal = {
+      id: uuid(),
+      journal: journal,
+      title: formatDate(new Date()),
+    };
     try {
-      await ref.add({
-        id: userId,
-        journal: journal,
-        title: formatDate(new Date()),
-      });
+      localStorage.set("journals", fullJournal);
     } catch (error) {
       console.log(error, "ADD JOURNAL");
     }
@@ -278,28 +250,28 @@ function useDB(collection) {
       });
     return res;
   };
-  const getJournalHistory = async (date, setHistory, setNoData) => {
-    const formattedDate = formatDateForHistory(date);
-    await ref
-      .where("id", "==", user.uid)
-      .where("title", "==", formattedDate)
-      .get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          setNoData(true);
-          setHistory(null);
-        }
-        if (!querySnapshot.empty) {
-          setNoData(false);
-          querySnapshot.forEach((doc) => {
-            setHistory(doc.data());
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error, "GET JOURNAL HISTORY");
-      });
-  };
+  // const getJournalHistory = async (date, setHistory, setNoData) => {
+  //   const formattedDate = formatDateForHistory(date);
+  //   await ref
+  //     .where("id", "==", user.uid)
+  //     .where("title", "==", formattedDate)
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       if (querySnapshot.empty) {
+  //         setNoData(true);
+  //         setHistory(null);
+  //       }
+  //       if (!querySnapshot.empty) {
+  //         setNoData(false);
+  //         querySnapshot.forEach((doc) => {
+  //           setHistory(doc.data());
+  //         });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error, "GET JOURNAL HISTORY");
+  //     });
+  // };
   // ! Resources Method
   const getBlogs = async () => {
     const blogs = [];
@@ -368,41 +340,6 @@ function useDB(collection) {
     }
     return podCasts;
   };
-  // ! Account Methods
-  const addUser = async (email, username) => {
-    try {
-      await ref.doc(username).set({
-        email: email,
-        username: username,
-      });
-    } catch (error) {
-      console.log(error, "ADD USER");
-    }
-  };
-  const getUser = async (username) => {
-    const userRef = await ref.doc(username);
-    const doc = await userRef.get();
-
-    if (doc.exists) {
-      return doc.data();
-    }
-  };
-  const updateUser = async (data) => {
-    try {
-      await ref.doc(user.displayName).set({
-        email: user.email,
-        username: user.displayName,
-        name: data.name,
-        age: data.age,
-        phone: data.phone,
-        gender: data.gender,
-        working: data.working,
-      });
-      navigate("/");
-    } catch (error) {
-      console.log(error, "UPDATE USER");
-    }
-  };
 
   // ? Helper Method
   function formatDateForHistory(dateString) {
@@ -459,21 +396,18 @@ function useDB(collection) {
     breatheData,
     getPranayam,
     pranayam,
-    getRoutineHistory,
-    todayRoutineDone,
+    // getRoutineHistory,
+    // todayRoutineDone,
     isRoutineAlreadyDone,
     getMeditationMusic,
     meditationMusic,
     addJournal,
     isJournalAlreadyDone,
-    getJournalHistory,
+    // getJournalHistory,
     getBlogs,
     getBlog,
     getVideos,
     getPodcasts,
-    addUser,
-    getUser,
-    updateUser,
     fetchRoutine,
   };
 }

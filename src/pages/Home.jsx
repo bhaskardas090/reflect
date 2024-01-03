@@ -14,7 +14,6 @@ import ModalComponent from "../common/ModalComponent/ModalComponent";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 // Custom hooks imports
-import useAuthContext from "../hooks/useAuthContext";
 import useTaskContext from "../hooks/useTaskContext";
 import useDB from "../hooks/useDB";
 // Library imports
@@ -35,7 +34,6 @@ function Home() {
   const { fetchRoutine } = useDB("routines");
   const { todayRoutineDone, isRoutineAlreadyDone } = useDB("routineHistory");
   //Consuming state data
-  const { user } = useAuthContext();
   const { state } = useTaskContext();
   // States
   const [isExploding, setIsExploding] = useState(false);
@@ -46,7 +44,7 @@ function Home() {
   const [playFailed] = useSound(failed);
   // Function for checking if the routine is submitted for today or not
   const handleRoutineDone = async () => {
-    const routineAlreadyDone = await isRoutineAlreadyDone(user.uid);
+    const routineAlreadyDone = await isRoutineAlreadyDone();
     if (routineAlreadyDone) {
       setShowTryModal(true);
       playFailed();
@@ -56,7 +54,7 @@ function Home() {
       setIsExploding(true);
       setShowCongratsModal(true);
       playComplete();
-      todayRoutineDone(user.uid, state);
+      // todayRoutineDone(user.uid, state);
       setTimeout(() => {
         setIsExploding(false);
       }, 6000);
@@ -65,7 +63,7 @@ function Home() {
   // Fetched new data every time on reload
   useEffect(() => {
     fetchRoutine();
-  }, [user]);
+  }, []);
 
   return (
     <div className={styles.homeContainer}>
@@ -205,27 +203,23 @@ function Home() {
           </div>
         </ModalComponent>
       )}
-
-      {/* //? Submit Button */}
-      {user && (
-        <div className={styles.actionButton}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            endIcon={<SendIcon />}
-            sx={{
-              width: "90vw",
-              background:
-                "linear-gradient(180deg, #FDA52B 21.30%, #FE7401 100%)",
-            }}
-            onClick={handleRoutineDone}
-          >
-            done for the day
-          </Button>
-        </div>
-      )}
-      {/* Bottom Navigation */}
+      {/* //? Submit Button */}(
+      <div className={styles.actionButton}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          endIcon={<SendIcon />}
+          sx={{
+            width: "90vw",
+            background: "linear-gradient(180deg, #FDA52B 21.30%, #FE7401 100%)",
+          }}
+          onClick={handleRoutineDone}
+        >
+          done for the day
+        </Button>
+      </div>
+      ){/* Bottom Navigation */}
       <Navigation />
     </div>
   );
