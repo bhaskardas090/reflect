@@ -28,11 +28,12 @@ import morning from "../assets/morning.png";
 import afternoon from "../assets/afternoon.png";
 import night from "../assets/night.png";
 import mustdo from "../assets/mustdo.png";
+import useRoutine from "../hooks/useRoutine";
 
 function Home() {
   //Calling the backend
-  const { fetchRoutine } = useDB("routines");
-  const { todayRoutineDone, isRoutineAlreadyDone } = useDB("routineHistory");
+  const { fetchRoutine } = useRoutine();
+  const { todayRoutineDone, isRoutineAlreadyDone } = useRoutine();
   //Consuming state data
   const { state } = useTaskContext();
   // States
@@ -49,12 +50,12 @@ function Home() {
       setShowTryModal(true);
       playFailed();
     } else {
+      todayRoutineDone(state);
       const bodyElement = document.querySelector("body");
       bodyElement.scrollIntoView(true);
       setIsExploding(true);
       setShowCongratsModal(true);
       playComplete();
-      // todayRoutineDone(user.uid, state);
       setTimeout(() => {
         setIsExploding(false);
       }, 6000);
@@ -70,7 +71,7 @@ function Home() {
       <GreetingsNav />
       <Quote>"Discipline is the bridge between goals and accomplishment"</Quote>
       <HapinessMeter progress={state?.totalReward} />
-      {/* TASKS Section */}
+      {/*  TASKS Section */}
       <div className={styles.todos}>
         <TodoTitle imgSrc={mustdo} time="Must Do" />
         {!state?.tasks?.length ? (
@@ -203,7 +204,7 @@ function Home() {
           </div>
         </ModalComponent>
       )}
-      {/* //? Submit Button */}(
+      {/* //? Submit Button */}
       <div className={styles.actionButton}>
         <Button
           variant="contained"
@@ -219,7 +220,7 @@ function Home() {
           done for the day
         </Button>
       </div>
-      ){/* Bottom Navigation */}
+      {/* Bottom Navigation */}
       <Navigation />
     </div>
   );

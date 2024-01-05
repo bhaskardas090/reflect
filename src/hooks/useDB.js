@@ -16,138 +16,7 @@ function useDB(collection) {
 
   // ! ROUTINE METHODS
   const newState = { ...state };
-  const fetchRoutine = () => {
-    try {
-      const data = localStorage.getItem("routine");
-      if (data) {
-        dispatch({ type: "SELECT_ROUTINE", payload: JSON.parse(data) });
-      }
-    } catch (error) {
-      console.log(error, "FETCH ROUTINE");
-    }
-  };
-  const selectRoutine = async (activeTask) => {
-    newState.tasks = activeTask;
-    newState.reward = 100 / newState.tasks.length;
-    newState.totalReward = calculateTotalReward(
-      newState.tasks,
-      newState.reward
-    );
-    try {
-      dispatch({ type: "SELECT_ROUTINE", payload: newState });
-      localStorage.setItem("routine", newState);
-    } catch (error) {
-      console.log(error, "SELECT ROUTINE");
-    }
-  };
-  const addTask = async (task, time) => {
-    const newTask = {
-      id: uuid(),
-      task: task,
-      complete: false,
-      time: time.toLowerCase(),
-      img: getHomeTaskIcon(30),
-    };
-    const newTasks = [...newState.tasks, newTask];
-    const reward = 100 / newTasks.length;
-    const totalReward = calculateTotalReward(newTasks, reward);
-    newState.tasks = newTasks;
-    newState.reward = reward;
-    newState.totalReward = totalReward;
-    dispatch({ type: "ADD_TASK", payload: newState });
-    try {
-      localStorage.setItem("routine", JSON.stringify(newState));
-    } catch (error) {
-      console.log(error, "ADD TASK");
-    }
-  };
-  const deleteTask = async (taskId) => {
-    const deletedTask = newState.tasks.filter((task) => task.id === taskId);
-    // console.log(deletedTask[0].complete, "DELETED TASK COMPLETE");
-    if (!deletedTask[0].complete) {
-      const newTasks = newState.tasks.filter((task) => task.id !== taskId);
-      const reward = 100 / newTasks.length;
-      const totalReward = calculateTotalReward(newTasks, reward);
-      newState.tasks = newTasks;
-      newState.reward = reward;
-      newState.totalReward = totalReward;
-      dispatch({
-        type: "DELETE_TASK",
-        payload: newState,
-      });
-      try {
-        localStorage.setItem("routine", JSON.stringify(newState));
-      } catch (error) {
-        console.log(error, "DELETE TASK");
-      }
-    } else {
-      alert(
-        "Action Denied. You can't delete an task while is marked as completed."
-      );
-    }
-  };
-  const updateTaskComplete = async (taskId) => {
-    const filteredTask = newState.tasks.find((task) => task.id === taskId);
-    filteredTask.complete = !filteredTask.complete;
-    if (filteredTask.complete) {
-      newState.totalReward += newState.reward;
-    } else {
-      newState.totalReward -= newState.reward;
-    }
-    dispatch({ type: "TASK_COMPLETE_STATUS_CHANGE", payload: newState });
-    try {
-      localStorage.setItem("routine", JSON.stringify(newState));
-    } catch (error) {
-      console.log(error, "UPDATE TASK COMPLETE");
-    }
-  };
-  // const todayRoutineDone = async (state) => {
-  //   // Sending the tasks to routineHistory
-  //   try {
-  //     await ref.add({
-  //       id: userId,
-  //       title: formatDate(new Date()),
-  //       tasks: state.tasks,
-  //       totalReward: state.totalReward,
-  //     });
-  //   } catch (error) {
-  //     console.log(error, "TODAY ROUTINE DONE - ROUTINE HISTORY");
-  //   }
-  //   // Resetting the activeRoutine in Local and Server
-  //   newState.totalReward = 0;
-  //   newState.tasks.forEach((task) => (task.complete = false));
-  //   try {
-  //     await db.collection("routines").doc(user.uid).set({
-  //       uid: user.uid,
-  //       activeRoutine: newState.tasks,
-  //       reward: newState.reward,
-  //       totalReward: newState.totalReward,
-  //     });
-  //   } catch (error) {
-  //     console.log(error, "TODAY ROUTINE DONE - RESET ROUTINE");
-  //   }
 
-  //   dispatch({ type: "SELECT_ROUTINE", payload: newState });
-  // };
-  const isRoutineAlreadyDone = async (userId) => {
-    const formattedDate = formatDate(new Date());
-    const res = await ref
-      .where("id", "==", userId)
-      .where("title", "==", formattedDate)
-      .get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          return false;
-        }
-        if (!querySnapshot.empty) {
-          return true;
-        }
-      })
-      .catch((error) => {
-        console.log(error, "ROUTINE ALREADY DONE");
-      });
-    return res;
-  };
   // ! Breathe METHODS
   const getPranayamas = async () => {
     const data = [];
@@ -388,17 +257,11 @@ function useDB(collection) {
     return formattedDate;
   }
   return {
-    deleteTask,
-    updateTaskComplete,
-    selectRoutine,
-    addTask,
     getPranayamas,
     breatheData,
     getPranayam,
     pranayam,
     // getRoutineHistory,
-    // todayRoutineDone,
-    isRoutineAlreadyDone,
     getMeditationMusic,
     meditationMusic,
     addJournal,
@@ -408,7 +271,6 @@ function useDB(collection) {
     getBlog,
     getVideos,
     getPodcasts,
-    fetchRoutine,
   };
 }
 

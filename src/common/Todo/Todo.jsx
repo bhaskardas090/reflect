@@ -2,9 +2,10 @@ import React from "react";
 import styles from "./Todo.module.css";
 // Custom hook import
 import useDB from "../../hooks/useDB";
+import useRoutine from "../../hooks/useRoutine";
 
 function Todo({ img, title, time, id, checked, history }) {
-  const { deleteTask, updateTaskComplete } = useDB("routines"); // Getting the backend methods
+  const { deleteTask, updateTaskComplete } = useRoutine(); // Getting the backend methods
 
   // Event Handler : Task delete function
   const handleDelete = (taskId) => {

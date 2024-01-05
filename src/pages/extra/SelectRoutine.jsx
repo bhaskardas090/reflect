@@ -17,15 +17,14 @@ import student from "../../assets/STUDENT.jpg";
 import working from "../../assets/WORKING.jpg";
 import homemaker from "../../assets/HOMEMAKER.jpg";
 import oldage from "../../assets/OLDAGE.jpg";
+import useRoutine from "../../hooks/useRoutine";
 
 function SelectTask() {
   const navigate = useNavigate();
-  const { selectRoutine } = useDB("routines");
-
+  const { selectRoutine } = useRoutine();
   // Event handler : Select the active task
   const handleTask = async (activeTask) => {
     selectRoutine(activeTask);
-    navigate("/");
   };
   return (
     <div>

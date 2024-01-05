@@ -11,9 +11,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useDB from "../../hooks/useDB";
 // Component imports
 import { addTaskSchema } from "../../helper/Validation";
+import useRoutine from "../../hooks/useRoutine";
 
 function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
-  const { addTask } = useDB("routines");
+  const { addTask } = useRoutine();
 
   const {
     control,
