@@ -65,28 +65,7 @@ function useDB(collection) {
   };
 
   // ! Routine History Method
-  // const getRoutineHistory = async (date, setHistory, setNoData) => {
-  //   const formattedDate = formatDateForHistory(date);
-  //   await ref
-  //     .where("id", "==", user.uid)
-  //     .where("title", "==", formattedDate)
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       if (querySnapshot.empty) {
-  //         setNoData(true);
-  //         setHistory(null);
-  //       }
-  //       if (!querySnapshot.empty) {
-  //         setNoData(false);
-  //         querySnapshot.forEach((doc) => {
-  //           setHistory(doc.data());
-  //         });
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error, "GET ROUTINE HISTORY");
-  //     });
-  // };
+
   // ! Journal Methods
   const addJournal = (journal) => {
     const fullJournal = {

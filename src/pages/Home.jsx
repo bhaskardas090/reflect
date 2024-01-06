@@ -50,7 +50,7 @@ function Home() {
       setShowTryModal(true);
       playFailed();
     } else {
-      todayRoutineDone(state);
+      todayRoutineDone();
       const bodyElement = document.querySelector("body");
       bodyElement.scrollIntoView(true);
       setIsExploding(true);

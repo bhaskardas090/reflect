@@ -16,9 +16,10 @@ import useDB from "../../hooks/useDB";
 import { useNavigate } from "react-router";
 // Asset imports
 import nodatasearch from "../../assets/nodata-search.png";
+import useRoutine from "../../hooks/useRoutine";
 
 function RoutineHistory() {
-  const { getRoutineHistory } = useDB("routineHistory"); // Calling the backend service
+  const { getRoutineHistory } = useRoutine(); // Calling the backend service
   const [history, setHistory] = useState(null); // State to store previous data
   const [noData, setNoData] = useState(null); // State to check if data is available or not
 

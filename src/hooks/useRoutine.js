@@ -108,36 +108,33 @@ function useRoutine() {
     }
   };
 
-  const todayRoutineDone = (state) => {
+  const todayRoutineDone = () => {
     // Sending the tasks to routineHistory
     const pastRoutinesDone = localStorage.getItem("pastRoutinesDone");
     let pastRoutinesList;
 
     if (!!pastRoutinesDone) {
       pastRoutinesList = [...JSON.parse(pastRoutinesDone)];
-      console.log(pastRoutinesList, "TODAY ROUTINE DONE");
     } else {
       pastRoutinesList = [];
     }
-
     const routine = {
       title: formatDate(new Date()),
-      tasks: state.tasks,
-      totalReward: state.totalReward,
+      tasks: newState.tasks,
+      totalReward: newState.totalReward,
     };
     pastRoutinesList.push(routine);
-
-    // Resetting the activeRoutine in Local and Server
-    newState.totalReward = 0;
-    newState.tasks.forEach((task) => (task.complete = false));
-
     try {
       dispatch({ type: "SELECT_ROUTINE", payload: newState });
-      localStorage.setItem("activeRoutine", JSON.stringify(newState));
       localStorage.setItem("pastRoutineDone", JSON.stringify(pastRoutinesList));
     } catch (error) {
       console.log(error, "TODAY ROUTINE DONE");
     }
+
+    // Resetting the activeRoutine in Local and Server
+    newState.totalReward = 0;
+    newState.tasks.forEach((task) => (task.complete = false));
+    localStorage.setItem("activeRoutine", JSON.stringify(newState));
   };
 
   const isRoutineAlreadyDone = () => {
@@ -160,6 +157,44 @@ function useRoutine() {
         return (res = false);
       }
     }
+  };
+
+  const getRoutineHistory = (date, setHistory, setNoData) => {
+    const formattedDate = formatDateForHistory(date);
+    const pastRoutines = JSON.parse(localStorage.getItem("pastRoutineDone"));
+
+    const routine = pastRoutines?.find(
+      (routine) => routine.title === formattedDate
+    );
+
+    console.log(routine, "Routine History");
+
+    if (!routine) {
+      setNoData(true);
+      setHistory(null);
+    } else {
+      setNoData(false);
+      setHistory(routine);
+    }
+    // await ref
+    //   .where("id", "==", user.uid)
+    //   .where("title", "==", formattedDate)
+    //   .get()
+    //   .then((querySnapshot) => {
+    //     if (querySnapshot.empty) {
+    //       setNoData(true);
+    //       setHistory(null);
+    //     }
+    //     if (!querySnapshot.empty) {
+    //       setNoData(false);
+    //       querySnapshot.forEach((doc) => {
+    //         setHistory(doc.data());
+    //       });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error, "GET ROUTINE HISTORY");
+    //   });
   };
 
   // ! Helper methods
@@ -186,6 +221,34 @@ function useRoutine() {
     return formattedDate;
   }
 
+  function formatDateForHistory(dateString) {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const dateComponents = dateString.split(" ");
+    const day = parseInt(dateComponents[2], 10);
+    const monthIndex = months.indexOf(dateComponents[1]);
+    const year = parseInt(dateComponents[3], 10);
+
+    const formattedDate = `${day < 10 ? "0" : ""}${day}/${
+      monthIndex < 9 ? "0" : ""
+    }${monthIndex + 1}/${year}`;
+
+    return formattedDate;
+  }
+
   return {
     selectRoutine,
     fetchRoutine,
@@ -194,6 +257,7 @@ function useRoutine() {
     updateTaskComplete,
     todayRoutineDone,
     isRoutineAlreadyDone,
+    getRoutineHistory,
   };
 }
 
