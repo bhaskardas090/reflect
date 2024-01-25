@@ -11,13 +11,13 @@ import PageHeader from "../../common/PageHeader/PageHeader";
 // Library import
 import { useNavigate } from "react-router-dom";
 // Custom hook
-import useDB from "../../hooks/useDB";
+import useRoutine from "../../hooks/useRoutine";
+
 // Asset imports
 import student from "../../assets/STUDENT.jpg";
 import working from "../../assets/WORKING.jpg";
 import homemaker from "../../assets/HOMEMAKER.jpg";
 import oldage from "../../assets/OLDAGE.jpg";
-import useRoutine from "../../hooks/useRoutine";
 
 function SelectTask() {
   const navigate = useNavigate();

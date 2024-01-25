@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/MusicPlayer.css";
 // Library imports
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 // Hooks imports
 import useDB from "../hooks/useDB";
 // Component imports
@@ -10,7 +10,6 @@ import Lazyloader from "../common/Lazyloader/Lazyloader";
 import { PlayerLoader } from "../helper/SkeletonLoader";
 // Asset import
 import back from "../assets/back.png";
-import { Link } from "react-router-dom";
 
 const MusicPlayer = () => {
   const { state } = useLocation();
@@ -24,7 +23,6 @@ const MusicPlayer = () => {
   useEffect(() => {
     state.collection === "breathe" && getPranayam(state.id);
     state.collection === "meditation" && getMeditationMusic(state.id);
-    console.log(state.collection, "********");
   }, [state.id]);
 
   // Setting the audioFile data conditionally

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import useTaskContext from "./useTaskContext";
 import { useNavigate } from "react-router";
 import { v4 as uuid } from "uuid";
@@ -22,7 +22,7 @@ function useRoutine() {
     }
   };
 
-  const fetchRoutine = () => {
+  const fetchRoutine = useCallback(() => {
     try {
       const data = JSON.parse(localStorage.getItem("activeRoutine"));
       if (!!data === false) {
@@ -34,7 +34,7 @@ function useRoutine() {
     } catch (error) {
       console.log(error, "FETCH ROUTINE");
     }
-  };
+  }, [dispatch, navigate]);
 
   const addTask = (task, time) => {
     const newTask = {
@@ -167,8 +167,6 @@ function useRoutine() {
       (routine) => routine.title === formattedDate
     );
 
-    console.log(routine, "Routine History");
-
     if (!routine) {
       setNoData(true);
       setHistory(null);
@@ -176,25 +174,6 @@ function useRoutine() {
       setNoData(false);
       setHistory(routine);
     }
-    // await ref
-    //   .where("id", "==", user.uid)
-    //   .where("title", "==", formattedDate)
-    //   .get()
-    //   .then((querySnapshot) => {
-    //     if (querySnapshot.empty) {
-    //       setNoData(true);
-    //       setHistory(null);
-    //     }
-    //     if (!querySnapshot.empty) {
-    //       setNoData(false);
-    //       querySnapshot.forEach((doc) => {
-    //         setHistory(doc.data());
-    //       });
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error, "GET ROUTINE HISTORY");
-    //   });
   };
 
   // ! Helper methods

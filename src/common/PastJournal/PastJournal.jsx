@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./PastJournal.module.css";
 // Custom hook
-import useDB from "../../hooks/useDB";
+import useJournal from "../../hooks/useJournal";
 // MUI componets
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -19,7 +19,7 @@ import { getJournalCover } from "../../helper/JournalCover";
 import nodatasearch from "../../assets/nodata-search.png";
 
 function PastJournal({ setShowPastModal }) {
-  const { getJournalHistory } = useDB("journals"); // Calling the backend service
+  const { getJournalHistory } = useJournal(); // Calling the backend service
   const [history, setHistory] = useState(null); // State to store previous data
   const [noData, setNoData] = useState(null); // State to check if data is available or not
 

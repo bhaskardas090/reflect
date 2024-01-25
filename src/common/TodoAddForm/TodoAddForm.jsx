@@ -8,10 +8,9 @@ import Alert from "@mui/material/Alert";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // Hooks imports
-import useDB from "../../hooks/useDB";
+import useRoutine from "../../hooks/useRoutine";
 // Component imports
 import { addTaskSchema } from "../../helper/Validation";
-import useRoutine from "../../hooks/useRoutine";
 
 function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
   const { addTask } = useRoutine();
@@ -43,13 +42,6 @@ function TodoAddForm({ showTodoForm, setShowTodoForm, time }) {
       >
         <div className={styles.todoForm}>
           <div className={styles.todoFormContainer}>
-            {/* <TextField
-              label="Enter you task"
-              variant="outlined"
-              defaultValue=""
-              className={styles.textField}
-              {...register("task")}
-            /> */}
             <Controller
               name="task"
               control={control}

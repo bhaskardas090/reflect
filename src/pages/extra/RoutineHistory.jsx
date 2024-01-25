@@ -11,12 +11,11 @@ import HapinessMeter from "../../common/HapinessMeter/HapinessMeter";
 import PageHeader from "../../common/PageHeader/PageHeader";
 import NoData from "../../common/NoData/NoData";
 // Custom hook
-import useDB from "../../hooks/useDB";
+import useRoutine from "../../hooks/useRoutine";
 // Library import
 import { useNavigate } from "react-router";
 // Asset imports
 import nodatasearch from "../../assets/nodata-search.png";
-import useRoutine from "../../hooks/useRoutine";
 
 function RoutineHistory() {
   const { getRoutineHistory } = useRoutine(); // Calling the backend service

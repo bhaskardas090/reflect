@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 // Custom hooks imports
 import useTaskContext from "../hooks/useTaskContext";
-import useDB from "../hooks/useDB";
+import useRoutine from "../hooks/useRoutine";
 // Library imports
 import useSound from "use-sound";
 import Confetti from "react-confetti";
@@ -28,7 +28,6 @@ import morning from "../assets/morning.png";
 import afternoon from "../assets/afternoon.png";
 import night from "../assets/night.png";
 import mustdo from "../assets/mustdo.png";
-import useRoutine from "../hooks/useRoutine";
 
 function Home() {
   //Calling the backend
@@ -44,8 +43,8 @@ function Home() {
   const [playComplete] = useSound(complete);
   const [playFailed] = useSound(failed);
   // Function for checking if the routine is submitted for today or not
-  const handleRoutineDone = async () => {
-    const routineAlreadyDone = await isRoutineAlreadyDone();
+  const handleRoutineDone = () => {
+    const routineAlreadyDone = isRoutineAlreadyDone();
     if (routineAlreadyDone) {
       setShowTryModal(true);
       playFailed();
@@ -61,10 +60,10 @@ function Home() {
       }, 6000);
     }
   };
-  // Fetched new data every time on reload
+  // Fetched new data eve             ry time on reload
   useEffect(() => {
     fetchRoutine();
-  }, []);
+  }, [fetchRoutine]);
 
   return (
     <div className={styles.homeContainer}>

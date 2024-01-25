@@ -4,7 +4,7 @@ import styles from "./AddJournal.module.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 // Custom hook imports
-import useDB from "../../hooks/useDB";
+import useJournal from "../../hooks/useJournal";
 
 function AddJournal({
   setShowAddModal,
@@ -13,7 +13,7 @@ function AddJournal({
 }) {
   const [journal, setJournal] = useState("");
   // Hooks consumed
-  const { addJournal, isJournalAlreadyDone } = useDB("journals");
+  const { addJournal, isJournalAlreadyDone } = useJournal();
 
   // Event Handler : Checking if the journal added for today or not
   const handleAddJournal = async (data) => {
@@ -21,7 +21,7 @@ function AddJournal({
     if (journalAlreadyDone) {
       setShowTryModal(true);
     } else {
-      // addJournal(user.uid, data);
+      addJournal(data);
       setJournal("");
       setShowAddModal(false);
       setShowCongratsModal(true);

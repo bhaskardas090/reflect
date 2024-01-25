@@ -6,24 +6,15 @@ import { Link } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 //Asset Import
-import account from "../../assets/Account.png";
 import journal from "../../assets/journal.png";
 import extra from "../../assets/Extra.png";
 
 function GreetingsNav() {
   // MUI Sub Menu State
-  const [anchorElAcc, setAnchorElAcc] = React.useState(null);
-  const openAcc = Boolean(anchorElAcc);
   const [anchorElExtra, setAnchorElExtra] = React.useState(null);
   const openExtra = Boolean(anchorElExtra);
 
   // Handler Functions
-  const handleAccount = (event) => {
-    setAnchorElAcc(event.currentTarget);
-  };
-  const handleAccClose = () => {
-    setAnchorElAcc(null);
-  };
 
   const handleExtra = (event) => {
     setAnchorElExtra(event.currentTarget);
@@ -65,12 +56,6 @@ function GreetingsNav() {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <MenuItem>Change Routine</MenuItem>
-            </Link>
-            <Link
-              to="/resource"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <MenuItem>Resource</MenuItem>
             </Link>
             <Link
               to="/routine-history"

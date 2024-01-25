@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Todo.module.css";
 // Custom hook import
-import useDB from "../../hooks/useDB";
 import useRoutine from "../../hooks/useRoutine";
 
 function Todo({ img, title, time, id, checked, history }) {
