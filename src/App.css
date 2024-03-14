@@ -1,1 +1,28 @@
+/* //! MUI STYLING */
 
+/* sub-menu */
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  width: 45vw;
+}
+/* tabs */
+.css-1wf8b0h-MuiTabs-flexContainer {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: black !important;
+  background-color: white;
+}
+.css-1aquho2-MuiTabs-indicator {
+  background: linear-gradient(180deg, #fda52b 21.3%, #fe7401 100%) !important;
+}
+
+/*//! HTML */
+ol,
+ul {
+  padding-left: 1.5rem;
+}
+
+body {
+  overflow-x: hidden !important;
+}

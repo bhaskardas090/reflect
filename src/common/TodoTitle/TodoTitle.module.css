@@ -1,0 +1,24 @@
+.todoTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+}
+.timePeriod {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0rem 1rem 1rem;
+}
+.timePeriodImg {
+  width: 2rem;
+  height: 2rem;
+}
+.timePeriodText {
+  padding: 7px 0px 0px 8px;
+}
+.add {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}

@@ -1,70 +1,94 @@
-import React, { useState } from 'react';
-import Logo from '../common/Logo/Logo';
-import styles from '../styles/auth.module.css';
-import SocialLogin from '../common/SocialLogin/SocialLogin';
-import loginScreenOne from '../assets/Login_Page_1.png';
-import { FormControl } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import styles from "../styles/Auth.module.css";
+// Component imports
+import Logo from "../common/Logo/Logo";
+// MUI component imports
+import { Alert } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+// Library imports
+import { Link } from "react-router-dom";
+import { signInSchema } from "../helper/Validation";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+// Custom hook import
+import useLogin from "../hooks/useLogin";
+// Asset import
+import meditate from "../assets/Login_Page_1.png";
 
 function SignIn() {
-  const [signInDeatils, setSignInDeatils] = useState({
-    email: '',
-    password: '',
+  const { login, error, loading } = useLogin();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(signInSchema),
   });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(signInDeatils);
+
+  // Event handler : signing in the user
+  const onSubmit = async (data) => {
+    login(data.email, data.password);
   };
+
   return (
-    <div>
+    <div className={styles.loginComponent}>
       <Logo />
-      {/* <div>
-        <img src={loginScreenOne} className={styles.loginScreenOne} />
-      </div> */}
+      <div className={styles.image}>
+        <img src={meditate} alt="meditate" className={styles.loginImg} />
+      </div>
       <div className={styles.login}>
         <form className={styles.form}>
           <TextField
             label="Enter your email"
             variant="outlined"
             type="email"
-            value={signInDeatils.email}
-            onChange={(e) =>
-              setSignInDeatils({ ...signInDeatils, email: e.target.value })
-            }
+            {...register("email")}
             className={styles.inputField}
           />
+          {errors.password && (
+            <Alert severity="error" className={styles.alert}>
+              {errors.email?.message}
+            </Alert>
+          )}
           <TextField
             label="Enter Password"
             variant="outlined"
             type="password"
-            value={signInDeatils.password}
+            {...register("password")}
             autoComplete="false"
-            onChange={(e) =>
-              setSignInDeatils({ ...signInDeatils, password: e.target.value })
-            }
             className={styles.inputField}
           />
+          {errors.password && (
+            <Alert severity="error" className={styles.alert}>
+              {errors.password?.message}
+            </Alert>
+          )}
           <Button
             variant="contained"
             className={styles.register}
-            onClick={handleSubmit}
+            onClick={handleSubmit(onSubmit)}
           >
-            Register
+            {loading ? "Loading..." : "Log In"}
           </Button>
+          {error && (
+            <Alert severity="error" className={styles.alert}>
+              {error}
+            </Alert>
+          )}
         </form>
         <div className={styles.signup}>
+          <Link to="/resetpassword" className={styles.redirect}>
+            Forgot Password?
+          </Link>
           <p>
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <Link to="/register" className={styles.redirect}>
               SIGN UP
             </Link>
           </p>
         </div>
       </div>
-      {/* OTHER AUTH METHOS */}
-      <SocialLogin />
     </div>
   );
 }

@@ -1,0 +1,50 @@
+.container {
+  /* background: linear-gradient(180deg, #FDA026 0%, #F5F1E5 22.92%, #F3EFE4 79.17%, #6E83B7 100%); */
+  background-color: #f3b461;
+  border-bottom-right-radius: 80%;
+  border-bottom-left-radius: 80%;
+  height: 15vh;
+  margin: 0; /* Reset margin */
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin-top: 1.5rem;
+  /* Reset margin-top */
+}
+
+.form .pass {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.textField {
+  width: 75vw;
+}
+
+.titleAndEdit {
+  display: flex;
+}
+.updateButton {
+  width: 85%;
+}
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .updateButton {
+    width: 20%;
+    margin: auto;
+  }
+}

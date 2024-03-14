@@ -1,0 +1,38 @@
+.pageHeaderComponent {
+  position: absolute;
+  z-index: 100;
+}
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 50px;
+  position: relative;
+}
+.backButton {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  left: 10px;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  cursor: pointer;
+}
+.title {
+  margin: auto;
+  /* padding-right: 15vw; */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .backButton {
+    left: 40px;
+  }
+}

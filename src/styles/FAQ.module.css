@@ -1,0 +1,22 @@
+.faq {
+  background-image: linear-gradient(
+    180deg,
+    #fda026 0%,
+    #f5f1e5 22.92%,
+    #f3efe4 65.17%,
+    #6e83b7 100%
+  );
+}
+.according {
+  padding: 1rem;
+  padding-top: 70px;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .according {
+    width: 50%;
+    margin: auto;
+  }
+}

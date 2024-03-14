@@ -1,5 +1,22 @@
-.quoteContainer{
-    padding: 1rem;
-    font-size: 15px;
-    font-weight: 700;
+@import url("https://fonts.googleapis.com/css2?family=Lumanosimo&display=swap");
+
+.quoteContainer {
+  padding: 1rem;
+  font-size: 15px;
+  font-weight: 700;
+}
+.quoteContainer p {
+  font-family: "Lumanosimo", cursive !important;
+  margin: 1rem auto;
+}
+
+/* RESPONSIVENESS FOR LARGE SCREEN */
+
+@media (min-width: 768px) {
+  .quoteContainer {
+    text-align: center;
+  }
+  .quoteContainer p {
+    width: 60vw;
+  }
 }
